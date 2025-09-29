@@ -1,1 +1,1 @@
-mosipdev2/apitest-inji-certify:develop develop
+mosipid/artifactory-server:1.2.0.4 1.2.0.4

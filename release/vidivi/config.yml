@@ -3,11 +3,10 @@ csv:
   has_header: no
 
 docker:
-  username: <docker hub username>
-  token: <docker hub token>
-  destination_organization: <docker hub destination org> 
-  registry_url: https://index.docker.io/v1/
+  username: robot$mosiphubid+mosiphubid-bot
+  token: zPZN0PdUeISMKKtA79nhPkqALfeA0tPu
+  destination_organization: mosiphubid
+  registry_url: 10.0.3.128:8080
   imageExitUrl: https://registry.hub.docker.com/v2/
-
 process:
   count: 3

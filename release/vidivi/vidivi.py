@@ -267,7 +267,7 @@ def process_image(image, client, remote_client):
                 
                 # Use destination tag with architecture suffix instead of hash
                 arch_tag = f"{destImgtag}-{arch_type}-{arch_os}"
-                temp_dest_img = f"{config['docker']['destination_organization']}/{srcImgName}:{arch_tag}"
+                temp_dest_img = f"{config['docker']['registry_url']}/{config['docker']['destination_organization']}/{srcImgName}:{arch_tag}"
                 temp_images.append(temp_dest_img)
                 
                 try:
@@ -277,7 +277,7 @@ def process_image(image, client, remote_client):
                         srcImgName, 
                         digest_value, 
                         arch_tag,  # Use the arch-specific tag here
-                        config['docker']['destination_organization'], 
+                        config['docker']['registry_url'] + '/' + config['docker']['destination_organization'], 
                         remote_client,
                         client,
                         arch_type,
@@ -333,7 +333,7 @@ def process_image(image, client, remote_client):
             srcImgName, 
             srcImgtag, 
             destImgtag,
-            config['docker']['destination_organization'], 
+            config['docker']['registry_url'] + '/' + config['docker']['destination_organization'], 
             remote_client, 
             client
         )
@@ -513,8 +513,12 @@ def main():
     # check the existence of destImg+tag
     print_log("", 'info')
     print_log('*' * 20 + " Check existence of Destination Docker Account " + '*' * 63, 'info')
-    if not chkDockerAccExistence(config['docker']['destination_organization']):
-        exit(1)
+    # Skip Docker Hub account check for non-Docker Hub registries
+    if 'docker.io' in config['docker']['registry_url'].lower() or 'hub.docker' in config['docker']['registry_url'].lower():
+        if not chkDockerAccExistence(config['docker']['destination_organization']):
+            exit(1)
+    else:
+        print_log("Skipping Docker Hub account check for non-Docker Hub registry", 'info')
     print_log("", 'info')
     print_log('*' * 20 + " Check existence of Destination Images " + '*' * 63, 'info')
     for image in images:
