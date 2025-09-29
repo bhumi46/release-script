@@ -3,9 +3,9 @@ csv:
   has_header: no
 
 docker:
-  username: robot$mosiphubid+mosiphubid-bot
-  token: zPZN0PdUeISMKKtA79nhPkqALfeA0tPu
-  destination_organization: mosiphubid
+  username: robot$mosipid
+  token: tydf6FU5YjMLP62iYBKOY9UqtaiMWeTt
+  destination_organization: mosipid
   registry_url: 10.0.3.128:8080
   imageExitUrl: https://registry.hub.docker.com/v2/
 process:

@@ -193,12 +193,10 @@ def create_manifest_list(src_image_name, dest_image_name, tag, digests, remote_c
     """Create a multi-architecture manifest list from individual architecture digests"""
     try:
         # First, perform a CLI-based Docker login using the credentials from config.yaml
-        docker_login_cmd = f"docker login -u {config['docker']['username']} -p {config['docker']['token']} {config['docker']['registry_url']}"
         print_log(f"Logging in to Docker CLI for manifest operations", 'info')
-        # Use subprocess.PIPE to avoid printing the token to logs
+        # Use subprocess.run with list format to avoid shell interpretation issues
         login_process = subprocess.run(
-            docker_login_cmd, 
-            shell=True, 
+            ["docker", "login", "-u", config['docker']['username'], "-p", config['docker']['token'], config['docker']['registry_url']], 
             check=True, 
             stdout=subprocess.PIPE, 
             stderr=subprocess.PIPE
@@ -487,10 +485,17 @@ def main():
         # call function to check existence of source images
         if not chkImageExistence(srcImgName, srcImgtag, imageExitUrl):
             srcImgNotExist.append([srcImgName + ":" + srcImgtag])
-        # check if source and destination images are same
+        # check if source and destination images are same (same registry, same name, same tag)
         destImgName = config['docker']['destination_organization'] + "/" + (srcImgName.split('/')[-1])
         destImgtag = image[1]
-        if destImgName == srcImgName and destImgtag == srcImgtag:
+        
+        # Only consider them the same if they're on the same registry AND have same name/tag
+        src_registry = "docker.io"  # Source is always Docker Hub (hardcoded in the script)
+        dest_registry_url = config['docker']['registry_url'].lower()
+        dest_is_dockerhub = 'docker.io' in dest_registry_url or 'hub.docker' in dest_registry_url or 'index.docker.io' in dest_registry_url
+        
+        # Images are the same only if: same registry + same name + same tag
+        if dest_is_dockerhub and destImgName == srcImgName and destImgtag == srcImgtag:
             srcDestSameImg.append([destImgName, destImgtag])
     # print list of source images which does not exist
     if len(srcImgNotExist) > 0:
