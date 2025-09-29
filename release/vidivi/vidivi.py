@@ -253,37 +253,58 @@ def process_image(image, client, remote_client):
             arch_os = manifest['platform']['os']
             print_log(f"Detected architecture: {arch_os}/{arch_type}", 'info')
         
-        # Direct multi-arch transfer using index digest approach
-        print_log("Transferring complete multi-arch image to maintain exact Docker Hub structure...", 'info')
+        # Multi-arch transfer using crane tool for proper manifest list handling
+        print_log("Transferring complete multi-arch image using crane...", 'info')
         try:
             dest_repo = f"{config['docker']['registry_url']}/{config['docker']['destination_organization']}/{srcImgName}"
             
-            # Pull the entire multi-arch image using the source tag and push directly
-            src_with_tag = f"{full_src_img_name}:{srcImgtag}"
+            import subprocess
+            import shutil
             
-            print_log(f"Pulling complete multi-arch image: {src_with_tag}", 'info')
-            # Pull the complete multi-arch manifest by tag (this gets the manifest list)
-            pull_status = remote_client.pull(repository=full_src_img_name, tag=srcImgtag, stream=True, decode=True)
-            status_update(pull_status)
-            
-            # Tag it for destination
-            remote_client.tag(image=src_with_tag, repository=dest_repo, tag=destImgtag, force=True)
-            remote_client.tag(image=src_with_tag, repository=dest_repo, tag="latest", force=True)
-            
-            # Push the complete multi-arch manifest list
-            print_log(f"Pushing complete multi-arch image to: {dest_repo}:{destImgtag}", 'info')
-            push_status = remote_client.push(repository=dest_repo, tag=destImgtag, stream=True, decode=True)
-            status_update(push_status)
-            
-            # Also push latest tag
-            print_log(f"Pushing latest tag to: {dest_repo}:latest", 'info')
-            latest_push_status = remote_client.push(repository=dest_repo, tag="latest", stream=True, decode=True)
-            status_update(latest_push_status)
-            
-            print_log(f"Successfully transferred complete multi-arch manifest list for {full_src_img_name}:{srcImgtag}", 'info')
+            if shutil.which("crane"):
+                print_log("Using crane to transfer multi-arch manifest list", 'info')
+                
+                # Use crane to copy complete multi-arch image with proper manifest list
+                crane_cmd = [
+                    "crane", "copy",
+                    "--insecure",  # Harbor is HTTP
+                    f"{full_src_img_name}:{srcImgtag}",
+                    f"{dest_repo}:{destImgtag}"
+                ]
+                
+                print_log(f"Executing: {' '.join(crane_cmd)}", 'info')
+                result = subprocess.run(crane_cmd, capture_output=True, text=True, check=False)
+                
+                if result.returncode == 0:
+                    print_log("Successfully transferred multi-arch manifest list with crane", 'info')
+                    
+                    # Also create latest tag
+                    latest_cmd = [
+                        "crane", "copy",
+                        "--insecure",
+                        f"{full_src_img_name}:{srcImgtag}",
+                        f"{dest_repo}:latest"
+                    ]
+                    
+                    latest_result = subprocess.run(latest_cmd, capture_output=True, text=True, check=False)
+                    if latest_result.returncode == 0:
+                        print_log("Successfully created latest tag", 'info')
+                    else:
+                        print_log(f"Latest tag creation failed: {latest_result.stderr}", 'warning')
+                    
+                    print_log(f"Multi-arch image available at: {dest_repo}:{destImgtag} with all architectures", 'info')
+                    print_log("Crane preserves the complete manifest list structure from Docker Hub", 'info')
+                    
+                else:
+                    print_log(f"Crane transfer failed: {result.stderr}", 'error')
+                    raise Exception(f"Crane multi-arch transfer failed: {result.stderr}")
+                    
+            else:
+                print_log("Crane not available, cannot transfer multi-arch images properly", 'error')
+                raise Exception("Crane tool required for proper multi-arch transfer")
                 
         except Exception as e:
-            print_log(f"Error in multi-arch transfer: {str(e)}", 'error')
+            print_log(f"Error in crane multi-arch transfer: {str(e)}", 'error')
             raise e
                 
     else:

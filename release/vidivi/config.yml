@@ -1,5 +1,5 @@
 csv:
-  filename: images.txt
+  filename: test-images.txt
   has_header: no
 
 docker:
@@ -8,5 +8,6 @@ docker:
   destination_organization: mosipid
   registry_url: 10.0.3.128:8080
   imageExitUrl: https://registry.hub.docker.com/v2/
+
 process:
   count: 3
