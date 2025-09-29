@@ -3,7 +3,7 @@ import csv
 import yaml
 import sys
 import json
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 import concurrent
 import requests
 import string
@@ -247,118 +247,44 @@ def process_image(image, client, remote_client):
     if manifest_list and 'manifests' in manifest_list and len(manifest_list['manifests']) > 1:
         print_log(f"Multi-arch image detected with {len(manifest_list['manifests'])} architectures", 'info')
         
-        # Store destination image references for creating manifest list later
-        dest_arch_images = []
-        temp_images = []
+        # List detected architectures for logging
+        for manifest in manifest_list['manifests']:
+            arch_type = manifest['platform']['architecture']
+            arch_os = manifest['platform']['os']
+            print_log(f"Detected architecture: {arch_os}/{arch_type}", 'info')
         
-        # Pull and tag each architecture separately
-        with ThreadPoolExecutor() as arch_executor:
-            arch_futures = []
-            
-            for manifest in manifest_list['manifests']:
-                arch_digest = manifest['digest']
-                arch_type = manifest['platform']['architecture']
-                arch_os = manifest['platform']['os']
-                
-                print_log(f"Processing architecture: {arch_type}/{arch_os} with digest {arch_digest}", 'info')
-                
-                # Extract digest value without the "sha256:" prefix
-                digest_value = arch_digest.replace("sha256:", "")
-                
-                # Use destination tag with architecture suffix instead of hash
-                arch_tag = f"{destImgtag}-{arch_type}-{arch_os}"
-                dest_arch_image = f"{config['docker']['registry_url']}/{config['docker']['destination_organization']}/{srcImgName}:{arch_tag}"
-                dest_arch_images.append(dest_arch_image)
-                temp_images.append(dest_arch_image)
-                
-                try:
-                    future = arch_executor.submit(
-                        pull_tag_arch_image, 
-                        srcImgRepo, 
-                        srcImgName, 
-                        digest_value, 
-                        arch_tag,  # Use the arch-specific tag here
-                        config['docker']['registry_url'] + '/' + config['docker']['destination_organization'], 
-                        remote_client,
-                        client,
-                        arch_type,
-                        arch_os
-                    )
-                    arch_futures.append(future)
-                except Exception as e:
-                    print_log(f"Error submitting multi-arch task to executor: {str(e)}", 'error')
-                    arch_executor.shutdown(wait=False)
-                    raise e
-            
-            # Wait for all threads to complete
-            for future in arch_futures:
-                try:
-                    result = future.result()
-                except Exception as e:
-                    print_log(f"Error occurred in arch thread: {str(e)}", 'error')
-                    arch_executor.shutdown(wait=False)
-                    raise e
-        
-        # Transfer the manifest list directly using index digest to maintain exact Docker Hub structure
-        print_log("Transferring manifest list using index digest to maintain exact Docker Hub structure...", 'info')
+        # Direct multi-arch transfer using index digest approach
+        print_log("Transferring complete multi-arch image to maintain exact Docker Hub structure...", 'info')
         try:
             dest_repo = f"{config['docker']['registry_url']}/{config['docker']['destination_organization']}/{srcImgName}"
             
-            # Get the index digest from the manifest list
-            index_digest = manifest_list.get('config', {}).get('digest') or manifest_list.get('digest')
-            if not index_digest and 'manifests' in manifest_list:
-                # For manifest lists, we need to construct the index digest differently
-                # Let's pull the entire multi-arch image using the source tag and push directly
-                src_with_tag = f"{full_src_img_name}:{srcImgtag}"
-                
-                print_log(f"Pulling complete multi-arch image: {src_with_tag}", 'info')
-                # Pull the complete multi-arch manifest by tag (this gets the manifest list)
-                pull_status = remote_client.pull(repository=full_src_img_name, tag=srcImgtag, stream=True, decode=True)
-                status_update(pull_status)
-                
-                # Tag it for destination
-                remote_client.tag(image=src_with_tag, repository=dest_repo, tag=destImgtag, force=True)
-                remote_client.tag(image=src_with_tag, repository=dest_repo, tag="latest", force=True)
-                
-                # Push the complete multi-arch manifest list
-                print_log(f"Pushing complete multi-arch image to: {dest_repo}:{destImgtag}", 'info')
-                push_status = remote_client.push(repository=dest_repo, tag=destImgtag, stream=True, decode=True)
-                status_update(push_status)
-                
-                # Also push latest tag
-                print_log(f"Pushing latest tag to: {dest_repo}:latest", 'info')
-                latest_push_status = remote_client.push(repository=dest_repo, tag="latest", stream=True, decode=True)
-                status_update(latest_push_status)
-                
-                print_log(f"Successfully transferred complete multi-arch manifest list for {full_src_img_name}:{srcImgtag}", 'info')
-            else:
-                # If we have an index digest, use it directly
-                print_log(f"Using index digest: {index_digest}", 'info')
-                src_with_digest = f"{full_src_img_name}@{index_digest}"
-                
-                # Pull by digest
-                pull_status = remote_client.pull(repository=full_src_img_name, tag=index_digest, stream=True, decode=True)
-                status_update(pull_status)
-                
-                # Tag and push
-                remote_client.tag(image=src_with_digest, repository=dest_repo, tag=destImgtag, force=True)
-                push_status = remote_client.push(repository=dest_repo, tag=destImgtag, stream=True, decode=True)
-                status_update(push_status)
-                
-                print_log(f"Successfully transferred multi-arch image using index digest", 'info')
+            # Pull the entire multi-arch image using the source tag and push directly
+            src_with_tag = f"{full_src_img_name}:{srcImgtag}"
+            
+            print_log(f"Pulling complete multi-arch image: {src_with_tag}", 'info')
+            # Pull the complete multi-arch manifest by tag (this gets the manifest list)
+            pull_status = remote_client.pull(repository=full_src_img_name, tag=srcImgtag, stream=True, decode=True)
+            status_update(pull_status)
+            
+            # Tag it for destination
+            remote_client.tag(image=src_with_tag, repository=dest_repo, tag=destImgtag, force=True)
+            remote_client.tag(image=src_with_tag, repository=dest_repo, tag="latest", force=True)
+            
+            # Push the complete multi-arch manifest list
+            print_log(f"Pushing complete multi-arch image to: {dest_repo}:{destImgtag}", 'info')
+            push_status = remote_client.push(repository=dest_repo, tag=destImgtag, stream=True, decode=True)
+            status_update(push_status)
+            
+            # Also push latest tag
+            print_log(f"Pushing latest tag to: {dest_repo}:latest", 'info')
+            latest_push_status = remote_client.push(repository=dest_repo, tag="latest", stream=True, decode=True)
+            status_update(latest_push_status)
+            
+            print_log(f"Successfully transferred complete multi-arch manifest list for {full_src_img_name}:{srcImgtag}", 'info')
                 
         except Exception as e:
-            print_log(f"Error in manifest list transfer using index digest: {str(e)}", 'error')
-            print_log("Individual architecture images transferred successfully as fallback", 'info')
-        
-        # Clean up temporary images if configured
-        # You might want to add a config option to determine if these should be removed
-        # or kept for future reference
-        for temp_img in temp_images:
-            try:
-                client.images.remove(temp_img)
-            except Exception as e:
-                print_log(f"Warning: Could not remove temp image {temp_img}: {str(e)}", 'warning')
+            print_log(f"Error in multi-arch transfer: {str(e)}", 'error')
+            raise e
                 
     else:
         # Handle single architecture image
