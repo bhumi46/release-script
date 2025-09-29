@@ -264,13 +264,22 @@ def process_image(image, client, remote_client):
             if shutil.which("crane"):
                 print_log("Using crane to transfer multi-arch manifest list", 'info')
                 
-                # Use crane to copy complete multi-arch image with proper manifest list
-                crane_cmd = [
-                    "crane", "copy",
-                    "--insecure",  # Harbor is HTTP
+                # Determine if destination registry needs --insecure flag (HTTP)
+                registry_url = config['docker']['registry_url']
+                use_insecure = registry_url.startswith('http://') or not registry_url.startswith('https://')
+                
+                # Build crane command with conditional --insecure flag
+                crane_cmd = ["crane", "copy"]
+                if use_insecure:
+                    crane_cmd.append("--insecure")
+                    print_log("Using --insecure flag for HTTP registry", 'info')
+                else:
+                    print_log("Using secure connection for HTTPS registry", 'info')
+                
+                crane_cmd.extend([
                     f"{full_src_img_name}:{srcImgtag}",
                     f"{dest_repo}:{destImgtag}"
-                ]
+                ])
                 
                 print_log(f"Executing: {' '.join(crane_cmd)}", 'info')
                 result = subprocess.run(crane_cmd, capture_output=True, text=True, check=False)
@@ -278,13 +287,14 @@ def process_image(image, client, remote_client):
                 if result.returncode == 0:
                     print_log("Successfully transferred multi-arch manifest list with crane", 'info')
                     
-                    # Also create latest tag
-                    latest_cmd = [
-                        "crane", "copy",
-                        "--insecure",
+                    # Also create latest tag with same insecure setting
+                    latest_cmd = ["crane", "copy"]
+                    if use_insecure:
+                        latest_cmd.append("--insecure")
+                    latest_cmd.extend([
                         f"{full_src_img_name}:{srcImgtag}",
                         f"{dest_repo}:latest"
-                    ]
+                    ])
                     
                     latest_result = subprocess.run(latest_cmd, capture_output=True, text=True, check=False)
                     if latest_result.returncode == 0:
