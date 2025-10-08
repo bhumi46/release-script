@@ -74,7 +74,6 @@ jobs:
       ENABLE_WIREGUARD: ${{ inputs.ENABLE_WIREGUARD }}
       USERNAME: ${{ inputs.USERNAME }}
     secrets:
-      USERNAME: "${{ secrets[needs.chk_token.outputs.USERNAME] || inputs.USERNAME }}"
       TOKEN: "${{ secrets[needs.chk_token.outputs.TOKEN] || inputs.TOKEN }}"
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DEVOPS }}
       WIREGUARD_CONFIG: ${{ secrets.WIREGUARD_CONFIG }}
