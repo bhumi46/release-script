@@ -256,7 +256,11 @@ def process_image(image, client, remote_client):
         # Multi-arch transfer using crane tool for proper manifest list handling
         print_log("Transferring complete multi-arch image using crane...", 'info')
         try:
-            dest_repo = f"{config['docker']['registry_url']}/{config['docker']['destination_organization']}/{srcImgName}"
+            # Extract registry hostname from URL (remove http:// or https://)
+            registry_url = config['docker']['registry_url']
+            registry_host = registry_url.replace('https://', '').replace('http://', '').split('/')[0]
+            
+            dest_repo = f"{registry_host}/{config['docker']['destination_organization']}/{srcImgName}"
             
             import subprocess
             import shutil
@@ -265,7 +269,6 @@ def process_image(image, client, remote_client):
                 print_log("Using crane to transfer multi-arch manifest list", 'info')
                 
                 # Determine if destination registry needs --insecure flag (HTTP)
-                registry_url = config['docker']['registry_url']
                 use_insecure = registry_url.startswith('http://') or not registry_url.startswith('https://')
                 
                 # Build crane command with conditional --insecure flag
