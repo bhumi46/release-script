@@ -1,73 +1,60 @@
- 08-Oct-25 20:58:34  INFO  LOGFILE CREATED : vidivi.log 
- 08-Oct-25 20:58:34  INFO   
- 08-Oct-25 20:58:34  INFO  ******************** Check Images List ************************************************************************************ 
- 08-Oct-25 20:58:34  INFO   
- 08-Oct-25 20:58:34  INFO  IMAGES= [['mosipdev/hotlist-service:release-1.3.x', 'release-1.3.x']] 
- 08-Oct-25 20:58:34  INFO   
- 08-Oct-25 20:58:34  INFO  ******************** Check existence of Source Images ******************************************************************* 
- 08-Oct-25 20:58:34  INFO   
- 08-Oct-25 20:58:34  INFO  src = "mosipdev/hotlist-service" tag = "release-1.3.x" 
- 08-Oct-25 20:58:34  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 08-Oct-25 20:58:34  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
- 08-Oct-25 20:58:34  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 08-Oct-25 20:58:35  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/hotlist-service/tags/release-1.3.x HTTP/1.1" 200 None 
- 08-Oct-25 20:58:35  INFO   
- 08-Oct-25 20:58:35  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
- 08-Oct-25 20:58:35  INFO  Skipping Docker Hub account check for non-Docker Hub registry 
- 08-Oct-25 20:58:35  INFO   
- 08-Oct-25 20:58:35  INFO  ******************** Check existence of Destination Images *************************************************************** 
- 08-Oct-25 20:58:35  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 08-Oct-25 20:58:35  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
- 08-Oct-25 20:58:35  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 08-Oct-25 20:58:35  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/hotlist-service/manifests/release-1.3.x HTTP/1.1" 200 743 
- 08-Oct-25 20:58:35  INFO   
- 08-Oct-25 20:58:35  INFO  [ mosipdev/hotlist-service ]  
- 08-Oct-25 20:58:35  INFO  Destination Image = "mosipdev/hotlist-service" Destination Image tag = "release-1.3.x" IMAGE_ID : "sha256:89f36dcd2d464522363033754bec4d1577da05cd61191fd4cefe24dd305fadc0" 
- 08-Oct-25 20:58:35  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 08-Oct-25 20:58:35  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
- 08-Oct-25 20:58:35  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 08-Oct-25 20:58:35  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/hotlist-service/tags/release-1.3.x HTTP/1.1" 200 None 
- 08-Oct-25 20:58:35  INFO   
- 08-Oct-25 20:58:35  INFO  ******************** HASH Operation Results ********************************************************************** 
- 08-Oct-25 20:58:35  INFO   
- 08-Oct-25 20:58:35  INFO  ******************** Start Image Transfer operation *********************************************************************** 
- 08-Oct-25 20:58:35  DEBUG  Trying paths: ['/home/runner/.docker/config.json', '/home/runner/.dockercfg'] 
- 08-Oct-25 20:58:35  DEBUG  Found file at path: /home/runner/.docker/config.json 
- 08-Oct-25 20:58:35  DEBUG  Found 'auths' section 
- 08-Oct-25 20:58:35  DEBUG  Found entry (registry='harbor.mosip.net', username='robot$mosipdev+mosipdev') 
- 08-Oct-25 20:58:35  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='githubactions') 
- 08-Oct-25 20:58:35  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 824 
- 08-Oct-25 20:58:35  DEBUG  Looking for auth entry for 'harbor.mosip.net' 
- 08-Oct-25 20:58:35  DEBUG  Found 'harbor.mosip.net' 
- 08-Oct-25 20:58:35  INFO  Using 3 parallel workers for image transfers 
- 08-Oct-25 20:58:35  INFO   
- 08-Oct-25 20:58:35  INFO  ********** [ mosipdev/hotlist-service:release-1.3.x ] **************************************************** 
- 08-Oct-25 20:58:35  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 08-Oct-25 20:58:35  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
- 08-Oct-25 20:58:35  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 08-Oct-25 20:58:35  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/hotlist-service/manifests/release-1.3.x HTTP/1.1" 200 743 
- 08-Oct-25 20:58:35  INFO  Multi-arch image detected with 2 architectures 
- 08-Oct-25 20:58:35  INFO  Detected architecture: linux/amd64 
- 08-Oct-25 20:58:35  INFO  Detected architecture: linux/arm64 
- 08-Oct-25 20:58:35  INFO  Transferring complete multi-arch image using crane... 
- 08-Oct-25 20:58:35  INFO  Using crane to transfer multi-arch manifest list 
- 08-Oct-25 20:58:35  INFO  Using secure connection for HTTPS registry 
- 08-Oct-25 20:58:35  INFO  Executing: crane copy mosipdev/hotlist-service:release-1.3.x https://harbor.mosip.net/mosipdev/hotlist-service:release-1.3.x 
- 08-Oct-25 20:58:36  ERROR  Crane transfer failed: 2025/10/08 20:58:35 Copying from mosipdev/hotlist-service:release-1.3.x to https://harbor.mosip.net/mosipdev/hotlist-service:release-1.3.x
-2025/10/08 20:58:35 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-2025/10/08 20:58:36 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-2025/10/08 20:58:36 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-Error: Get "https://https/v2/": dial tcp: lookup https on 127.0.0.53:53: server misbehaving
- 
- 08-Oct-25 20:58:36  ERROR  Error in crane multi-arch transfer: Crane multi-arch transfer failed: 2025/10/08 20:58:35 Copying from mosipdev/hotlist-service:release-1.3.x to https://harbor.mosip.net/mosipdev/hotlist-service:release-1.3.x
-2025/10/08 20:58:35 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-2025/10/08 20:58:36 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-2025/10/08 20:58:36 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-Error: Get "https://https/v2/": dial tcp: lookup https on 127.0.0.53:53: server misbehaving
- 
- 08-Oct-25 20:58:36  ERROR  Error occurred in thread: Crane multi-arch transfer failed: 2025/10/08 20:58:35 Copying from mosipdev/hotlist-service:release-1.3.x to https://harbor.mosip.net/mosipdev/hotlist-service:release-1.3.x
-2025/10/08 20:58:35 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-2025/10/08 20:58:36 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-2025/10/08 20:58:36 retrying dial tcp: lookup https on 127.0.0.53:53: server misbehaving
-Error: Get "https://https/v2/": dial tcp: lookup https on 127.0.0.53:53: server misbehaving
- 
+ 08-Oct-25 21:10:26  INFO  LOGFILE CREATED : vidivi.log 
+ 08-Oct-25 21:10:26  INFO   
+ 08-Oct-25 21:10:26  INFO  ******************** Check Images List ************************************************************************************ 
+ 08-Oct-25 21:10:26  INFO   
+ 08-Oct-25 21:10:26  INFO  IMAGES= [['mosipdev/hotlist-service:release-1.3.x', 'release-1.3.x']] 
+ 08-Oct-25 21:10:26  INFO   
+ 08-Oct-25 21:10:26  INFO  ******************** Check existence of Source Images ******************************************************************* 
+ 08-Oct-25 21:10:26  INFO   
+ 08-Oct-25 21:10:26  INFO  src = "mosipdev/hotlist-service" tag = "release-1.3.x" 
+ 08-Oct-25 21:10:26  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 08-Oct-25 21:10:26  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
+ 08-Oct-25 21:10:26  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 08-Oct-25 21:10:26  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/hotlist-service/tags/release-1.3.x HTTP/1.1" 200 None 
+ 08-Oct-25 21:10:26  INFO   
+ 08-Oct-25 21:10:26  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
+ 08-Oct-25 21:10:26  INFO  Skipping Docker Hub account check for non-Docker Hub registry 
+ 08-Oct-25 21:10:26  INFO   
+ 08-Oct-25 21:10:26  INFO  ******************** Check existence of Destination Images *************************************************************** 
+ 08-Oct-25 21:10:26  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 08-Oct-25 21:10:27  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
+ 08-Oct-25 21:10:27  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 08-Oct-25 21:10:27  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/hotlist-service/manifests/release-1.3.x HTTP/1.1" 200 743 
+ 08-Oct-25 21:10:27  INFO   
+ 08-Oct-25 21:10:27  INFO  [ mosipdev/hotlist-service ]  
+ 08-Oct-25 21:10:27  INFO  Destination Image = "mosipdev/hotlist-service" Destination Image tag = "release-1.3.x" IMAGE_ID : "sha256:89f36dcd2d464522363033754bec4d1577da05cd61191fd4cefe24dd305fadc0" 
+ 08-Oct-25 21:10:27  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 08-Oct-25 21:10:27  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
+ 08-Oct-25 21:10:27  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 08-Oct-25 21:10:27  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/hotlist-service/tags/release-1.3.x HTTP/1.1" 200 None 
+ 08-Oct-25 21:10:27  INFO   
+ 08-Oct-25 21:10:27  INFO  ******************** HASH Operation Results ********************************************************************** 
+ 08-Oct-25 21:10:27  INFO   
+ 08-Oct-25 21:10:27  INFO  ******************** Start Image Transfer operation *********************************************************************** 
+ 08-Oct-25 21:10:27  DEBUG  Trying paths: ['/home/runner/.docker/config.json', '/home/runner/.dockercfg'] 
+ 08-Oct-25 21:10:27  DEBUG  Found file at path: /home/runner/.docker/config.json 
+ 08-Oct-25 21:10:27  DEBUG  Found 'auths' section 
+ 08-Oct-25 21:10:27  DEBUG  Found entry (registry='harbor.mosip.net', username='robot$mosipdev+mosipdev') 
+ 08-Oct-25 21:10:27  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='githubactions') 
+ 08-Oct-25 21:10:27  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 824 
+ 08-Oct-25 21:10:27  DEBUG  Looking for auth entry for 'harbor.mosip.net' 
+ 08-Oct-25 21:10:27  DEBUG  Found 'harbor.mosip.net' 
+ 08-Oct-25 21:10:27  INFO  Using 3 parallel workers for image transfers 
+ 08-Oct-25 21:10:27  INFO   
+ 08-Oct-25 21:10:27  INFO  ********** [ mosipdev/hotlist-service:release-1.3.x ] **************************************************** 
+ 08-Oct-25 21:10:27  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 08-Oct-25 21:10:28  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/hotlist-service:pull HTTP/1.1" 200 None 
+ 08-Oct-25 21:10:28  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 08-Oct-25 21:10:28  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/hotlist-service/manifests/release-1.3.x HTTP/1.1" 200 743 
+ 08-Oct-25 21:10:28  INFO  Multi-arch image detected with 2 architectures 
+ 08-Oct-25 21:10:28  INFO  Detected architecture: linux/amd64 
+ 08-Oct-25 21:10:28  INFO  Detected architecture: linux/arm64 
+ 08-Oct-25 21:10:28  INFO  Transferring complete multi-arch image using crane... 
+ 08-Oct-25 21:10:28  INFO  Using crane to transfer multi-arch manifest list 
+ 08-Oct-25 21:10:28  INFO  Using secure connection for HTTPS registry 
+ 08-Oct-25 21:10:28  INFO  Executing: crane copy mosipdev/hotlist-service:release-1.3.x harbor.mosip.net/mosipdev/hotlist-service:release-1.3.x 
+ 08-Oct-25 21:11:21  INFO  Successfully transferred multi-arch manifest list with crane 
+ 08-Oct-25 21:11:24  INFO  Successfully created latest tag 
+ 08-Oct-25 21:11:24  INFO  Multi-arch image available at: harbor.mosip.net/mosipdev/hotlist-service:release-1.3.x with all architectures 
+ 08-Oct-25 21:11:24  INFO  Crane preserves the complete manifest list structure from Docker Hub 
+ 08-Oct-25 21:11:24  INFO  Completed processing mosipdev/hotlist-service:release-1.3.x to mosipdev/hotlist-service:release-1.3.x 
