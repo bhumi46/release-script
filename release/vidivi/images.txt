@@ -1,1 +1,1 @@
-mosipint/postgresql:14.2.0-debian-10-r70 14.2.0-debian-10-r70
+mosipdev/hotlist-service:release-1.3.x release-1.3.x
