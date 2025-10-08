@@ -1,4 +1,4 @@
-name:  Manual workflow to transfer images
+name: Manual workflow to transfer images
 
 on:
   workflow_dispatch:
@@ -18,6 +18,25 @@ on:
         required: true
         default: ''
         type: string
+      REGISTRY_URL:
+        description: 'provide destination registry URL (http://harbor.example.com or https://registry.example.com)'
+        required: true
+        default: 'http://10.0.3.128:8080'
+        type: string
+      REGISTRY_TYPE:
+        description: 'Select destination registry type'
+        required: true
+        default: 'harbor'
+        type: choice
+        options:
+          - dockerhub
+          - harbor
+          - other
+      ENABLE_WIREGUARD:
+        description: 'Enable WireGuard VPN (required for private Harbor networks)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   chk_token:
@@ -43,13 +62,18 @@ jobs:
           echo "ORGANIZATION NAME :  ${{ inputs.DESTINATION_ORGANIZATION }} "
           echo "SECRET NAME : ${{ steps.ORG_TOKEN.outputs.TOKEN }}"
           echo "USERNAME : ${{ steps.ORG_TOKEN.outputs.USERNAME }}"
+          echo "REGISTRY URL : ${{ inputs.REGISTRY_URL }}"
 
   Image-transfer:
     needs: chk_token
-    uses: Rakshitha650/kattu/.github/workflows/image-transfer.yml@master
+    uses: bhumi46/kattu/.github/workflows/image-transfer.yml@master
     with:
       DESTINATION_ORGANIZATION: ${{ inputs.DESTINATION_ORGANIZATION }}
+      REGISTRY_URL: ${{ inputs.REGISTRY_URL }}
+      REGISTRY_TYPE: ${{ inputs.REGISTRY_TYPE }}
+      ENABLE_WIREGUARD: ${{ inputs.ENABLE_WIREGUARD }}
     secrets:
       USERNAME: "${{ secrets[needs.chk_token.outputs.USERNAME] || inputs.USERNAME }}"
       TOKEN: "${{ secrets[needs.chk_token.outputs.TOKEN] || inputs.TOKEN }}"
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DEVOPS }}
+      WIREGUARD_CONFIG: ${{ secrets.WIREGUARD_CONFIG }}
