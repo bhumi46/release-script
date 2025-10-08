@@ -72,6 +72,7 @@ jobs:
       REGISTRY_URL: ${{ inputs.REGISTRY_URL }}
       REGISTRY_TYPE: ${{ inputs.REGISTRY_TYPE }}
       ENABLE_WIREGUARD: ${{ inputs.ENABLE_WIREGUARD }}
+      USERNAME: ${{ inputs.USERNAME }}
     secrets:
       USERNAME: "${{ secrets[needs.chk_token.outputs.USERNAME] || inputs.USERNAME }}"
       TOKEN: "${{ secrets[needs.chk_token.outputs.TOKEN] || inputs.TOKEN }}"
