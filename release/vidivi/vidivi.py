@@ -582,8 +582,10 @@ def main():
     remote_client.login(username=config['docker']['username'], password=config['docker']['token'],
                         registry=config['docker']['registry_url'])
     
-    # Process all images in parallel using ThreadPoolExecutor
-    with ThreadPoolExecutor() as executor:
+    # Process all images in parallel using ThreadPoolExecutor with configured limit
+    max_workers = config.get('process', {}).get('count', 3)
+    print_log(f'Using {max_workers} parallel workers for image transfers', 'info')
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = []
         for image in images:
             try:

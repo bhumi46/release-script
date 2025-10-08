@@ -1,0 +1,79 @@
+name: Manual workflow to transfer images
+
+on:
+  workflow_dispatch:
+    inputs:
+      USERNAME:
+        description: 'provide docker hub username'
+        required: true
+        default: ''
+        type: string
+      TOKEN:
+        description: 'provide docker hub token'
+        required: false
+        default: ''
+        type: string
+      DESTINATION_ORGANIZATION:
+        description: 'provide docker hub destination org'
+        required: true
+        default: ''
+        type: string
+      REGISTRY_URL:
+        description: 'provide destination registry URL (http://harbor.example.com or https://registry.example.com)'
+        required: true
+        default: 'http://10.0.3.128:8080'
+        type: string
+      REGISTRY_TYPE:
+        description: 'Select destination registry type'
+        required: true
+        default: 'harbor'
+        type: choice
+        options:
+          - dockerhub
+          - harbor
+          - other
+      ENABLE_WIREGUARD:
+        description: 'Enable WireGuard VPN (required for private Harbor networks)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  chk_token:
+    runs-on: ubuntu-latest
+    outputs:
+      TOKEN: ${{ steps.ORG_TOKEN.outputs.TOKEN }}
+      USERNAME: ${{ steps.ORG_TOKEN.outputs.USERNAME }}
+    steps:
+      - name: Check if input TOKEN is empty
+        if: ${{  inputs.TOKEN == ''  }}
+        id: ORG_TOKEN
+        run: |
+          if [[ ${{ inputs.DESTINATION_ORGANIZATION }} == mosipqa ]]; then
+            echo "TOKEN=QA_NAMESPACE_DOCKER_HUB" >> $GITHUB_OUTPUT
+            echo "USERNAME=DOCKER_USERNAME" >> $GITHUB_OUTPUT
+          fi
+          if [[ ${{ inputs.DESTINATION_ORGANIZATION }} == mosipint ]]; then
+            echo "TOKEN=INT_NAMESPACE_DOCKER_HUB" >> $GITHUB_OUTPUT
+            echo "USERNAME=DOCKER_USERNAME" >> $GITHUB_OUTPUT
+          fi
+      - name: Print Secret Name
+        run: |
+          echo "ORGANIZATION NAME :  ${{ inputs.DESTINATION_ORGANIZATION }} "
+          echo "SECRET NAME : ${{ steps.ORG_TOKEN.outputs.TOKEN }}"
+          echo "USERNAME : ${{ steps.ORG_TOKEN.outputs.USERNAME }}"
+          echo "REGISTRY URL : ${{ inputs.REGISTRY_URL }}"
+
+  Image-transfer:
+    needs: chk_token
+    uses: ./.github/workflows/image-transfer.yml
+    with:
+      DESTINATION_ORGANIZATION: ${{ inputs.DESTINATION_ORGANIZATION }}
+      REGISTRY_URL: ${{ inputs.REGISTRY_URL }}
+      REGISTRY_TYPE: ${{ inputs.REGISTRY_TYPE }}
+      ENABLE_WIREGUARD: ${{ inputs.ENABLE_WIREGUARD }}
+    secrets:
+      USERNAME: "${{ secrets[needs.chk_token.outputs.USERNAME] || inputs.USERNAME }}"
+      TOKEN: "${{ secrets[needs.chk_token.outputs.TOKEN] || inputs.TOKEN }}"
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DEVOPS }}
+      WIREGUARD_CONFIG: ${{ secrets.WIREGUARD_CONFIG }}

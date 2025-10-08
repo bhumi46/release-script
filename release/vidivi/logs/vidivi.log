@@ -1,91 +1,89 @@
- 29-Sep-25 13:29:57  INFO  LOGFILE CREATED : vidivi.log 
- 29-Sep-25 13:29:57  INFO   
- 29-Sep-25 13:29:57  INFO  ******************** Check Images List ************************************************************************************ 
- 29-Sep-25 13:29:57  INFO   
- 29-Sep-25 13:29:57  INFO  IMAGES= [['mosipid/artifactory-server:1.2.0.4', '1.2.0.4']] 
- 29-Sep-25 13:29:57  INFO   
- 29-Sep-25 13:29:57  INFO  ******************** Check existence of Source Images ******************************************************************* 
- 29-Sep-25 13:29:57  INFO   
- 29-Sep-25 13:29:57  INFO  src = "mosipid/artifactory-server" tag = "1.2.0.4" 
- 29-Sep-25 13:29:57  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Sep-25 13:29:57  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipid/artifactory-server:pull HTTP/1.1" 200 None 
- 29-Sep-25 13:29:57  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Sep-25 13:29:58  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipid/artifactory-server/tags/1.2.0.4 HTTP/1.1" 200 824 
- 29-Sep-25 13:29:58  INFO   
- 29-Sep-25 13:29:58  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
- 29-Sep-25 13:29:58  INFO  Skipping Docker Hub account check for non-Docker Hub registry 
- 29-Sep-25 13:29:58  INFO   
- 29-Sep-25 13:29:58  INFO  ******************** Check existence of Destination Images *************************************************************** 
- 29-Sep-25 13:29:58  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Sep-25 13:29:59  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosiphubid/artifactory-server:pull HTTP/1.1" 200 None 
- 29-Sep-25 13:29:59  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Sep-25 13:30:00  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosiphubid/artifactory-server/manifests/1.2.0.4 HTTP/1.1" 401 172 
- 29-Sep-25 13:30:00  INFO   
- 29-Sep-25 13:30:00  INFO  [ mosiphubid/artifactory-server ]  
- 29-Sep-25 13:30:00  INFO  Destination Image = "mosiphubid/artifactory-server" Destination Image tag = "1.2.0.4" IMAGE_ID :  
- 29-Sep-25 13:30:00  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Sep-25 13:30:01  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosiphubid/artifactory-server:pull HTTP/1.1" 200 None 
- 29-Sep-25 13:30:01  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Sep-25 13:30:02  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosiphubid/artifactory-server/tags/1.2.0.4 HTTP/1.1" 404 44 
- 29-Sep-25 13:30:02  ERROR  Image "mosiphubid/artifactory-server:1.2.0.4" does not exist 
- 29-Sep-25 13:30:02  INFO   
- 29-Sep-25 13:30:02  INFO  ******************** HASH Operation Results ********************************************************************** 
- 29-Sep-25 13:30:02  INFO   
- 29-Sep-25 13:30:02  INFO  Below Destination Images doesn't exists; CONTINUE;
-	[['mosiphubid/artifactory-server:1.2.0.4']] 
- 29-Sep-25 13:30:02  INFO   
- 29-Sep-25 13:30:02  INFO  ******************** Start Image Transfer operation *********************************************************************** 
- 29-Sep-25 13:30:02  DEBUG  Trying paths: ['/home/bhuminathan/.docker/config.json', '/home/bhuminathan/.dockercfg'] 
- 29-Sep-25 13:30:02  DEBUG  Found file at path: /home/bhuminathan/.docker/config.json 
- 29-Sep-25 13:30:02  DEBUG  Found 'auths' section 
- 29-Sep-25 13:30:02  DEBUG  Found entry (registry='10.0.3.128:8080', username='robot$mosiphubid+mosiphubid-bot') 
- 29-Sep-25 13:30:02  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='bn46') 
- 29-Sep-25 13:30:02  DEBUG  Found entry (registry='registry-1.docker.io', username='bn1997') 
- 29-Sep-25 13:30:02  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 780 
- 29-Sep-25 13:30:02  DEBUG  Looking for auth entry for '10.0.3.128:8080' 
- 29-Sep-25 13:30:02  DEBUG  Found '10.0.3.128:8080' 
- 29-Sep-25 13:30:02  INFO   
- 29-Sep-25 13:30:02  INFO  ********** [ mosiphubid/artifactory-server:1.2.0.4 ] **************************************************** 
- 29-Sep-25 13:30:02  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Sep-25 13:30:04  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipid/artifactory-server:pull HTTP/1.1" 200 None 
- 29-Sep-25 13:30:04  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Sep-25 13:30:05  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipid/artifactory-server/manifests/1.2.0.4 HTTP/1.1" 200 1786 
- 29-Sep-25 13:30:05  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Sep-25 13:30:07  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipid/artifactory-server/manifests/1.2.0.4 HTTP/1.1" 200 1786 
- 29-Sep-25 13:30:07  INFO   
- 29-Sep-25 13:30:07  INFO  [ PULL ----------------------> mosipid/artifactory-server:1.2.0.4 ]  
- 29-Sep-25 13:30:07  DEBUG  Looking for auth config 
- 29-Sep-25 13:30:07  DEBUG  Looking for auth entry for 'docker.io' 
- 29-Sep-25 13:30:07  DEBUG  Found 'https://index.docker.io/v1/' 
- 29-Sep-25 13:30:07  DEBUG  Found auth config 
- 29-Sep-25 13:30:10  DEBUG  http://localhost:None "POST /v1.47/images/create?tag=1.2.0.4&fromImage=mosipid%2Fartifactory-server HTTP/1.1" 200 None 
- 29-Sep-25 13:30:10  INFO  Status: Image is up to date for mosipid/artifactory-server:1.2.0.4 
- 29-Sep-25 13:30:10  DEBUG  http://localhost:None "POST /v1.47/images/mosipid/artifactory-server:1.2.0.4/tag?tag=1.2.0.4&repo=10.0.3.128%3A8080%2Fmosiphubid%2Fartifactory-server&force=1 HTTP/1.1" 201 0 
- 29-Sep-25 13:30:10  INFO   
- 29-Sep-25 13:30:10  INFO  [ PUSH -----> mosipid/artifactory-server:1.2.0.4	------> 10.0.3.128:8080/mosiphubid/artifactory-server:1.2.0.4 ]  
- 29-Sep-25 13:30:10  DEBUG  Looking for auth config 
- 29-Sep-25 13:30:10  DEBUG  Looking for auth entry for '10.0.3.128:8080' 
- 29-Sep-25 13:30:10  DEBUG  Found '10.0.3.128:8080' 
- 29-Sep-25 13:30:10  DEBUG  Found auth config 
- 29-Sep-25 13:30:10  DEBUG  http://localhost:None "POST /v1.47/images/10.0.3.128:8080/mosiphubid/artifactory-server/push?tag=1.2.0.4 HTTP/1.1" 200 None 
- 29-Sep-25 13:30:10  INFO  1.2.0.4: digest: sha256:81e19438ecc4d94299178fe5ec8d07106d51267ecd4bc0def1c120fe2b56f827 size: 1786 
- 29-Sep-25 13:30:10  INFO   
- 29-Sep-25 13:30:10  INFO  [ PUSH -----> mosipid/artifactory-server:1.2.0.4	------> 10.0.3.128:8080/mosiphubid/artifactory-server:latest ]  
- 29-Sep-25 13:30:10  DEBUG  http://localhost:None "POST /v1.47/images/mosipid/artifactory-server:1.2.0.4/tag?tag=latest&repo=10.0.3.128%3A8080%2Fmosiphubid%2Fartifactory-server&force=1 HTTP/1.1" 201 0 
- 29-Sep-25 13:30:10  DEBUG  Looking for auth config 
- 29-Sep-25 13:30:10  DEBUG  Looking for auth entry for '10.0.3.128:8080' 
- 29-Sep-25 13:30:10  DEBUG  Found '10.0.3.128:8080' 
- 29-Sep-25 13:30:10  DEBUG  Found auth config 
- 29-Sep-25 13:30:10  DEBUG  http://localhost:None "POST /v1.47/images/10.0.3.128:8080/mosiphubid/artifactory-server/push?tag=latest HTTP/1.1" 200 None 
- 29-Sep-25 13:30:11  INFO  latest: digest: sha256:81e19438ecc4d94299178fe5ec8d07106d51267ecd4bc0def1c120fe2b56f827 size: 1786 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "GET /v1.47/images/json?only_ids=0&all=0&filters=%7B%22reference%22%3A+%5B%22mosipid%2Fartifactory-server%3A1.2.0.4%22%5D%7D HTTP/1.1" 200 442 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "GET /v1.47/images/sha256:57cec071b8c264faceacb45c0b77c017add9f6d90a8206b08fa82e12ae63ffc2/json HTTP/1.1" 200 None 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "DELETE /v1.47/images/mosipid/artifactory-server:1.2.0.4?force=False&noprune=False HTTP/1.1" 200 166 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "GET /v1.47/images/json?only_ids=0&all=0&filters=%7B%22reference%22%3A+%5B%2210.0.3.128%3A8080%2Fmosiphubid%2Fartifactory-server%3A1.2.0.4%22%5D%7D HTTP/1.1" 200 461 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "GET /v1.47/images/sha256:57cec071b8c264faceacb45c0b77c017add9f6d90a8206b08fa82e12ae63ffc2/json HTTP/1.1" 200 None 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "DELETE /v1.47/images/10.0.3.128:8080/mosiphubid/artifactory-server:1.2.0.4?force=False&noprune=False HTTP/1.1" 200 71 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "GET /v1.47/images/json?only_ids=0&all=0&filters=%7B%22reference%22%3A+%5B%2210.0.3.128%3A8080%2Fmosiphubid%2Fartifactory-server%3Alatest%22%5D%7D HTTP/1.1" 200 460 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "GET /v1.47/images/sha256:57cec071b8c264faceacb45c0b77c017add9f6d90a8206b08fa82e12ae63ffc2/json HTTP/1.1" 200 None 
- 29-Sep-25 13:30:11  DEBUG  http://localhost:None "DELETE /v1.47/images/10.0.3.128:8080/mosiphubid/artifactory-server:latest?force=False&noprune=False HTTP/1.1" 200 203 
- 29-Sep-25 13:30:11  INFO  Completed mosipid/artifactory-server:1.2.0.4	------> 10.0.3.128:8080/mosiphubid/artifactory-server:1.2.0.4 
- 29-Sep-25 13:30:11  INFO  Completed processing mosipid/artifactory-server:1.2.0.4 to mosiphubid/artifactory-server:1.2.0.4 
+ 03-Oct-25 10:02:32  INFO  LOGFILE CREATED : vidivi.log 
+ 03-Oct-25 10:02:32  INFO   
+ 03-Oct-25 10:02:32  INFO  ******************** Check Images List ************************************************************************************ 
+ 03-Oct-25 10:02:32  INFO   
+ 03-Oct-25 10:02:32  INFO  IMAGES= [['mosipint/postgresql:14.2.0-debian-10-r70', '14.2.0-debian-10-r70']] 
+ 03-Oct-25 10:02:32  INFO   
+ 03-Oct-25 10:02:32  INFO  ******************** Check existence of Source Images ******************************************************************* 
+ 03-Oct-25 10:02:32  INFO   
+ 03-Oct-25 10:02:32  INFO  src = "mosipint/postgresql" tag = "14.2.0-debian-10-r70" 
+ 03-Oct-25 10:02:32  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Oct-25 10:02:33  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipint/postgresql:pull HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:33  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Oct-25 10:02:34  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipint/postgresql/tags/14.2.0-debian-10-r70 HTTP/1.1" 200 832 
+ 03-Oct-25 10:02:34  INFO   
+ 03-Oct-25 10:02:34  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
+ 03-Oct-25 10:02:34  INFO  Skipping Docker Hub account check for non-Docker Hub registry 
+ 03-Oct-25 10:02:34  INFO   
+ 03-Oct-25 10:02:34  INFO  ******************** Check existence of Destination Images *************************************************************** 
+ 03-Oct-25 10:02:34  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Oct-25 10:02:35  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipint/postgresql:pull HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:35  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 03-Oct-25 10:02:36  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipint/postgresql/manifests/14.2.0-debian-10-r70 HTTP/1.1" 200 3253 
+ 03-Oct-25 10:02:36  INFO   
+ 03-Oct-25 10:02:36  INFO  [ mosipint/postgresql ]  
+ 03-Oct-25 10:02:36  INFO  Destination Image = "mosipint/postgresql" Destination Image tag = "14.2.0-debian-10-r70" IMAGE_ID : "sha256:595adb190d97b9ebf7e6ef1557dcd71c913b451f54973a33d234c7fe15185d08" 
+ 03-Oct-25 10:02:36  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Oct-25 10:02:37  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipint/postgresql:pull HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:37  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Oct-25 10:02:38  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipint/postgresql/tags/14.2.0-debian-10-r70 HTTP/1.1" 200 832 
+ 03-Oct-25 10:02:38  INFO   
+ 03-Oct-25 10:02:38  INFO  ******************** HASH Operation Results ********************************************************************** 
+ 03-Oct-25 10:02:38  INFO   
+ 03-Oct-25 10:02:38  INFO  ******************** Start Image Transfer operation *********************************************************************** 
+ 03-Oct-25 10:02:38  DEBUG  Trying paths: ['/home/bhuminathan/.docker/config.json', '/home/bhuminathan/.dockercfg'] 
+ 03-Oct-25 10:02:38  DEBUG  Found file at path: /home/bhuminathan/.docker/config.json 
+ 03-Oct-25 10:02:38  DEBUG  Found 'auths' section 
+ 03-Oct-25 10:02:38  DEBUG  Found entry (registry='10.0.3.128:8080', username='robot$mosipid') 
+ 03-Oct-25 10:02:38  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='bn46') 
+ 03-Oct-25 10:02:38  DEBUG  Found entry (registry='registry-1.docker.io', username='bn1997') 
+ 03-Oct-25 10:02:38  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 780 
+ 03-Oct-25 10:02:38  DEBUG  Looking for auth entry for '10.0.3.128:8080' 
+ 03-Oct-25 10:02:38  DEBUG  Found '10.0.3.128:8080' 
+ 03-Oct-25 10:02:38  DEBUG  http://localhost:None "POST /v1.47/auth HTTP/1.1" 200 48 
+ 03-Oct-25 10:02:38  INFO  Using 3 parallel workers for image transfers 
+ 03-Oct-25 10:02:38  INFO   
+ 03-Oct-25 10:02:38  INFO  ********** [ mosipint/postgresql:14.2.0-debian-10-r70 ] **************************************************** 
+ 03-Oct-25 10:02:38  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Oct-25 10:02:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipint/postgresql:pull HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:39  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 03-Oct-25 10:02:40  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipint/postgresql/manifests/14.2.0-debian-10-r70 HTTP/1.1" 200 3253 
+ 03-Oct-25 10:02:40  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 03-Oct-25 10:02:41  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipint/postgresql/manifests/14.2.0-debian-10-r70 HTTP/1.1" 200 3253 
+ 03-Oct-25 10:02:41  INFO   
+ 03-Oct-25 10:02:41  INFO  [ PULL ----------------------> mosipint/postgresql:14.2.0-debian-10-r70 ]  
+ 03-Oct-25 10:02:41  DEBUG  Looking for auth config 
+ 03-Oct-25 10:02:41  DEBUG  Looking for auth entry for 'docker.io' 
+ 03-Oct-25 10:02:41  DEBUG  Found 'https://index.docker.io/v1/' 
+ 03-Oct-25 10:02:41  DEBUG  Found auth config 
+ 03-Oct-25 10:02:44  DEBUG  http://localhost:None "POST /v1.47/images/create?tag=14.2.0-debian-10-r70&fromImage=mosipint%2Fpostgresql HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:44  INFO  Status: Downloaded newer image for mosipint/postgresql:14.2.0-debian-10-r70 
+ 03-Oct-25 10:02:44  DEBUG  http://localhost:None "POST /v1.47/images/mosipint/postgresql:14.2.0-debian-10-r70/tag?tag=14.2.0-debian-10-r70&repo=10.0.3.128%3A8080%2Fmosipint%2Fpostgresql&force=1 HTTP/1.1" 201 0 
+ 03-Oct-25 10:02:44  INFO   
+ 03-Oct-25 10:02:44  INFO  [ PUSH -----> mosipint/postgresql:14.2.0-debian-10-r70	------> 10.0.3.128:8080/mosipint/postgresql:14.2.0-debian-10-r70 ]  
+ 03-Oct-25 10:02:44  DEBUG  Looking for auth config 
+ 03-Oct-25 10:02:44  DEBUG  Looking for auth entry for '10.0.3.128:8080' 
+ 03-Oct-25 10:02:44  DEBUG  Found '10.0.3.128:8080' 
+ 03-Oct-25 10:02:44  DEBUG  Found auth config 
+ 03-Oct-25 10:02:44  DEBUG  http://localhost:None "POST /v1.47/images/10.0.3.128:8080/mosipint/postgresql/push?tag=14.2.0-debian-10-r70 HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:45  INFO  14.2.0-debian-10-r70: digest: sha256:595adb190d97b9ebf7e6ef1557dcd71c913b451f54973a33d234c7fe15185d08 size: 3253 
+ 03-Oct-25 10:02:45  INFO   
+ 03-Oct-25 10:02:45  INFO  [ PUSH -----> mosipint/postgresql:14.2.0-debian-10-r70	------> 10.0.3.128:8080/mosipint/postgresql:latest ]  
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "POST /v1.47/images/mosipint/postgresql:14.2.0-debian-10-r70/tag?tag=latest&repo=10.0.3.128%3A8080%2Fmosipint%2Fpostgresql&force=1 HTTP/1.1" 201 0 
+ 03-Oct-25 10:02:45  DEBUG  Looking for auth config 
+ 03-Oct-25 10:02:45  DEBUG  Looking for auth entry for '10.0.3.128:8080' 
+ 03-Oct-25 10:02:45  DEBUG  Found '10.0.3.128:8080' 
+ 03-Oct-25 10:02:45  DEBUG  Found auth config 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "POST /v1.47/images/10.0.3.128:8080/mosipint/postgresql/push?tag=latest HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:45  INFO  latest: digest: sha256:595adb190d97b9ebf7e6ef1557dcd71c913b451f54973a33d234c7fe15185d08 size: 3253 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "GET /v1.47/images/json?only_ids=0&all=0&filters=%7B%22reference%22%3A+%5B%22mosipint%2Fpostgresql%3A14.2.0-debian-10-r70%22%5D%7D HTTP/1.1" 200 299 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "GET /v1.47/images/sha256:06c9e40fb4c3793ed933cfbe0424c025dddc1c403f90c01fc7effc00723f5149/json HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "DELETE /v1.47/images/mosipint/postgresql:14.2.0-debian-10-r70?force=False&noprune=False HTTP/1.1" 200 165 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "GET /v1.47/images/json?only_ids=0&all=0&filters=%7B%22reference%22%3A+%5B%2210.0.3.128%3A8080%2Fmosipint%2Fpostgresql%3A14.2.0-debian-10-r70%22%5D%7D HTTP/1.1" 200 315 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "GET /v1.47/images/sha256:06c9e40fb4c3793ed933cfbe0424c025dddc1c403f90c01fc7effc00723f5149/json HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "DELETE /v1.47/images/10.0.3.128:8080/mosipint/postgresql:14.2.0-debian-10-r70?force=False&noprune=False HTTP/1.1" 200 74 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "GET /v1.47/images/json?only_ids=0&all=0&filters=%7B%22reference%22%3A+%5B%2210.0.3.128%3A8080%2Fmosipint%2Fpostgresql%3Alatest%22%5D%7D HTTP/1.1" 200 301 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "GET /v1.47/images/sha256:06c9e40fb4c3793ed933cfbe0424c025dddc1c403f90c01fc7effc00723f5149/json HTTP/1.1" 200 None 
+ 03-Oct-25 10:02:45  DEBUG  http://localhost:None "DELETE /v1.47/images/10.0.3.128:8080/mosipint/postgresql:latest?force=False&noprune=False HTTP/1.1" 200 183 
+ 03-Oct-25 10:02:45  INFO  Completed mosipint/postgresql:14.2.0-debian-10-r70	------> 10.0.3.128:8080/mosipint/postgresql:14.2.0-debian-10-r70 
+ 03-Oct-25 10:02:45  INFO  Completed processing mosipint/postgresql:14.2.0-debian-10-r70 to mosipint/postgresql:14.2.0-debian-10-r70 

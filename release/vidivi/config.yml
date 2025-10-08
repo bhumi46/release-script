@@ -1,11 +1,11 @@
 csv:
-  filename: test-images.txt
+  filename: images.txt
   has_header: no
 
 docker:
-  username: robot$mosipid
-  token: tydf6FU5YjMLP62iYBKOY9UqtaiMWeTt
-  destination_organization: mosipid
+  username: robot$mosipint-bot
+  token: cLytgOigkRa15PIZh6Zd7plDkYHLAk08
+  destination_organization: mosipint
   registry_url: 10.0.3.128:8080
   imageExitUrl: https://registry.hub.docker.com/v2/
 

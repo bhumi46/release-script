@@ -1,0 +1,1 @@
+mosipid/resident-service:1.2.1.2 1.2.1.2
