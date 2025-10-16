@@ -1,1 +1,1 @@
-mosipdev/hotlist-service:release-1.3.x release-1.3.x
+bn46/postgresql:test test
