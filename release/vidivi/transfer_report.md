@@ -1,13 +1,14 @@
 # Image Transfer Report
 
-**Date**: Thu Oct 16 19:17:20 UTC 2025
+**Date**: Tue Oct 28 08:09:03 UTC 2025
 **Registry Type**: dockerhub
 **Registry URL**: https://index.docker.io/v1/  
 **Organization**: bn1997
 **WireGuard VPN**: Disabled
 
 ## Statistics
-- **Multi-arch transfers (crane)**: 1
+- **Multi-arch transfers (crane)**: 0
+0
 - **Total successful transfers**: 0
 0
 - **Failed transfers**: 1
@@ -18,4 +19,3 @@
 - ✅ Registry Support: HTTP/HTTPS auto-detection
 
 ## Crane Multi-Arch Images
--
