@@ -13,4 +13,4 @@ mosipdev/registration-processor-stage-group-3:release-1.2.1.x 1.2.1.2
 mosipdev/registration-processor-stage-group-4:release-1.2.1.x 1.2.1.2
 mosipdev/registration-processor-stage-group-5:release-1.2.1.x 1.2.1.2
 mosipdev/registration-processor-stage-group-6:release-1.2.1.x 1.2.1.2
-postgres:13 13
+library/postgres:13 13
