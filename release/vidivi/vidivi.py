@@ -150,36 +150,6 @@ def getDockerHash(repo, tag):
     return ''
 
 
-def get_manifest_list(repo, tag):
-    """Get manifest list for multi-architecture images"""
-    token = get_auth_token(repo)
-    if not token:
-        return None
-    
-    headers = {
-        "Accept": "application/vnd.docker.distribution.manifest.list.v2+json",
-        "Authorization": "Bearer " + token
-    }
-    registry_url = f'https://registry-1.docker.io/v2/{repo}/manifests/{tag}'
-    response = requests.get(registry_url, headers=headers)
-    
-    if response.status_code == 200 and 'manifests' in response.json():
-        return response.json()
-    
-    # If not a multi-arch image, try getting the regular manifest
-    headers = {
-        "Accept": "application/vnd.docker.distribution.manifest.v2+json",
-        "Authorization": "Bearer " + token
-    }
-    response = requests.get(registry_url, headers=headers)
-    if response.status_code == 200:
-        # Return a single-item list for consistent handling
-        return {"manifests": [{"digest": response.headers.get('docker-content-digest', ''), "platform": {"architecture": "unknown", "os": "unknown"}}]}
-    
-    print_log(f"Failed to get manifest for {repo}:{tag}", 'error')
-    return None
-
-
 def chkDockerAccExistence(acc_name):
     accUrl = 'https://hub.docker.com/v2/users/' + acc_name
     req = requests.get(url=accUrl)
@@ -189,48 +159,8 @@ def chkDockerAccExistence(acc_name):
     return True
 
 
-def create_manifest_list(src_image_name, dest_image_name, tag, dest_arch_images, remote_client):
-    """Create a multi-architecture manifest list from individual architecture digests"""
-    try:
-        # First, perform a CLI-based Docker login using the credentials from config.yaml
-        print_log(f"Logging in to Docker CLI for manifest operations", 'info')
-        # Use subprocess.run with list format to avoid shell interpretation issues
-        login_process = subprocess.run(
-            ["docker", "login", "-u", config['docker']['username'], "-p", config['docker']['token'], config['docker']['registry_url']], 
-            check=True, 
-            stdout=subprocess.PIPE, 
-            stderr=subprocess.PIPE
-        )
-        
-        # If login failed, report the error
-        if login_process.returncode != 0:
-            print_log(f"Docker CLI login failed: {login_process.stderr.decode('utf-8')}", 'error')
-            return False
-            
-        # Create the manifest list with --amend flag to update if it exists
-        # Reference the individual architecture images that were pushed to Harbor
-        manifest_create_cmd = f"docker manifest create --amend {dest_image_name}:{tag}"
-        
-        # Add each destination architecture image to the manifest list
-        for dest_arch_image in dest_arch_images:
-            manifest_create_cmd += f" {dest_arch_image}"
-        
-        print_log(f"Creating manifest list with command: {manifest_create_cmd}", 'info')
-        subprocess.run(manifest_create_cmd, shell=True, check=True)
-        
-        # Push the manifest list
-        manifest_push_cmd = f"docker manifest push {dest_image_name}:{tag}"
-        print_log(f"Pushing manifest list with command: {manifest_push_cmd}", 'info')
-        subprocess.run(manifest_push_cmd, shell=True, check=True)
-        
-        return True
-    except subprocess.CalledProcessError as e:
-        print_log(f"Error creating/pushing manifest list: {str(e)}", 'error')
-        return False
-
-
 def process_image(image, client, remote_client):
-    """Process a single image (regardless of architecture)"""
+    """Process a single image using crane for all cases (single-arch and multi-arch)"""
     srcImgRepo = image[0][: image[0].find("/")]
     srcImgName = image[0][image[0].find("/") + 1:image[0].find(":")]
     srcImgtag = image[0][image[0].find(":") + 1:]
@@ -239,203 +169,79 @@ def process_image(image, client, remote_client):
     print_log("", 'info')
     print_log(10 * "*" + " [ " + config['docker']['destination_organization'] + "/" + srcImgName + ":" + destImgtag + " ] " + "*" * 52, 'info')
     
-    # Get manifest list for the source image
-    full_src_img_name = image[0][: image[0].find(":")]
-    manifest_list = get_manifest_list(full_src_img_name, srcImgtag)
-    
-    # For multi-architecture images
-    if manifest_list and 'manifests' in manifest_list and len(manifest_list['manifests']) > 1:
-        print_log(f"Multi-arch image detected with {len(manifest_list['manifests'])} architectures", 'info')
+    # Use crane for ALL images (single or multi-arch)
+    print_log("Transferring image using crane...", 'info')
+    try:
+        # Extract registry hostname from URL (remove http:// or https://)
+        registry_url = config['docker']['registry_url']
+        registry_host = registry_url.replace('https://', '').replace('http://', '').split('/')[0]
         
-        # List detected architectures for logging
-        for manifest in manifest_list['manifests']:
-            arch_type = manifest['platform']['architecture']
-            arch_os = manifest['platform']['os']
-            print_log(f"Detected architecture: {arch_os}/{arch_type}", 'info')
+        full_src_img_name = image[0][: image[0].find(":")]
+        dest_repo = f"{registry_host}/{config['docker']['destination_organization']}/{srcImgName}"
         
-        # Multi-arch transfer using crane tool for proper manifest list handling
-        print_log("Transferring complete multi-arch image using crane...", 'info')
-        try:
-            # Extract registry hostname from URL (remove http:// or https://)
-            registry_url = config['docker']['registry_url']
-            registry_host = registry_url.replace('https://', '').replace('http://', '').split('/')[0]
+        import shutil
+        
+        if not shutil.which("crane"):
+            print_log("ERROR: crane tool not found. Please install crane to use this script.", 'error')
+            print_log("Install instructions: https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md", 'error')
+            raise Exception("Crane tool required for image transfer")
+        
+        # Determine if destination registry needs --insecure flag (HTTP)
+        use_insecure = registry_url.startswith('http://') or not registry_url.startswith('https://')
+        
+        # Build crane command with conditional --insecure flag
+        crane_cmd = ["crane", "copy"]
+        if use_insecure:
+            crane_cmd.append("--insecure")
+            print_log("Using --insecure flag for HTTP registry", 'info')
+        else:
+            print_log("Using secure connection for HTTPS registry", 'info')
+        
+        crane_cmd.extend([
+            f"{full_src_img_name}:{srcImgtag}",
+            f"{dest_repo}:{destImgtag}"
+        ])
+        
+        print_log(f"Executing: {' '.join(crane_cmd)}", 'info')
+        result = subprocess.run(crane_cmd, capture_output=True, text=True, check=False)
+        
+        if result.returncode == 0:
+            print_log(f"Successfully transferred image with crane", 'info')
             
-            dest_repo = f"{registry_host}/{config['docker']['destination_organization']}/{srcImgName}"
+            # Also create latest tag with same insecure setting
+            latest_cmd = ["crane", "copy"]
+            if use_insecure:
+                latest_cmd.append("--insecure")
+            latest_cmd.extend([
+                f"{full_src_img_name}:{srcImgtag}",
+                f"{dest_repo}:latest"
+            ])
             
-            import subprocess
-            import shutil
-            
-            if shutil.which("crane"):
-                print_log("Using crane to transfer multi-arch manifest list", 'info')
-                
-                # Determine if destination registry needs --insecure flag (HTTP)
-                use_insecure = registry_url.startswith('http://') or not registry_url.startswith('https://')
-                
-                # Build crane command with conditional --insecure flag
-                crane_cmd = ["crane", "copy"]
-                if use_insecure:
-                    crane_cmd.append("--insecure")
-                    print_log("Using --insecure flag for HTTP registry", 'info')
-                else:
-                    print_log("Using secure connection for HTTPS registry", 'info')
-                
-                crane_cmd.extend([
-                    f"{full_src_img_name}:{srcImgtag}",
-                    f"{dest_repo}:{destImgtag}"
-                ])
-                
-                print_log(f"Executing: {' '.join(crane_cmd)}", 'info')
-                result = subprocess.run(crane_cmd, capture_output=True, text=True, check=False)
-                
-                if result.returncode == 0:
-                    print_log("Successfully transferred multi-arch manifest list with crane", 'info')
-                    
-                    # Also create latest tag with same insecure setting
-                    latest_cmd = ["crane", "copy"]
-                    if use_insecure:
-                        latest_cmd.append("--insecure")
-                    latest_cmd.extend([
-                        f"{full_src_img_name}:{srcImgtag}",
-                        f"{dest_repo}:latest"
-                    ])
-                    
-                    latest_result = subprocess.run(latest_cmd, capture_output=True, text=True, check=False)
-                    if latest_result.returncode == 0:
-                        print_log("Successfully created latest tag", 'info')
-                    else:
-                        print_log(f"Latest tag creation failed: {latest_result.stderr}", 'warning')
-                    
-                    print_log(f"Multi-arch image available at: {dest_repo}:{destImgtag} with all architectures", 'info')
-                    print_log("Crane preserves the complete manifest list structure from Docker Hub", 'info')
-                    
-                else:
-                    print_log(f"Crane transfer failed: {result.stderr}", 'error')
-                    raise Exception(f"Crane multi-arch transfer failed: {result.stderr}")
-                    
+            print_log(f"Creating latest tag: {' '.join(latest_cmd)}", 'info')
+            latest_result = subprocess.run(latest_cmd, capture_output=True, text=True, check=False)
+            if latest_result.returncode == 0:
+                print_log("Successfully created latest tag", 'info')
             else:
-                print_log("Crane not available, cannot transfer multi-arch images properly", 'error')
-                raise Exception("Crane tool required for proper multi-arch transfer")
-                
-        except Exception as e:
-            print_log(f"Error in crane multi-arch transfer: {str(e)}", 'error')
-            raise e
-                
-    else:
-        # Handle single architecture image
-        promote(
-            srcImgRepo, 
-            srcImgName, 
-            srcImgtag, 
-            destImgtag,
-            config['docker']['registry_url'] + '/' + config['docker']['destination_organization'], 
-            remote_client, 
-            client
-        )
+                print_log(f"Latest tag creation failed: {latest_result.stderr}", 'warning')
+            
+            print_log(f"Image available at: {dest_repo}:{destImgtag}", 'info')
+            print_log("Crane automatically preserves all architectures and manifest structures", 'info')
+            
+        else:
+            print_log(f"Crane transfer failed: {result.stderr}", 'error')
+            raise Exception(f"Crane transfer failed: {result.stderr}")
+            
+    except Exception as e:
+        print_log(f"Error in crane transfer: {str(e)}", 'error')
+        raise e
 
     return f"Completed processing {image[0]} to {config['docker']['destination_organization']}/{srcImgName}:{destImgtag}"
-
-
-def pull_tag_arch_image(src_repo, src_image_name, digest, tag, dst_repo, remote_client, local_client, arch_type="unknown", arch_os="unknown"):
-    """Pull image digest and tag it for manifest list creation"""
-    src_repository = src_repo + "/" + src_image_name
-    src_image = src_repository + "@sha256:" + digest
-    force = True
-    dst_repository = dst_repo + "/" + src_image_name
-    dst_image = dst_repository + ":" + tag
-    
-    print_log("", 'info')
-    print_log(f"[ PULL {arch_os}/{arch_type} ----------------------> " + src_image + " ] ", 'info')
-    
-    # Pull the image by digest
-    pull_status = remote_client.pull(repository=src_repository, tag=f"sha256:{digest}", stream=True, decode=True)
-    status_update(pull_status)
-    
-    # Tag for this architecture
-    remote_client.tag(image=src_image, repository=dst_repository, tag=tag, force=force)
-    
-    # Push the architecture-specific image
-    print_log("", 'info')
-    print_log(f"[ PUSH {arch_os}/{arch_type} -----> " + src_image + "\t------> " + dst_image + " ] ", 'info')
-    push_status = remote_client.push(repository=dst_repository, tag=tag, stream=True, decode=True)
-    status_update(push_status)
-    
-    print_log(f"Completed pulling/tagging {src_image} \t------> {dst_image} ({arch_os}/{arch_type})", 'info')
-    return True
 
 
 def load_config():
     global config
     with open("config.yml", "r") as configfile:
         config = yaml.safe_load(configfile)
-
-
-def strip_tag(image_name):
-    image_version = ""
-    stripped_list = image_name[0].split('/')
-    repository = stripped_list[0]
-    image = stripped_list[1]
-    image_version = image_name[1]
-    return repository, image, image_version
-
-
-def promote(src_repo, src_image_name, src_image_version, tag, dst_repo, remote_client, local_client):
-    src_repository = src_repo + "/" + src_image_name
-    src_tag = tag if src_image_version == "" else src_image_version
-    src_image = src_repository + ":" + src_tag
-    force = True
-    dst_repository = dst_repo + "/" + src_image_name
-    dst_tag = tag  # Use the tag from image.txt
-    dst_image = dst_repository + ":" + dst_tag
-    dst_latest = dst_repository + ":" + "latest"
-    
-    if '@sha256:' in dst_image:
-        dst_image = re.sub(r'@sha256','',dst_image)
-        dst_repository = re.sub(r'@sha256','',dst_repository)
-    
-    print_log("", 'info')
-    src_tag=':'+src_tag
-    if '@sha256:' in src_image:
-        src_repository = re.sub(r'@sha256','',src_repository)
-        src_tag='@sha256'+src_tag
-    
-    print_log("[ PULL ----------------------> " + src_image + " ] ", 'info')
-    print("src_repository : ",src_repository,'src_tag',src_tag, 'src_image : ',src_image )
-    print('dst_repository : ',dst_repository, 'dst_tag : ', dst_tag)
-    
-    pull_status = remote_client.pull(repository=src_repository+src_tag, stream=True, decode=True)
-    status_update(pull_status)
-    
-    remote_client.tag(image=src_image, repository=dst_repository, tag=dst_tag, force=force)
-    print_log("", 'info')
-    print_log("[ PUSH -----> " + src_image + "\t------> " + dst_image + " ] ", 'info')
-    push_status = remote_client.push(repository=dst_repository, tag=dst_tag, stream=True, decode=True)
-    status_update(push_status)
-    
-    print_log("", 'info')
-    print_log("[ PUSH -----> " + src_image + "\t------> " + dst_latest + " ] ", 'info')
-    remote_client.tag(image=src_image, repository=dst_repository, tag='latest', force=force)
-    latest_push = remote_client.push(repository=dst_repository, tag='latest', stream=True, decode=True)
-    status_update(latest_push)
-    
-    # remove docker images from local machine
-    rm_local_img = [src_image, dst_image, dst_latest]
-    for img in rm_local_img:
-        if len(local_client.images.list(img)) != 0:
-            local_client.images.remove(img)
-    
-    print_log("Completed " + src_image + "\t------> " + dst_image, 'info')
-
-
-def status_update(output):
-    status = ''
-    for line in output:
-        if line.get("error"):
-            raise InterruptedError(line.get("error"))
-        if line.get("progress"):
-            print(line.get("status"), line.get("progress"), end="\r")
-        if line.get('status'):
-            status = line.get('status')
-    print_log(status, 'info')
 
 
 def main():
