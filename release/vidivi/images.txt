@@ -1,1 +1,15 @@
-bn46/postgresql:test test
+mosipdev/id-repository-salt-generator:release-1.2.2.x 1.2.2.3
+mosipdev/id-repository-vid-service:release-1.2.2.x 1.2.2.3
+mosipdev/apitest-idrepo:release-1.2.2.x 1.2.2.3
+mosipdev/authentication-otp-service:release-1.2.1.x 1.2.1.2-beta.1
+mosipdev/authentication-internal-service:release-1.2.1.x 1.2.1.2-beta.1
+mosipdev/authentication-service:release-1.2.1.x 1.2.1.2-beta.1
+mosipdev/apitest-auth:release-1.2.1.x 1.2.1.2-beta.1
+mosipdev/data-share-service:release-1.2.0.x 1.2.0.2
+mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x 1.2.1.2
+mosipdev/registration-processor-stage-group-1:release-1.2.1.x 1.2.1.2
+mosipdev/registration-processor-stage-group-2:release-1.2.1.x 1.2.1.2
+mosipdev/registration-processor-stage-group-3:release-1.2.1.x 1.2.1.2
+mosipdev/registration-processor-stage-group-4:release-1.2.1.x 1.2.1.2
+mosipdev/registration-processor-stage-group-5:release-1.2.1.x 1.2.1.2
+mosipdev/registration-processor-stage-group-6:release-1.2.1.x 1.2.1.2
