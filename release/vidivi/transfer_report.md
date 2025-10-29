@@ -1,10 +1,10 @@
 # Image Transfer Report
 
-**Date**: Tue Oct 28 19:59:53 UTC 2025
-**Registry Type**: dockerhub
-**Registry URL**: https://index.docker.io/v1/  
-**Organization**: bn1997
-**WireGuard VPN**: Disabled
+**Date**: Wed Oct 29 06:04:08 UTC 2025
+**Registry Type**: harbor
+**Registry URL**: https://harbor.mosip.net  
+**Organization**: mosipdev
+**WireGuard VPN**: Enabled
 
 ## Statistics
 - **Crane transfers**: 16
@@ -12,24 +12,24 @@
 - **Failed transfers**: 00
 
 ## Tools Used
-- ✅ Crane (Apache 2.0): Universal container image transfers
-- ✅ Automatically handles single-arch and multi-arch images
-- ✅ Registry Support: HTTP/HTTPS auto-detection
+- Crane (Apache 2.0): Universal container image transfers
+- Automatically handles single-arch and multi-arch images
+- Registry Support: HTTP/HTTPS auto-detection
 
 ## Transferred Images
-- index.docker.io/bn1997/id-repository-salt-generator:1.2.2.3 
-- index.docker.io/bn1997/id-repository-vid-service:1.2.2.3 
-- index.docker.io/bn1997/apitest-idrepo:1.2.2.3 
-- index.docker.io/bn1997/authentication-otp-service:1.2.1.2-beta.1 
-- index.docker.io/bn1997/authentication-service:1.2.1.2-beta.1 
-- index.docker.io/bn1997/authentication-internal-service:1.2.1.2-beta.1 
-- index.docker.io/bn1997/apitest-auth:1.2.1.2-beta.1 
-- index.docker.io/bn1997/data-share-service:1.2.0.2 
-- index.docker.io/bn1997/registration-processor-registration-transaction-service:1.2.1.2 
-- index.docker.io/bn1997/registration-processor-stage-group-1:1.2.1.2 
-- index.docker.io/bn1997/registration-processor-stage-group-2:1.2.1.2 
-- index.docker.io/bn1997/registration-processor-stage-group-3:1.2.1.2 
-- index.docker.io/bn1997/registration-processor-stage-group-4:1.2.1.2 
-- index.docker.io/bn1997/registration-processor-stage-group-6:1.2.1.2 
-- index.docker.io/bn1997/registration-processor-stage-group-5:1.2.1.2 
-- index.docker.io/bn1997/postgres:13 
+- harbor.mosip.net/mosipdev/id-repository-vid-service:1.2.2.3 
+- harbor.mosip.net/mosipdev/id-repository-salt-generator:1.2.2.3 
+- harbor.mosip.net/mosipdev/apitest-idrepo:1.2.2.3 
+- harbor.mosip.net/mosipdev/authentication-otp-service:1.2.1.2-beta.1 
+- harbor.mosip.net/mosipdev/authentication-internal-service:1.2.1.2-beta.1 
+- harbor.mosip.net/mosipdev/authentication-service:1.2.1.2-beta.1 
+- harbor.mosip.net/mosipdev/apitest-auth:1.2.1.2-beta.1 
+- harbor.mosip.net/mosipdev/data-share-service:1.2.0.2 
+- harbor.mosip.net/mosipdev/registration-processor-registration-transaction-service:1.2.1.2 
+- harbor.mosip.net/mosipdev/registration-processor-stage-group-2:1.2.1.2 
+- harbor.mosip.net/mosipdev/registration-processor-stage-group-1:1.2.1.2 
+- harbor.mosip.net/mosipdev/registration-processor-stage-group-3:1.2.1.2 
+- harbor.mosip.net/mosipdev/registration-processor-stage-group-4:1.2.1.2 
+- harbor.mosip.net/mosipdev/registration-processor-stage-group-5:1.2.1.2 
+- harbor.mosip.net/mosipdev/postgres:13 
+- harbor.mosip.net/mosipdev/registration-processor-stage-group-6:1.2.1.2 
