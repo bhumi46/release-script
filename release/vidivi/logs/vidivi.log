@@ -1,492 +1,473 @@
- 29-Oct-25 05:53:08  INFO  LOGFILE CREATED : vidivi.log 
- 29-Oct-25 05:53:08  INFO   
- 29-Oct-25 05:53:08  INFO  ******************** Check Images List ************************************************************************************ 
- 29-Oct-25 05:53:08  INFO   
- 29-Oct-25 05:53:08  INFO  IMAGES= [['mosipdev/id-repository-salt-generator:release-1.2.2.x', '1.2.2.3'], ['mosipdev/id-repository-vid-service:release-1.2.2.x', '1.2.2.3'], ['mosipdev/apitest-idrepo:release-1.2.2.x', '1.2.2.3'], ['mosipdev/authentication-otp-service:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/authentication-internal-service:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/authentication-service:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/apitest-auth:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/data-share-service:release-1.2.0.x', '1.2.0.2'], ['mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-1:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-2:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-3:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-4:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-5:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-6:release-1.2.1.x', '1.2.1.2'], ['library/postgres:13', '13']] 
- 29-Oct-25 05:53:08  INFO   
- 29-Oct-25 05:53:08  INFO  ******************** Check existence of Source Images ******************************************************************* 
- 29-Oct-25 05:53:08  INFO   
- 29-Oct-25 05:53:08  INFO  src = "mosipdev/id-repository-salt-generator" tag = "release-1.2.2.x" 
- 29-Oct-25 05:53:08  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:08  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-salt-generator:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:08  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:08  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/id-repository-salt-generator/tags/release-1.2.2.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:08  INFO   
- 29-Oct-25 05:53:08  INFO  src = "mosipdev/id-repository-vid-service" tag = "release-1.2.2.x" 
- 29-Oct-25 05:53:08  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:08  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-vid-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:08  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:09  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/id-repository-vid-service/tags/release-1.2.2.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:09  INFO   
- 29-Oct-25 05:53:09  INFO  src = "mosipdev/apitest-idrepo" tag = "release-1.2.2.x" 
- 29-Oct-25 05:53:09  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:09  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-idrepo:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:09  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:09  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-idrepo/tags/release-1.2.2.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:09  INFO   
- 29-Oct-25 05:53:09  INFO  src = "mosipdev/authentication-otp-service" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:09  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:09  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-otp-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:09  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:10  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-otp-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:10  INFO   
- 29-Oct-25 05:53:10  INFO  src = "mosipdev/authentication-internal-service" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:10  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:10  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-internal-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:10  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:10  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-internal-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:10  INFO   
- 29-Oct-25 05:53:10  INFO  src = "mosipdev/authentication-service" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:10  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:10  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:10  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:11  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:11  INFO   
- 29-Oct-25 05:53:11  INFO  src = "mosipdev/apitest-auth" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:11  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:11  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-auth:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:11  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:11  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-auth/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:11  INFO   
- 29-Oct-25 05:53:11  INFO  src = "mosipdev/data-share-service" tag = "release-1.2.0.x" 
- 29-Oct-25 05:53:11  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:12  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/data-share-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:12  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:12  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/data-share-service/tags/release-1.2.0.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:12  INFO   
- 29-Oct-25 05:53:12  INFO  src = "mosipdev/registration-processor-registration-transaction-service" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:12  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:12  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-registration-transaction-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:12  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:12  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-registration-transaction-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:12  INFO   
- 29-Oct-25 05:53:12  INFO  src = "mosipdev/registration-processor-stage-group-1" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:12  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:13  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-1:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:13  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:13  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-1/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:13  INFO   
- 29-Oct-25 05:53:13  INFO  src = "mosipdev/registration-processor-stage-group-2" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:13  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:13  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-2:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:13  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:13  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-2/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:13  INFO   
- 29-Oct-25 05:53:13  INFO  src = "mosipdev/registration-processor-stage-group-3" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:13  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:14  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-3:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:14  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:14  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-3/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:14  INFO   
- 29-Oct-25 05:53:14  INFO  src = "mosipdev/registration-processor-stage-group-4" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:14  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:14  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-4:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:14  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:14  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-4/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:14  INFO   
- 29-Oct-25 05:53:14  INFO  src = "mosipdev/registration-processor-stage-group-5" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:14  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:15  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-5:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:15  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:15  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-5/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:15  INFO   
- 29-Oct-25 05:53:15  INFO  src = "mosipdev/registration-processor-stage-group-6" tag = "release-1.2.1.x" 
- 29-Oct-25 05:53:15  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:15  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-6:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:15  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:15  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-6/tags/release-1.2.1.x HTTP/1.1" 200 None 
- 29-Oct-25 05:53:15  INFO   
- 29-Oct-25 05:53:15  INFO  src = "library/postgres" tag = "13" 
- 29-Oct-25 05:53:15  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:16  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:library/postgres:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:16  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:16  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/library/postgres/tags/13 HTTP/1.1" 200 None 
- 29-Oct-25 05:53:16  INFO   
- 29-Oct-25 05:53:16  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
- 29-Oct-25 05:53:16  INFO  Skipping Docker Hub account check for non-Docker Hub registry 
- 29-Oct-25 05:53:16  INFO   
- 29-Oct-25 05:53:16  INFO  ******************** Check existence of Destination Images *************************************************************** 
- 29-Oct-25 05:53:16  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:16  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-salt-generator:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:16  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:16  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/id-repository-salt-generator/manifests/1.2.2.3 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:16  INFO   
- 29-Oct-25 05:53:16  INFO  [ mosipdev/id-repository-salt-generator ]  
- 29-Oct-25 05:53:16  INFO  Destination Image = "mosipdev/id-repository-salt-generator" Destination Image tag = "1.2.2.3" IMAGE_ID :  
- 29-Oct-25 05:53:16  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:17  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-salt-generator:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:17  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:17  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/id-repository-salt-generator/tags/1.2.2.3 HTTP/1.1" 404 148 
- 29-Oct-25 05:53:17  ERROR  Image "mosipdev/id-repository-salt-generator:1.2.2.3" does not exist 
- 29-Oct-25 05:53:17  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:17  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-vid-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:17  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:17  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/id-repository-vid-service/manifests/1.2.2.3 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:17  INFO   
- 29-Oct-25 05:53:17  INFO  [ mosipdev/id-repository-vid-service ]  
- 29-Oct-25 05:53:17  INFO  Destination Image = "mosipdev/id-repository-vid-service" Destination Image tag = "1.2.2.3" IMAGE_ID :  
- 29-Oct-25 05:53:17  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:18  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-vid-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:18  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:18  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/id-repository-vid-service/tags/1.2.2.3 HTTP/1.1" 404 145 
- 29-Oct-25 05:53:18  ERROR  Image "mosipdev/id-repository-vid-service:1.2.2.3" does not exist 
- 29-Oct-25 05:53:18  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:18  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-idrepo:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:18  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:18  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/apitest-idrepo/manifests/1.2.2.3 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:18  INFO   
- 29-Oct-25 05:53:18  INFO  [ mosipdev/apitest-idrepo ]  
- 29-Oct-25 05:53:18  INFO  Destination Image = "mosipdev/apitest-idrepo" Destination Image tag = "1.2.2.3" IMAGE_ID :  
- 29-Oct-25 05:53:18  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:19  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-idrepo:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:19  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:19  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-idrepo/tags/1.2.2.3 HTTP/1.1" 404 134 
- 29-Oct-25 05:53:19  ERROR  Image "mosipdev/apitest-idrepo:1.2.2.3" does not exist 
- 29-Oct-25 05:53:19  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:19  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-otp-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:19  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:19  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/authentication-otp-service/manifests/1.2.1.2-beta.1 HTTP/1.1" 404 108 
- 29-Oct-25 05:53:19  INFO   
- 29-Oct-25 05:53:19  INFO  [ mosipdev/authentication-otp-service ]  
- 29-Oct-25 05:53:19  INFO  Destination Image = "mosipdev/authentication-otp-service" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID :  
- 29-Oct-25 05:53:19  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:20  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-otp-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:20  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:20  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-otp-service/tags/1.2.1.2-beta.1 HTTP/1.1" 404 160 
- 29-Oct-25 05:53:20  ERROR  Image "mosipdev/authentication-otp-service:1.2.1.2-beta.1" does not exist 
- 29-Oct-25 05:53:20  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:20  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-internal-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:20  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:20  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/authentication-internal-service/manifests/1.2.1.2-beta.1 HTTP/1.1" 404 108 
- 29-Oct-25 05:53:20  INFO   
- 29-Oct-25 05:53:20  INFO  [ mosipdev/authentication-internal-service ]  
- 29-Oct-25 05:53:20  INFO  Destination Image = "mosipdev/authentication-internal-service" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID :  
- 29-Oct-25 05:53:20  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:21  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-internal-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:21  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:21  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-internal-service/tags/1.2.1.2-beta.1 HTTP/1.1" 404 165 
- 29-Oct-25 05:53:21  ERROR  Image "mosipdev/authentication-internal-service:1.2.1.2-beta.1" does not exist 
- 29-Oct-25 05:53:21  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:21  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:21  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:21  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/authentication-service/manifests/1.2.1.2-beta.1 HTTP/1.1" 404 108 
- 29-Oct-25 05:53:21  INFO   
- 29-Oct-25 05:53:21  INFO  [ mosipdev/authentication-service ]  
- 29-Oct-25 05:53:21  INFO  Destination Image = "mosipdev/authentication-service" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID :  
- 29-Oct-25 05:53:21  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:21  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:21  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:22  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-service/tags/1.2.1.2-beta.1 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:22  ERROR  Image "mosipdev/authentication-service:1.2.1.2-beta.1" does not exist 
- 29-Oct-25 05:53:22  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:22  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-auth:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:22  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:22  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/apitest-auth/manifests/1.2.1.2-beta.1 HTTP/1.1" 404 108 
- 29-Oct-25 05:53:22  INFO   
- 29-Oct-25 05:53:22  INFO  [ mosipdev/apitest-auth ]  
- 29-Oct-25 05:53:22  INFO  Destination Image = "mosipdev/apitest-auth" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID :  
- 29-Oct-25 05:53:22  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:22  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-auth:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:22  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:23  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-auth/tags/1.2.1.2-beta.1 HTTP/1.1" 404 146 
- 29-Oct-25 05:53:23  ERROR  Image "mosipdev/apitest-auth:1.2.1.2-beta.1" does not exist 
- 29-Oct-25 05:53:23  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:23  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/data-share-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:23  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:23  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/data-share-service/manifests/1.2.0.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:23  INFO   
- 29-Oct-25 05:53:23  INFO  [ mosipdev/data-share-service ]  
- 29-Oct-25 05:53:23  INFO  Destination Image = "mosipdev/data-share-service" Destination Image tag = "1.2.0.2" IMAGE_ID :  
- 29-Oct-25 05:53:23  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:23  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/data-share-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:23  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:24  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/data-share-service/tags/1.2.0.2 HTTP/1.1" 404 138 
- 29-Oct-25 05:53:24  ERROR  Image "mosipdev/data-share-service:1.2.0.2" does not exist 
- 29-Oct-25 05:53:24  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:24  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-registration-transaction-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:24  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:24  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-registration-transaction-service/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:24  INFO   
- 29-Oct-25 05:53:24  INFO  [ mosipdev/registration-processor-registration-transaction-service ]  
- 29-Oct-25 05:53:24  INFO  Destination Image = "mosipdev/registration-processor-registration-transaction-service" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:24  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:24  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-registration-transaction-service:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:24  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:25  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-registration-transaction-service/tags/1.2.1.2 HTTP/1.1" 404 175 
- 29-Oct-25 05:53:25  ERROR  Image "mosipdev/registration-processor-registration-transaction-service:1.2.1.2" does not exist 
- 29-Oct-25 05:53:25  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:25  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-1:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:25  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:25  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-stage-group-1/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:25  INFO   
- 29-Oct-25 05:53:25  INFO  [ mosipdev/registration-processor-stage-group-1 ]  
- 29-Oct-25 05:53:25  INFO  Destination Image = "mosipdev/registration-processor-stage-group-1" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:25  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:25  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-1:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:25  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:26  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-1/tags/1.2.1.2 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:26  ERROR  Image "mosipdev/registration-processor-stage-group-1:1.2.1.2" does not exist 
- 29-Oct-25 05:53:26  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:26  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-2:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:26  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:26  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-stage-group-2/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:26  INFO   
- 29-Oct-25 05:53:26  INFO  [ mosipdev/registration-processor-stage-group-2 ]  
- 29-Oct-25 05:53:26  INFO  Destination Image = "mosipdev/registration-processor-stage-group-2" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:26  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:26  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-2:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:26  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:27  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-2/tags/1.2.1.2 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:27  ERROR  Image "mosipdev/registration-processor-stage-group-2:1.2.1.2" does not exist 
- 29-Oct-25 05:53:27  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:27  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-3:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:27  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:27  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-stage-group-3/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:27  INFO   
- 29-Oct-25 05:53:27  INFO  [ mosipdev/registration-processor-stage-group-3 ]  
- 29-Oct-25 05:53:27  INFO  Destination Image = "mosipdev/registration-processor-stage-group-3" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:27  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:27  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-3:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:27  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:27  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-3/tags/1.2.1.2 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:27  ERROR  Image "mosipdev/registration-processor-stage-group-3:1.2.1.2" does not exist 
- 29-Oct-25 05:53:27  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:28  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-4:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:28  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:28  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-stage-group-4/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:28  INFO   
- 29-Oct-25 05:53:28  INFO  [ mosipdev/registration-processor-stage-group-4 ]  
- 29-Oct-25 05:53:28  INFO  Destination Image = "mosipdev/registration-processor-stage-group-4" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:28  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:28  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-4:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:28  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:29  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-4/tags/1.2.1.2 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:29  ERROR  Image "mosipdev/registration-processor-stage-group-4:1.2.1.2" does not exist 
- 29-Oct-25 05:53:29  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:29  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-5:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:29  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:29  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-stage-group-5/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:29  INFO   
- 29-Oct-25 05:53:29  INFO  [ mosipdev/registration-processor-stage-group-5 ]  
- 29-Oct-25 05:53:29  INFO  Destination Image = "mosipdev/registration-processor-stage-group-5" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:29  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:29  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-5:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:29  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:30  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-5/tags/1.2.1.2 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:30  ERROR  Image "mosipdev/registration-processor-stage-group-5:1.2.1.2" does not exist 
- 29-Oct-25 05:53:30  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:30  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-6:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:30  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:30  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/registration-processor-stage-group-6/manifests/1.2.1.2 HTTP/1.1" 404 101 
- 29-Oct-25 05:53:30  INFO   
- 29-Oct-25 05:53:30  INFO  [ mosipdev/registration-processor-stage-group-6 ]  
- 29-Oct-25 05:53:30  INFO  Destination Image = "mosipdev/registration-processor-stage-group-6" Destination Image tag = "1.2.1.2" IMAGE_ID :  
- 29-Oct-25 05:53:30  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:30  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-6:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:30  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:31  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-6/tags/1.2.1.2 HTTP/1.1" 404 156 
- 29-Oct-25 05:53:31  ERROR  Image "mosipdev/registration-processor-stage-group-6:1.2.1.2" does not exist 
- 29-Oct-25 05:53:31  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:31  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/postgres:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:31  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 29-Oct-25 05:53:31  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/postgres/manifests/13 HTTP/1.1" 404 96 
- 29-Oct-25 05:53:31  INFO   
- 29-Oct-25 05:53:31  INFO  [ mosipdev/postgres ]  
- 29-Oct-25 05:53:31  INFO  Destination Image = "mosipdev/postgres" Destination Image tag = "13" IMAGE_ID :  
- 29-Oct-25 05:53:31  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 29-Oct-25 05:53:31  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/postgres:pull HTTP/1.1" 200 None 
- 29-Oct-25 05:53:31  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 29-Oct-25 05:53:32  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/postgres/tags/13 HTTP/1.1" 404 118 
- 29-Oct-25 05:53:32  ERROR  Image "mosipdev/postgres:13" does not exist 
- 29-Oct-25 05:53:32  INFO   
- 29-Oct-25 05:53:32  INFO  ******************** HASH Operation Results ********************************************************************** 
- 29-Oct-25 05:53:32  INFO   
- 29-Oct-25 05:53:32  INFO  Below Destination Images doesn't exists; CONTINUE;
-	[['mosipdev/id-repository-salt-generator:1.2.2.3'], ['mosipdev/id-repository-vid-service:1.2.2.3'], ['mosipdev/apitest-idrepo:1.2.2.3'], ['mosipdev/authentication-otp-service:1.2.1.2-beta.1'], ['mosipdev/authentication-internal-service:1.2.1.2-beta.1'], ['mosipdev/authentication-service:1.2.1.2-beta.1'], ['mosipdev/apitest-auth:1.2.1.2-beta.1'], ['mosipdev/data-share-service:1.2.0.2'], ['mosipdev/registration-processor-registration-transaction-service:1.2.1.2'], ['mosipdev/registration-processor-stage-group-1:1.2.1.2'], ['mosipdev/registration-processor-stage-group-2:1.2.1.2'], ['mosipdev/registration-processor-stage-group-3:1.2.1.2'], ['mosipdev/registration-processor-stage-group-4:1.2.1.2'], ['mosipdev/registration-processor-stage-group-5:1.2.1.2'], ['mosipdev/registration-processor-stage-group-6:1.2.1.2'], ['mosipdev/postgres:13']] 
- 29-Oct-25 05:53:32  INFO   
- 29-Oct-25 05:53:32  INFO  ******************** Start Image Transfer operation *********************************************************************** 
- 29-Oct-25 05:53:32  DEBUG  Trying paths: ['/home/runner/.docker/config.json', '/home/runner/.dockercfg'] 
- 29-Oct-25 05:53:32  DEBUG  Found file at path: /home/runner/.docker/config.json 
- 29-Oct-25 05:53:32  DEBUG  Found 'auths' section 
- 29-Oct-25 05:53:32  DEBUG  Found entry (registry='harbor.mosip.net', username='robot$mosipdev-bot') 
- 29-Oct-25 05:53:32  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='githubactions') 
- 29-Oct-25 05:53:32  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 824 
- 29-Oct-25 05:53:32  DEBUG  Looking for auth entry for 'harbor.mosip.net' 
- 29-Oct-25 05:53:32  DEBUG  Found 'harbor.mosip.net' 
- 29-Oct-25 05:53:32  INFO  Using 3 parallel workers for image transfers 
- 29-Oct-25 05:53:32  INFO   
- 29-Oct-25 05:53:32  INFO  ********** [ mosipdev/id-repository-salt-generator:1.2.2.3 ] **************************************************** 
- 29-Oct-25 05:53:32  INFO  Transferring image using crane... 
- 29-Oct-25 05:53:32  INFO   
- 29-Oct-25 05:53:32  INFO  ********** [ mosipdev/id-repository-vid-service:1.2.2.3 ] **************************************************** 
- 29-Oct-25 05:53:32  INFO  Transferring image using crane... 
- 29-Oct-25 05:53:32  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:53:32  INFO  Executing: crane copy mosipdev/id-repository-vid-service:release-1.2.2.x harbor.mosip.net/mosipdev/id-repository-vid-service:1.2.2.3 
- 29-Oct-25 05:53:32  INFO   
- 29-Oct-25 05:53:32  INFO  ********** [ mosipdev/apitest-idrepo:1.2.2.3 ] **************************************************** 
- 29-Oct-25 05:53:32  INFO  Transferring image using crane... 
- 29-Oct-25 05:53:32  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:53:32  INFO  Executing: crane copy mosipdev/apitest-idrepo:release-1.2.2.x harbor.mosip.net/mosipdev/apitest-idrepo:1.2.2.3 
- 29-Oct-25 05:53:32  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:53:32  INFO  Executing: crane copy mosipdev/id-repository-salt-generator:release-1.2.2.x harbor.mosip.net/mosipdev/id-repository-salt-generator:1.2.2.3 
- 29-Oct-25 05:55:16  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:55:16  INFO  Creating latest tag: crane copy mosipdev/id-repository-vid-service:release-1.2.2.x harbor.mosip.net/mosipdev/id-repository-vid-service:latest 
- 29-Oct-25 05:55:19  INFO  Successfully created latest tag 
- 29-Oct-25 05:55:19  INFO  Image available at: harbor.mosip.net/mosipdev/id-repository-vid-service:1.2.2.3 
- 29-Oct-25 05:55:19  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:55:19  INFO   
- 29-Oct-25 05:55:19  INFO  ********** [ mosipdev/authentication-otp-service:1.2.1.2-beta.1 ] **************************************************** 
- 29-Oct-25 05:55:19  INFO  Transferring image using crane... 
- 29-Oct-25 05:55:19  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:55:19  INFO  Executing: crane copy mosipdev/authentication-otp-service:release-1.2.1.x harbor.mosip.net/mosipdev/authentication-otp-service:1.2.1.2-beta.1 
- 29-Oct-25 05:55:22  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:55:22  INFO  Creating latest tag: crane copy mosipdev/id-repository-salt-generator:release-1.2.2.x harbor.mosip.net/mosipdev/id-repository-salt-generator:latest 
- 29-Oct-25 05:55:25  INFO  Successfully created latest tag 
- 29-Oct-25 05:55:25  INFO  Image available at: harbor.mosip.net/mosipdev/id-repository-salt-generator:1.2.2.3 
- 29-Oct-25 05:55:25  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:55:25  INFO   
- 29-Oct-25 05:55:25  INFO  ********** [ mosipdev/authentication-internal-service:1.2.1.2-beta.1 ] **************************************************** 
- 29-Oct-25 05:55:25  INFO  Transferring image using crane... 
- 29-Oct-25 05:55:25  INFO  Completed processing mosipdev/id-repository-salt-generator:release-1.2.2.x to mosipdev/id-repository-salt-generator:1.2.2.3 
- 29-Oct-25 05:55:25  INFO  Completed processing mosipdev/id-repository-vid-service:release-1.2.2.x to mosipdev/id-repository-vid-service:1.2.2.3 
- 29-Oct-25 05:55:25  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:55:25  INFO  Executing: crane copy mosipdev/authentication-internal-service:release-1.2.1.x harbor.mosip.net/mosipdev/authentication-internal-service:1.2.1.2-beta.1 
- 29-Oct-25 05:56:19  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:56:19  INFO  Creating latest tag: crane copy mosipdev/apitest-idrepo:release-1.2.2.x harbor.mosip.net/mosipdev/apitest-idrepo:latest 
- 29-Oct-25 05:56:22  INFO  Successfully created latest tag 
- 29-Oct-25 05:56:22  INFO  Image available at: harbor.mosip.net/mosipdev/apitest-idrepo:1.2.2.3 
- 29-Oct-25 05:56:22  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:56:22  INFO   
- 29-Oct-25 05:56:22  INFO  ********** [ mosipdev/authentication-service:1.2.1.2-beta.1 ] **************************************************** 
- 29-Oct-25 05:56:22  INFO  Transferring image using crane... 
- 29-Oct-25 05:56:22  INFO  Completed processing mosipdev/apitest-idrepo:release-1.2.2.x to mosipdev/apitest-idrepo:1.2.2.3 
- 29-Oct-25 05:56:22  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:56:22  INFO  Executing: crane copy mosipdev/authentication-service:release-1.2.1.x harbor.mosip.net/mosipdev/authentication-service:1.2.1.2-beta.1 
- 29-Oct-25 05:57:26  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:57:26  INFO  Creating latest tag: crane copy mosipdev/authentication-otp-service:release-1.2.1.x harbor.mosip.net/mosipdev/authentication-otp-service:latest 
- 29-Oct-25 05:57:29  INFO  Successfully created latest tag 
- 29-Oct-25 05:57:29  INFO  Image available at: harbor.mosip.net/mosipdev/authentication-otp-service:1.2.1.2-beta.1 
- 29-Oct-25 05:57:29  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:57:29  INFO   
- 29-Oct-25 05:57:29  INFO  ********** [ mosipdev/apitest-auth:1.2.1.2-beta.1 ] **************************************************** 
- 29-Oct-25 05:57:29  INFO  Transferring image using crane... 
- 29-Oct-25 05:57:29  INFO  Completed processing mosipdev/authentication-otp-service:release-1.2.1.x to mosipdev/authentication-otp-service:1.2.1.2-beta.1 
- 29-Oct-25 05:57:29  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:57:29  INFO  Executing: crane copy mosipdev/apitest-auth:release-1.2.1.x harbor.mosip.net/mosipdev/apitest-auth:1.2.1.2-beta.1 
- 29-Oct-25 05:57:34  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:57:34  INFO  Creating latest tag: crane copy mosipdev/authentication-internal-service:release-1.2.1.x harbor.mosip.net/mosipdev/authentication-internal-service:latest 
- 29-Oct-25 05:57:37  INFO  Successfully created latest tag 
- 29-Oct-25 05:57:37  INFO  Image available at: harbor.mosip.net/mosipdev/authentication-internal-service:1.2.1.2-beta.1 
- 29-Oct-25 05:57:37  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:57:37  INFO   
- 29-Oct-25 05:57:37  INFO  Completed processing mosipdev/authentication-internal-service:release-1.2.1.x to mosipdev/authentication-internal-service:1.2.1.2-beta.1 
- 29-Oct-25 05:57:37  INFO  ********** [ mosipdev/data-share-service:1.2.0.2 ] **************************************************** 
- 29-Oct-25 05:57:37  INFO  Transferring image using crane... 
- 29-Oct-25 05:57:37  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:57:37  INFO  Executing: crane copy mosipdev/data-share-service:release-1.2.0.x harbor.mosip.net/mosipdev/data-share-service:1.2.0.2 
- 29-Oct-25 05:59:02  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:59:02  INFO  Creating latest tag: crane copy mosipdev/authentication-service:release-1.2.1.x harbor.mosip.net/mosipdev/authentication-service:latest 
- 29-Oct-25 05:59:05  INFO  Successfully created latest tag 
- 29-Oct-25 05:59:05  INFO  Image available at: harbor.mosip.net/mosipdev/authentication-service:1.2.1.2-beta.1 
- 29-Oct-25 05:59:05  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:59:05  INFO   
- 29-Oct-25 05:59:05  INFO  ********** [ mosipdev/registration-processor-registration-transaction-service:1.2.1.2 ] **************************************************** 
- 29-Oct-25 05:59:05  INFO  Transferring image using crane... 
- 29-Oct-25 05:59:05  INFO  Completed processing mosipdev/authentication-service:release-1.2.1.x to mosipdev/authentication-service:1.2.1.2-beta.1 
- 29-Oct-25 05:59:05  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:59:05  INFO  Executing: crane copy mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-registration-transaction-service:1.2.1.2 
- 29-Oct-25 05:59:08  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:59:08  INFO  Creating latest tag: crane copy mosipdev/apitest-auth:release-1.2.1.x harbor.mosip.net/mosipdev/apitest-auth:latest 
- 29-Oct-25 05:59:11  INFO  Successfully transferred image with crane 
- 29-Oct-25 05:59:11  INFO  Creating latest tag: crane copy mosipdev/data-share-service:release-1.2.0.x harbor.mosip.net/mosipdev/data-share-service:latest 
- 29-Oct-25 05:59:11  INFO  Successfully created latest tag 
- 29-Oct-25 05:59:11  INFO  Image available at: harbor.mosip.net/mosipdev/apitest-auth:1.2.1.2-beta.1 
- 29-Oct-25 05:59:11  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:59:11  INFO   
- 29-Oct-25 05:59:11  INFO  ********** [ mosipdev/registration-processor-stage-group-1:1.2.1.2 ] **************************************************** 
- 29-Oct-25 05:59:11  INFO  Transferring image using crane... 
- 29-Oct-25 05:59:11  INFO  Completed processing mosipdev/apitest-auth:release-1.2.1.x to mosipdev/apitest-auth:1.2.1.2-beta.1 
- 29-Oct-25 05:59:11  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:59:11  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-1:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-1:1.2.1.2 
- 29-Oct-25 05:59:14  INFO  Successfully created latest tag 
- 29-Oct-25 05:59:14  INFO  Image available at: harbor.mosip.net/mosipdev/data-share-service:1.2.0.2 
- 29-Oct-25 05:59:14  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 05:59:14  INFO   
- 29-Oct-25 05:59:14  INFO  ********** [ mosipdev/registration-processor-stage-group-2:1.2.1.2 ] **************************************************** 
- 29-Oct-25 05:59:14  INFO  Transferring image using crane... 
- 29-Oct-25 05:59:14  INFO  Completed processing mosipdev/data-share-service:release-1.2.0.x to mosipdev/data-share-service:1.2.0.2 
- 29-Oct-25 05:59:14  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 05:59:14  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-2:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-2:1.2.1.2 
- 29-Oct-25 06:00:39  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:00:39  INFO  Creating latest tag: crane copy mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-registration-transaction-service:latest 
- 29-Oct-25 06:00:42  INFO  Successfully created latest tag 
- 29-Oct-25 06:00:42  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-registration-transaction-service:1.2.1.2 
- 29-Oct-25 06:00:42  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:00:42  INFO   
- 29-Oct-25 06:00:42  INFO  ********** [ mosipdev/registration-processor-stage-group-3:1.2.1.2 ] **************************************************** 
- 29-Oct-25 06:00:42  INFO  Transferring image using crane... 
- 29-Oct-25 06:00:42  INFO  Completed processing mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x to mosipdev/registration-processor-registration-transaction-service:1.2.1.2 
- 29-Oct-25 06:00:42  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 06:00:42  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-3:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-3:1.2.1.2 
- 29-Oct-25 06:00:49  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:00:49  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-2:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-2:latest 
- 29-Oct-25 06:00:52  INFO  Successfully created latest tag 
- 29-Oct-25 06:00:52  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-stage-group-2:1.2.1.2 
- 29-Oct-25 06:00:52  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:00:52  INFO   
- 29-Oct-25 06:00:52  INFO  ********** [ mosipdev/registration-processor-stage-group-4:1.2.1.2 ] **************************************************** 
- 29-Oct-25 06:00:52  INFO  Transferring image using crane... 
- 29-Oct-25 06:00:52  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 06:00:52  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-4:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-4:1.2.1.2 
- 29-Oct-25 06:00:59  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:00:59  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-1:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-1:latest 
- 29-Oct-25 06:01:02  INFO  Successfully created latest tag 
- 29-Oct-25 06:01:02  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-stage-group-1:1.2.1.2 
- 29-Oct-25 06:01:02  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:01:02  INFO   
- 29-Oct-25 06:01:02  INFO  ********** [ mosipdev/registration-processor-stage-group-5:1.2.1.2 ] **************************************************** 
- 29-Oct-25 06:01:02  INFO  Completed processing mosipdev/registration-processor-stage-group-1:release-1.2.1.x to mosipdev/registration-processor-stage-group-1:1.2.1.2 
- 29-Oct-25 06:01:02  INFO  Transferring image using crane... 
- 29-Oct-25 06:01:02  INFO  Completed processing mosipdev/registration-processor-stage-group-2:release-1.2.1.x to mosipdev/registration-processor-stage-group-2:1.2.1.2 
- 29-Oct-25 06:01:02  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 06:01:02  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-5:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-5:1.2.1.2 
- 29-Oct-25 06:02:19  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:02:19  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-3:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-3:latest 
- 29-Oct-25 06:02:23  INFO  Successfully created latest tag 
- 29-Oct-25 06:02:23  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-stage-group-3:1.2.1.2 
- 29-Oct-25 06:02:23  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:02:23  INFO   
- 29-Oct-25 06:02:23  INFO  ********** [ mosipdev/registration-processor-stage-group-6:1.2.1.2 ] **************************************************** 
- 29-Oct-25 06:02:23  INFO  Transferring image using crane... 
- 29-Oct-25 06:02:23  INFO  Completed processing mosipdev/registration-processor-stage-group-3:release-1.2.1.x to mosipdev/registration-processor-stage-group-3:1.2.1.2 
- 29-Oct-25 06:02:23  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 06:02:23  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-6:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-6:1.2.1.2 
- 29-Oct-25 06:02:26  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:02:26  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-4:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-4:latest 
- 29-Oct-25 06:02:29  INFO  Successfully created latest tag 
- 29-Oct-25 06:02:29  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-stage-group-4:1.2.1.2 
- 29-Oct-25 06:02:29  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:02:29  INFO   
- 29-Oct-25 06:02:29  INFO  ********** [ mosipdev/postgres:13 ] **************************************************** 
- 29-Oct-25 06:02:29  INFO  Transferring image using crane... 
- 29-Oct-25 06:02:29  INFO  Completed processing mosipdev/registration-processor-stage-group-4:release-1.2.1.x to mosipdev/registration-processor-stage-group-4:1.2.1.2 
- 29-Oct-25 06:02:29  INFO  Using secure connection for HTTPS registry 
- 29-Oct-25 06:02:29  INFO  Executing: crane copy library/postgres:13 harbor.mosip.net/mosipdev/postgres:13 
- 29-Oct-25 06:02:38  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:02:38  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-5:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-5:latest 
- 29-Oct-25 06:02:41  INFO  Successfully created latest tag 
- 29-Oct-25 06:02:41  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-stage-group-5:1.2.1.2 
- 29-Oct-25 06:02:41  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:02:41  INFO  Completed processing mosipdev/registration-processor-stage-group-5:release-1.2.1.x to mosipdev/registration-processor-stage-group-5:1.2.1.2 
- 29-Oct-25 06:03:52  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:03:52  INFO  Creating latest tag: crane copy library/postgres:13 harbor.mosip.net/mosipdev/postgres:latest 
- 29-Oct-25 06:03:58  INFO  Successfully created latest tag 
- 29-Oct-25 06:03:58  INFO  Image available at: harbor.mosip.net/mosipdev/postgres:13 
- 29-Oct-25 06:03:58  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:04:05  INFO  Successfully transferred image with crane 
- 29-Oct-25 06:04:05  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-6:release-1.2.1.x harbor.mosip.net/mosipdev/registration-processor-stage-group-6:latest 
- 29-Oct-25 06:04:08  INFO  Successfully created latest tag 
- 29-Oct-25 06:04:08  INFO  Image available at: harbor.mosip.net/mosipdev/registration-processor-stage-group-6:1.2.1.2 
- 29-Oct-25 06:04:08  INFO  Crane automatically preserves all architectures and manifest structures 
- 29-Oct-25 06:04:08  INFO  Completed processing mosipdev/registration-processor-stage-group-6:release-1.2.1.x to mosipdev/registration-processor-stage-group-6:1.2.1.2 
- 29-Oct-25 06:04:08  INFO  Completed processing library/postgres:13 to mosipdev/postgres:13 
+ 30-Oct-25 05:25:38  INFO  LOGFILE CREATED : vidivi.log 
+ 30-Oct-25 05:25:38  INFO   
+ 30-Oct-25 05:25:38  INFO  ******************** Check Images List ************************************************************************************ 
+ 30-Oct-25 05:25:38  INFO   
+ 30-Oct-25 05:25:38  INFO  IMAGES= [['mosipdev/id-repository-salt-generator:release-1.2.2.x', '1.2.2.3'], ['mosipdev/id-repository-vid-service:release-1.2.2.x', '1.2.2.3'], ['mosipdev/apitest-idrepo:release-1.2.2.x', '1.2.2.3'], ['mosipdev/authentication-otp-service:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/authentication-internal-service:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/authentication-service:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/apitest-auth:release-1.2.1.x', '1.2.1.2-beta.1'], ['mosipdev/data-share-service:release-1.2.0.x', '1.2.0.2'], ['mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-1:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-2:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-3:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-4:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-5:release-1.2.1.x', '1.2.1.2'], ['mosipdev/registration-processor-stage-group-6:release-1.2.1.x', '1.2.1.2'], ['library/postgres:13', '13']] 
+ 30-Oct-25 05:25:38  INFO   
+ 30-Oct-25 05:25:38  INFO  ******************** Check existence of Source Images ******************************************************************* 
+ 30-Oct-25 05:25:38  INFO   
+ 30-Oct-25 05:25:38  INFO  src = "mosipdev/id-repository-salt-generator" tag = "release-1.2.2.x" 
+ 30-Oct-25 05:25:38  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:38  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-salt-generator:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:38  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:38  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/id-repository-salt-generator/tags/release-1.2.2.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:38  INFO   
+ 30-Oct-25 05:25:38  INFO  src = "mosipdev/id-repository-vid-service" tag = "release-1.2.2.x" 
+ 30-Oct-25 05:25:38  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:38  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/id-repository-vid-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:38  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:38  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/id-repository-vid-service/tags/release-1.2.2.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:38  INFO   
+ 30-Oct-25 05:25:38  INFO  src = "mosipdev/apitest-idrepo" tag = "release-1.2.2.x" 
+ 30-Oct-25 05:25:38  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:38  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-idrepo:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:38  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-idrepo/tags/release-1.2.2.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/authentication-otp-service" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-otp-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-otp-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/authentication-internal-service" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-internal-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-internal-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/authentication-service" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/authentication-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/authentication-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/apitest-auth" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-auth:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-auth/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/data-share-service" tag = "release-1.2.0.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/data-share-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/data-share-service/tags/release-1.2.0.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/registration-processor-registration-transaction-service" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-registration-transaction-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:39  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-registration-transaction-service/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  INFO   
+ 30-Oct-25 05:25:39  INFO  src = "mosipdev/registration-processor-stage-group-1" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:39  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-1:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:39  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-1/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  src = "mosipdev/registration-processor-stage-group-2" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:40  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-2:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-2/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  src = "mosipdev/registration-processor-stage-group-3" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:40  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-3:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-3/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  src = "mosipdev/registration-processor-stage-group-4" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:40  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-4:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-4/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  src = "mosipdev/registration-processor-stage-group-5" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:40  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-5:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-5/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  src = "mosipdev/registration-processor-stage-group-6" tag = "release-1.2.1.x" 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:40  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/registration-processor-stage-group-6:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/registration-processor-stage-group-6/tags/release-1.2.1.x HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  src = "library/postgres" tag = "13" 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:40  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:library/postgres:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:40  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/library/postgres/tags/13 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:40  INFO   
+ 30-Oct-25 05:25:40  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
+ 30-Oct-25 05:25:40  DEBUG  Starting new HTTPS connection (1): hub.docker.com:443 
+ 30-Oct-25 05:25:41  DEBUG  https://hub.docker.com:443 "GET /v2/users/bn1997 HTTP/1.1" 200 263 
+ 30-Oct-25 05:25:41  INFO   
+ 30-Oct-25 05:25:41  INFO  ******************** Check existence of Destination Images *************************************************************** 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/id-repository-salt-generator:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/id-repository-salt-generator/manifests/1.2.2.3 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:41  INFO   
+ 30-Oct-25 05:25:41  INFO  [ bn1997/id-repository-salt-generator ]  
+ 30-Oct-25 05:25:41  INFO  Destination Image = "bn1997/id-repository-salt-generator" Destination Image tag = "1.2.2.3" IMAGE_ID : "sha256:39f28dad0392d51fd73c5d14aa321ea050a382037c4f26a9ad37d01b265e79b6" 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/id-repository-salt-generator:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:41  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/id-repository-salt-generator/tags/1.2.2.3 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/id-repository-vid-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/id-repository-vid-service/manifests/1.2.2.3 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:41  INFO   
+ 30-Oct-25 05:25:41  INFO  [ bn1997/id-repository-vid-service ]  
+ 30-Oct-25 05:25:41  INFO  Destination Image = "bn1997/id-repository-vid-service" Destination Image tag = "1.2.2.3" IMAGE_ID : "sha256:f75dfb5ddc17aa18b4c221fcd050fded02a3059329be62e8023aaa741ff8a86d" 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/id-repository-vid-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:41  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/id-repository-vid-service/tags/1.2.2.3 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/apitest-idrepo:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/apitest-idrepo/manifests/1.2.2.3 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:41  INFO   
+ 30-Oct-25 05:25:41  INFO  [ bn1997/apitest-idrepo ]  
+ 30-Oct-25 05:25:41  INFO  Destination Image = "bn1997/apitest-idrepo" Destination Image tag = "1.2.2.3" IMAGE_ID : "sha256:34949ab8c4fac81a924319f6cd6b381a65ed542fe8b280132a1b30051060775a" 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:41  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/apitest-idrepo:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:41  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/apitest-idrepo/tags/1.2.2.3 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/authentication-otp-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/authentication-otp-service/manifests/1.2.1.2-beta.1 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:42  INFO   
+ 30-Oct-25 05:25:42  INFO  [ bn1997/authentication-otp-service ]  
+ 30-Oct-25 05:25:42  INFO  Destination Image = "bn1997/authentication-otp-service" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID : "sha256:37743301e5eb8e228cf059d24f4f35d7a894ede17d1b0d48285e7fff1687afeb" 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/authentication-otp-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/authentication-otp-service/tags/1.2.1.2-beta.1 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/authentication-internal-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/authentication-internal-service/manifests/1.2.1.2-beta.1 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:42  INFO   
+ 30-Oct-25 05:25:42  INFO  [ bn1997/authentication-internal-service ]  
+ 30-Oct-25 05:25:42  INFO  Destination Image = "bn1997/authentication-internal-service" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID : "sha256:f7790d96e688cc671736fea42014d92b0977caab1fea01b9b7d3e6a4efb23136" 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/authentication-internal-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/authentication-internal-service/tags/1.2.1.2-beta.1 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/authentication-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/authentication-service/manifests/1.2.1.2-beta.1 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:42  INFO   
+ 30-Oct-25 05:25:42  INFO  [ bn1997/authentication-service ]  
+ 30-Oct-25 05:25:42  INFO  Destination Image = "bn1997/authentication-service" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID : "sha256:51041e61918702d27b6a44c9b89afb3a85f1d17e487900b4552e241ee1fdd13d" 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:42  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/authentication-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:42  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/authentication-service/tags/1.2.1.2-beta.1 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:42  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/apitest-auth:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/apitest-auth/manifests/1.2.1.2-beta.1 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:43  INFO   
+ 30-Oct-25 05:25:43  INFO  [ bn1997/apitest-auth ]  
+ 30-Oct-25 05:25:43  INFO  Destination Image = "bn1997/apitest-auth" Destination Image tag = "1.2.1.2-beta.1" IMAGE_ID : "sha256:6b604c0e06fa97a41200f5f87fb8028281ca975b95bf5803042ed9c506b1c4c3" 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/apitest-auth:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:43  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/apitest-auth/tags/1.2.1.2-beta.1 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/data-share-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/data-share-service/manifests/1.2.0.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:43  INFO   
+ 30-Oct-25 05:25:43  INFO  [ bn1997/data-share-service ]  
+ 30-Oct-25 05:25:43  INFO  Destination Image = "bn1997/data-share-service" Destination Image tag = "1.2.0.2" IMAGE_ID : "sha256:fc8db056061eb063385fa425c1a0d6cf063cd279a57fae027a94308549411355" 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/data-share-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:43  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/data-share-service/tags/1.2.0.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-registration-transaction-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-registration-transaction-service/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:43  INFO   
+ 30-Oct-25 05:25:43  INFO  [ bn1997/registration-processor-registration-transaction-service ]  
+ 30-Oct-25 05:25:43  INFO  Destination Image = "bn1997/registration-processor-registration-transaction-service" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:6ef054a32b1fdb7e049995f83ecea6a75047a46dd80b351a82c325f2ad8afefb" 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:43  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-registration-transaction-service:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:43  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-registration-transaction-service/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:43  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-1:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-stage-group-1/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:44  INFO   
+ 30-Oct-25 05:25:44  INFO  [ bn1997/registration-processor-stage-group-1 ]  
+ 30-Oct-25 05:25:44  INFO  Destination Image = "bn1997/registration-processor-stage-group-1" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:1af9387b9b13e06f8352bf13e0b73a29db024e2b4138851fe9f56f16623e1570" 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-1:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:44  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-stage-group-1/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-2:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-stage-group-2/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:44  INFO   
+ 30-Oct-25 05:25:44  INFO  [ bn1997/registration-processor-stage-group-2 ]  
+ 30-Oct-25 05:25:44  INFO  Destination Image = "bn1997/registration-processor-stage-group-2" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:85ad23b7be5cf4cf1fe1092a8e10cd561123364467dc3d87dfd551dca8d51cf3" 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-2:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:44  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-stage-group-2/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-3:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-stage-group-3/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:44  INFO   
+ 30-Oct-25 05:25:44  INFO  [ bn1997/registration-processor-stage-group-3 ]  
+ 30-Oct-25 05:25:44  INFO  Destination Image = "bn1997/registration-processor-stage-group-3" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:40560c845b0925a8d92d064d0a865957f169dbb871fdd274e92447e563e2cfb6" 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:44  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-3:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:44  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-stage-group-3/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:44  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-4:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-stage-group-4/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:45  INFO   
+ 30-Oct-25 05:25:45  INFO  [ bn1997/registration-processor-stage-group-4 ]  
+ 30-Oct-25 05:25:45  INFO  Destination Image = "bn1997/registration-processor-stage-group-4" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:5eccad8ac183e3a0badb1cbc987b1ca4cd7622da8d036c8cd6eaf78fc80b95da" 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-4:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:45  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-stage-group-4/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-5:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-stage-group-5/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:45  INFO   
+ 30-Oct-25 05:25:45  INFO  [ bn1997/registration-processor-stage-group-5 ]  
+ 30-Oct-25 05:25:45  INFO  Destination Image = "bn1997/registration-processor-stage-group-5" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:6657a29cf7594727a62e1e26e62ad7358f60f68bbf6da11591b6bc1eaa47103e" 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-5:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:45  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-stage-group-5/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-6:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/registration-processor-stage-group-6/manifests/1.2.1.2 HTTP/1.1" 200 743 
+ 30-Oct-25 05:25:45  INFO   
+ 30-Oct-25 05:25:45  INFO  [ bn1997/registration-processor-stage-group-6 ]  
+ 30-Oct-25 05:25:45  INFO  Destination Image = "bn1997/registration-processor-stage-group-6" Destination Image tag = "1.2.1.2" IMAGE_ID : "sha256:7b536dcab923b1519370a88c0116ffcc78a47f1f49ac360c16712ff2daa9d485" 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:45  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/registration-processor-stage-group-6:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:45  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:46  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/registration-processor-stage-group-6/tags/1.2.1.2 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:46  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:46  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/postgres:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:46  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 30-Oct-25 05:25:46  DEBUG  https://registry-1.docker.io:443 "GET /v2/bn1997/postgres/manifests/13 HTTP/1.1" 200 10237 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  [ bn1997/postgres ]  
+ 30-Oct-25 05:25:46  INFO  Destination Image = "bn1997/postgres" Destination Image tag = "13" IMAGE_ID : "sha256:9a41ba632f72722f4480663eef10d99a35f0e48b1835a6d1ccfc0b606497616d" 
+ 30-Oct-25 05:25:46  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 30-Oct-25 05:25:46  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:bn1997/postgres:pull HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:46  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 30-Oct-25 05:25:46  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/bn1997/postgres/tags/13 HTTP/1.1" 200 None 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ******************** HASH Operation Results ********************************************************************** 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ******************** Start Image Transfer operation *********************************************************************** 
+ 30-Oct-25 05:25:46  DEBUG  Trying paths: ['/home/runner/.docker/config.json', '/home/runner/.dockercfg'] 
+ 30-Oct-25 05:25:46  DEBUG  Found file at path: /home/runner/.docker/config.json 
+ 30-Oct-25 05:25:46  DEBUG  Found 'auths' section 
+ 30-Oct-25 05:25:46  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='bn1997') 
+ 30-Oct-25 05:25:46  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 824 
+ 30-Oct-25 05:25:46  DEBUG  Looking for auth entry for 'docker.io' 
+ 30-Oct-25 05:25:46  DEBUG  Found 'https://index.docker.io/v1/' 
+ 30-Oct-25 05:25:46  INFO  Using 3 parallel workers for image transfers 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ********** [ bn1997/id-repository-salt-generator:1.2.2.3 ] **************************************************** 
+ 30-Oct-25 05:25:46  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ********** [ bn1997/id-repository-vid-service:1.2.2.3 ] **************************************************** 
+ 30-Oct-25 05:25:46  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ********** [ bn1997/apitest-idrepo:1.2.2.3 ] **************************************************** 
+ 30-Oct-25 05:25:46  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:46  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:46  INFO  Executing: crane copy mosipdev/apitest-idrepo:release-1.2.2.x index.docker.io/bn1997/apitest-idrepo:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:46  INFO  Executing: crane copy mosipdev/id-repository-vid-service:release-1.2.2.x index.docker.io/bn1997/id-repository-vid-service:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:46  INFO  Executing: crane copy mosipdev/id-repository-salt-generator:release-1.2.2.x index.docker.io/bn1997/id-repository-salt-generator:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:46  INFO  Creating latest tag: crane copy mosipdev/apitest-idrepo:release-1.2.2.x index.docker.io/bn1997/apitest-idrepo:latest 
+ 30-Oct-25 05:25:46  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:46  INFO  Creating latest tag: crane copy mosipdev/id-repository-vid-service:release-1.2.2.x index.docker.io/bn1997/id-repository-vid-service:latest 
+ 30-Oct-25 05:25:46  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:46  INFO  Creating latest tag: crane copy mosipdev/id-repository-salt-generator:release-1.2.2.x index.docker.io/bn1997/id-repository-salt-generator:latest 
+ 30-Oct-25 05:25:46  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:46  INFO  Image available at: index.docker.io/bn1997/id-repository-salt-generator:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ********** [ bn1997/authentication-otp-service:1.2.1.2-beta.1 ] **************************************************** 
+ 30-Oct-25 05:25:46  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:46  INFO  Completed processing mosipdev/id-repository-salt-generator:release-1.2.2.x to bn1997/id-repository-salt-generator:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:46  INFO  Executing: crane copy mosipdev/authentication-otp-service:release-1.2.1.x index.docker.io/bn1997/authentication-otp-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:46  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:46  INFO  Image available at: index.docker.io/bn1997/id-repository-vid-service:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ********** [ bn1997/authentication-internal-service:1.2.1.2-beta.1 ] **************************************************** 
+ 30-Oct-25 05:25:46  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:46  INFO  Completed processing mosipdev/id-repository-vid-service:release-1.2.2.x to bn1997/id-repository-vid-service:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:46  INFO  Executing: crane copy mosipdev/authentication-internal-service:release-1.2.1.x index.docker.io/bn1997/authentication-internal-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:46  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:46  INFO  Image available at: index.docker.io/bn1997/apitest-idrepo:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:46  INFO   
+ 30-Oct-25 05:25:46  INFO  ********** [ bn1997/authentication-service:1.2.1.2-beta.1 ] **************************************************** 
+ 30-Oct-25 05:25:46  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:46  INFO  Completed processing mosipdev/apitest-idrepo:release-1.2.2.x to bn1997/apitest-idrepo:1.2.2.3 
+ 30-Oct-25 05:25:46  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:46  INFO  Executing: crane copy mosipdev/authentication-service:release-1.2.1.x index.docker.io/bn1997/authentication-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/authentication-otp-service:release-1.2.1.x index.docker.io/bn1997/authentication-otp-service:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/authentication-internal-service:release-1.2.1.x index.docker.io/bn1997/authentication-internal-service:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/authentication-service:release-1.2.1.x index.docker.io/bn1997/authentication-service:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:47  INFO  Image available at: index.docker.io/bn1997/authentication-internal-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:47  INFO   
+ 30-Oct-25 05:25:47  INFO  ********** [ bn1997/apitest-auth:1.2.1.2-beta.1 ] **************************************************** 
+ 30-Oct-25 05:25:47  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:47  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:47  INFO  Executing: crane copy mosipdev/apitest-auth:release-1.2.1.x index.docker.io/bn1997/apitest-auth:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:47  INFO  Image available at: index.docker.io/bn1997/authentication-otp-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:47  INFO   
+ 30-Oct-25 05:25:47  INFO  ********** [ bn1997/data-share-service:1.2.0.2 ] **************************************************** 
+ 30-Oct-25 05:25:47  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:47  INFO  Completed processing mosipdev/authentication-otp-service:release-1.2.1.x to bn1997/authentication-otp-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Completed processing mosipdev/authentication-internal-service:release-1.2.1.x to bn1997/authentication-internal-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:47  INFO  Executing: crane copy mosipdev/data-share-service:release-1.2.0.x index.docker.io/bn1997/data-share-service:1.2.0.2 
+ 30-Oct-25 05:25:47  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:47  INFO  Image available at: index.docker.io/bn1997/authentication-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:47  INFO   
+ 30-Oct-25 05:25:47  INFO  ********** [ bn1997/registration-processor-registration-transaction-service:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:47  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:47  INFO  Completed processing mosipdev/authentication-service:release-1.2.1.x to bn1997/authentication-service:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:47  INFO  Executing: crane copy mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x index.docker.io/bn1997/registration-processor-registration-transaction-service:1.2.1.2 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/data-share-service:release-1.2.0.x index.docker.io/bn1997/data-share-service:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/apitest-auth:release-1.2.1.x index.docker.io/bn1997/apitest-auth:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x index.docker.io/bn1997/registration-processor-registration-transaction-service:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:47  INFO  Image available at: index.docker.io/bn1997/data-share-service:1.2.0.2 
+ 30-Oct-25 05:25:47  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:47  INFO   
+ 30-Oct-25 05:25:47  INFO  ********** [ bn1997/registration-processor-stage-group-1:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:47  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:47  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:47  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-1:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-1:1.2.1.2 
+ 30-Oct-25 05:25:47  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:47  INFO  Image available at: index.docker.io/bn1997/apitest-auth:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:47  INFO   
+ 30-Oct-25 05:25:47  INFO  ********** [ bn1997/registration-processor-stage-group-2:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:47  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:47  INFO  Completed processing mosipdev/apitest-auth:release-1.2.1.x to bn1997/apitest-auth:1.2.1.2-beta.1 
+ 30-Oct-25 05:25:47  INFO  Completed processing mosipdev/data-share-service:release-1.2.0.x to bn1997/data-share-service:1.2.0.2 
+ 30-Oct-25 05:25:47  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:47  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-2:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-2:1.2.1.2 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-2:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-2:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:47  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-1:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-1:latest 
+ 30-Oct-25 05:25:47  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:47  INFO  Image available at: index.docker.io/bn1997/registration-processor-registration-transaction-service:1.2.1.2 
+ 30-Oct-25 05:25:47  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:47  INFO   
+ 30-Oct-25 05:25:47  INFO  ********** [ bn1997/registration-processor-stage-group-3:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:47  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:47  INFO  Completed processing mosipdev/registration-processor-registration-transaction-service:release-1.2.1.x to bn1997/registration-processor-registration-transaction-service:1.2.1.2 
+ 30-Oct-25 05:25:47  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:47  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-3:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-3:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/registration-processor-stage-group-1:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO   
+ 30-Oct-25 05:25:48  INFO  ********** [ bn1997/registration-processor-stage-group-4:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:48  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:48  INFO  Completed processing mosipdev/registration-processor-stage-group-1:release-1.2.1.x to bn1997/registration-processor-stage-group-1:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:48  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-4:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-4:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/registration-processor-stage-group-2:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO   
+ 30-Oct-25 05:25:48  INFO  ********** [ bn1997/registration-processor-stage-group-5:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:48  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:48  INFO  Completed processing mosipdev/registration-processor-stage-group-2:release-1.2.1.x to bn1997/registration-processor-stage-group-2:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:48  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-5:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-5:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:48  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-3:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-3:latest 
+ 30-Oct-25 05:25:48  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:48  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-4:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-4:latest 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/registration-processor-stage-group-3:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO   
+ 30-Oct-25 05:25:48  INFO  ********** [ bn1997/registration-processor-stage-group-6:1.2.1.2 ] **************************************************** 
+ 30-Oct-25 05:25:48  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:48  INFO  Completed processing mosipdev/registration-processor-stage-group-3:release-1.2.1.x to bn1997/registration-processor-stage-group-3:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:48  INFO  Executing: crane copy mosipdev/registration-processor-stage-group-6:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-6:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:48  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-5:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-5:latest 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/registration-processor-stage-group-4:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO   
+ 30-Oct-25 05:25:48  INFO  ********** [ bn1997/postgres:13 ] **************************************************** 
+ 30-Oct-25 05:25:48  INFO  Transferring image using crane... 
+ 30-Oct-25 05:25:48  INFO  Completed processing mosipdev/registration-processor-stage-group-4:release-1.2.1.x to bn1997/registration-processor-stage-group-4:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Using secure connection for HTTPS registry 
+ 30-Oct-25 05:25:48  INFO  Executing: crane copy library/postgres:13 index.docker.io/bn1997/postgres:13 
+ 30-Oct-25 05:25:48  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:48  INFO  Creating latest tag: crane copy mosipdev/registration-processor-stage-group-6:release-1.2.1.x index.docker.io/bn1997/registration-processor-stage-group-6:latest 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/registration-processor-stage-group-5:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO  Completed processing mosipdev/registration-processor-stage-group-5:release-1.2.1.x to bn1997/registration-processor-stage-group-5:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Successfully transferred image with crane 
+ 30-Oct-25 05:25:48  INFO  Creating latest tag: crane copy library/postgres:13 index.docker.io/bn1997/postgres:latest 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/registration-processor-stage-group-6:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO  Completed processing mosipdev/registration-processor-stage-group-6:release-1.2.1.x to bn1997/registration-processor-stage-group-6:1.2.1.2 
+ 30-Oct-25 05:25:48  INFO  Successfully created latest tag 
+ 30-Oct-25 05:25:48  INFO  Image available at: index.docker.io/bn1997/postgres:13 
+ 30-Oct-25 05:25:48  INFO  Crane automatically preserves all architectures and manifest structures 
+ 30-Oct-25 05:25:48  INFO  Completed processing library/postgres:13 to bn1997/postgres:13 
