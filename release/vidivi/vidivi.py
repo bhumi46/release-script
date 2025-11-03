@@ -437,10 +437,14 @@ def process_image(image, client, remote_client):
                     print_log("Comparing Platform Manifests:", 'info')
                     platform_match_count = 0
                     for src_p in src_manifest_info['platforms']:
-                        src_plat = f"{src_p['os']}/{src_p['arch']}"
+                        src_plat = f"{src_p['os']}/{src_p['architecture']}"
+                        if src_p.get('variant'):
+                            src_plat += f"/{src_p['variant']}"
+                        
                         # Find corresponding dest platform
                         dest_p = next((p for p in dest_manifest_info['platforms'] 
-                                     if p['os'] == src_p['os'] and p['architecture'] == src_p['architecture']), None)
+                                     if p['os'] == src_p['os'] and p['architecture'] == src_p['architecture']
+                                     and p.get('variant') == src_p.get('variant')), None)
                         if dest_p:
                             if src_p['digest'] == dest_p['digest']:
                                 print_log(f"  ✓ {src_plat}: {src_p['digest']} (MATCH)", 'info')
