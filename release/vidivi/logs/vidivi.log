@@ -1,226 +1,336 @@
- 03-Nov-25 05:53:21  INFO  LOGFILE CREATED : vidivi.log 
- 03-Nov-25 05:53:21  INFO   
- 03-Nov-25 05:53:21  INFO  ******************** Check Images List ************************************************************************************ 
- 03-Nov-25 05:53:21  INFO   
- 03-Nov-25 05:53:21  INFO  IMAGES= [['mosipdev/apitest-inji-verify:release-0.15.x', '0.15.0'], ['mosipdev/inji-verify-ui:release-0.15.x', '0.15.0'], ['mosipdev/inji-verify-service:release-0.15.x', '0.15.0'], ['mosipdev/uitest-verify:release-0.15.x', '0.15.0'], ['mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e', 'develop'], ['library/postgres:18', '18']] 
- 03-Nov-25 05:53:21  INFO   
- 03-Nov-25 05:53:21  INFO  ******************** Check existence of Source Images ******************************************************************* 
- 03-Nov-25 05:53:21  INFO   
- 03-Nov-25 05:53:21  INFO  src = "mosipdev/apitest-inji-verify" tag = "release-0.15.x" 
- 03-Nov-25 05:53:21  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 03-Nov-25 05:53:21  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-inji-verify:pull HTTP/1.1" 200 None 
- 03-Nov-25 05:53:21  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 03-Nov-25 05:53:22  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-inji-verify/tags/release-0.15.x HTTP/1.1" 200 None 
- 03-Nov-25 05:53:22  INFO   
- 03-Nov-25 05:53:22  INFO  src = "mosipdev/inji-verify-ui" tag = "release-0.15.x" 
- 03-Nov-25 05:53:22  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 03-Nov-25 05:53:22  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/inji-verify-ui:pull HTTP/1.1" 200 None 
- 03-Nov-25 05:53:22  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 03-Nov-25 05:53:22  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/inji-verify-ui/tags/release-0.15.x HTTP/1.1" 200 826 
- 03-Nov-25 05:53:22  INFO   
- 03-Nov-25 05:53:22  INFO  src = "mosipdev/inji-verify-service" tag = "release-0.15.x" 
- 03-Nov-25 05:53:22  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 03-Nov-25 05:53:22  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/inji-verify-service:pull HTTP/1.1" 200 None 
- 03-Nov-25 05:53:22  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 03-Nov-25 05:53:22  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/inji-verify-service/tags/release-0.15.x HTTP/1.1" 200 None 
- 03-Nov-25 05:53:22  INFO   
- 03-Nov-25 05:53:22  INFO  src = "mosipdev/uitest-verify" tag = "release-0.15.x" 
- 03-Nov-25 05:53:22  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 03-Nov-25 05:53:22  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/uitest-verify:pull HTTP/1.1" 200 None 
- 03-Nov-25 05:53:22  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 03-Nov-25 05:53:23  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/uitest-verify/tags/release-0.15.x HTTP/1.1" 200 None 
- 03-Nov-25 05:53:23  INFO   
- 03-Nov-25 05:53:23  INFO  src = "mosipdev/inji-web" digest = "sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e" 
- 03-Nov-25 05:53:23  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 03-Nov-25 05:53:23  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/inji-web:pull HTTP/1.1" 200 None 
- 03-Nov-25 05:53:23  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
- 03-Nov-25 05:53:23  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/inji-web/manifests/sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e HTTP/1.1" 200 743 
- 03-Nov-25 05:53:23  INFO   
- 03-Nov-25 05:53:23  INFO  src = "library/postgres" tag = "18" 
- 03-Nov-25 05:53:23  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
- 03-Nov-25 05:53:23  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:library/postgres:pull HTTP/1.1" 200 None 
- 03-Nov-25 05:53:23  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
- 03-Nov-25 05:53:23  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/library/postgres/tags/18 HTTP/1.1" 200 None 
- 03-Nov-25 05:53:23  INFO   
- 03-Nov-25 05:53:23  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
- 03-Nov-25 05:53:23  DEBUG  Starting new HTTPS connection (1): hub.docker.com:443 
- 03-Nov-25 05:53:24  DEBUG  https://hub.docker.com:443 "GET /v2/users/praful02 HTTP/1.1" 200 265 
- 03-Nov-25 05:53:24  INFO   
- 03-Nov-25 05:53:24  INFO  ******************** Check existence of Destination Images *************************************************************** 
- 03-Nov-25 05:53:24  INFO   
- 03-Nov-25 05:53:24  INFO  [ praful02/apitest-inji-verify ]  
- 03-Nov-25 05:53:25  WARNING  Crane digest failed for index.docker.io/praful02/apitest-inji-verify:0.15.0: 2025/11/03 05:53:24 HEAD request failed, falling back on GET: HEAD https://index.docker.io/v2/praful02/apitest-inji-verify/manifests/0.15.0: unexpected status code 404 Not Found (HEAD responses have no body, use GET for details)
-Error: GET https://index.docker.io/v2/praful02/apitest-inji-verify/manifests/0.15.0: MANIFEST_UNKNOWN: manifest unknown; unknown tag=0.15.0
- 
- 03-Nov-25 05:53:25  INFO  Destination Image = "praful02/apitest-inji-verify" Destination Image tag = "0.15.0" IMAGE_ID :  
- 03-Nov-25 05:53:25  INFO  Destination image praful02/apitest-inji-verify:0.15.0 does not exist 
- 03-Nov-25 05:53:25  INFO   
- 03-Nov-25 05:53:25  INFO  [ praful02/inji-verify-ui ]  
- 03-Nov-25 05:53:25  WARNING  Crane digest failed for index.docker.io/praful02/inji-verify-ui:0.15.0: 2025/11/03 05:53:25 HEAD request failed, falling back on GET: HEAD https://index.docker.io/v2/praful02/inji-verify-ui/manifests/0.15.0: unexpected status code 404 Not Found (HEAD responses have no body, use GET for details)
-Error: GET https://index.docker.io/v2/praful02/inji-verify-ui/manifests/0.15.0: MANIFEST_UNKNOWN: manifest unknown; unknown tag=0.15.0
- 
- 03-Nov-25 05:53:25  INFO  Destination Image = "praful02/inji-verify-ui" Destination Image tag = "0.15.0" IMAGE_ID :  
- 03-Nov-25 05:53:25  INFO  Destination image praful02/inji-verify-ui:0.15.0 does not exist 
- 03-Nov-25 05:53:25  INFO   
- 03-Nov-25 05:53:25  INFO  [ praful02/inji-verify-service ]  
- 03-Nov-25 05:53:26  WARNING  Crane digest failed for index.docker.io/praful02/inji-verify-service:0.15.0: 2025/11/03 05:53:25 HEAD request failed, falling back on GET: HEAD https://index.docker.io/v2/praful02/inji-verify-service/manifests/0.15.0: unexpected status code 404 Not Found (HEAD responses have no body, use GET for details)
-Error: GET https://index.docker.io/v2/praful02/inji-verify-service/manifests/0.15.0: MANIFEST_UNKNOWN: manifest unknown; unknown tag=0.15.0
- 
- 03-Nov-25 05:53:26  INFO  Destination Image = "praful02/inji-verify-service" Destination Image tag = "0.15.0" IMAGE_ID :  
- 03-Nov-25 05:53:26  INFO  Destination image praful02/inji-verify-service:0.15.0 does not exist 
- 03-Nov-25 05:53:26  INFO   
- 03-Nov-25 05:53:26  INFO  [ praful02/uitest-verify ]  
- 03-Nov-25 05:53:26  WARNING  Crane digest failed for index.docker.io/praful02/uitest-verify:0.15.0: 2025/11/03 05:53:26 HEAD request failed, falling back on GET: HEAD https://index.docker.io/v2/praful02/uitest-verify/manifests/0.15.0: unexpected status code 404 Not Found (HEAD responses have no body, use GET for details)
-Error: GET https://index.docker.io/v2/praful02/uitest-verify/manifests/0.15.0: MANIFEST_UNKNOWN: manifest unknown; unknown tag=0.15.0
- 
- 03-Nov-25 05:53:26  INFO  Destination Image = "praful02/uitest-verify" Destination Image tag = "0.15.0" IMAGE_ID :  
- 03-Nov-25 05:53:26  INFO  Destination image praful02/uitest-verify:0.15.0 does not exist 
- 03-Nov-25 05:53:26  INFO   
- 03-Nov-25 05:53:26  INFO  [ praful02/inji-web ]  
- 03-Nov-25 05:53:27  WARNING  Crane digest failed for index.docker.io/praful02/inji-web:develop: 2025/11/03 05:53:27 HEAD request failed, falling back on GET: HEAD https://index.docker.io/v2/praful02/inji-web/manifests/develop: unexpected status code 404 Not Found (HEAD responses have no body, use GET for details)
-Error: GET https://index.docker.io/v2/praful02/inji-web/manifests/develop: MANIFEST_UNKNOWN: manifest unknown; unknown tag=develop
- 
- 03-Nov-25 05:53:27  INFO  Destination Image = "praful02/inji-web" Destination Image tag = "develop" IMAGE_ID :  
- 03-Nov-25 05:53:27  INFO  Destination image praful02/inji-web:develop does not exist 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  [ praful02/postgres ]  
- 03-Nov-25 05:53:27  WARNING  Crane digest failed for index.docker.io/praful02/postgres:18: 2025/11/03 05:53:27 HEAD request failed, falling back on GET: HEAD https://index.docker.io/v2/praful02/postgres/manifests/18: unexpected status code 404 Not Found (HEAD responses have no body, use GET for details)
-Error: GET https://index.docker.io/v2/praful02/postgres/manifests/18: MANIFEST_UNKNOWN: manifest unknown; unknown tag=18
- 
- 03-Nov-25 05:53:27  INFO  Destination Image = "praful02/postgres" Destination Image tag = "18" IMAGE_ID :  
- 03-Nov-25 05:53:27  INFO  Destination image praful02/postgres:18 does not exist 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  ******************** HASH Operation Results ********************************************************************** 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  Below Destination Images doesn't exists; CONTINUE;
-	[['praful02/apitest-inji-verify:0.15.0'], ['praful02/inji-verify-ui:0.15.0'], ['praful02/inji-verify-service:0.15.0'], ['praful02/uitest-verify:0.15.0'], ['praful02/inji-web:develop'], ['praful02/postgres:18']] 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  ******************** Start Image Transfer operation *********************************************************************** 
- 03-Nov-25 05:53:27  DEBUG  Trying paths: ['/home/runner/.docker/config.json', '/home/runner/.dockercfg'] 
- 03-Nov-25 05:53:27  DEBUG  Found file at path: /home/runner/.docker/config.json 
- 03-Nov-25 05:53:27  DEBUG  Found 'auths' section 
- 03-Nov-25 05:53:27  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='praful02') 
- 03-Nov-25 05:53:27  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 824 
- 03-Nov-25 05:53:27  DEBUG  Looking for auth entry for 'docker.io' 
- 03-Nov-25 05:53:27  DEBUG  Found 'https://index.docker.io/v1/' 
- 03-Nov-25 05:53:27  INFO  Using 3 parallel workers for image transfers 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  ********** [ praful02/apitest-inji-verify:0.15.0 ] **************************************************** 
- 03-Nov-25 05:53:27  INFO  Transferring image using crane... 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  ********** [ praful02/inji-verify-ui:0.15.0 ] **************************************************** 
- 03-Nov-25 05:53:27  INFO  Transferring image using crane... 
- 03-Nov-25 05:53:27  INFO  Source uses tag reference: mosipdev/inji-verify-ui:release-0.15.x 
- 03-Nov-25 05:53:27  INFO   
- 03-Nov-25 05:53:27  INFO  ********** [ praful02/inji-verify-service:0.15.0 ] **************************************************** 
- 03-Nov-25 05:53:27  INFO  Transferring image using crane... 
- 03-Nov-25 05:53:27  INFO  Source uses tag reference: mosipdev/inji-verify-service:release-0.15.x 
- 03-Nov-25 05:53:27  INFO  Source uses tag reference: mosipdev/apitest-inji-verify:release-0.15.x 
- 03-Nov-25 05:53:28  INFO  Source image digest: sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
- 03-Nov-25 05:53:28  INFO  Using secure connection for HTTPS registry 
- 03-Nov-25 05:53:28  INFO  Executing: crane copy mosipdev/inji-verify-ui:release-0.15.x index.docker.io/praful02/inji-verify-ui:0.15.0 
- 03-Nov-25 05:53:28  INFO  Source image digest: sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
- 03-Nov-25 05:53:28  INFO  Using secure connection for HTTPS registry 
- 03-Nov-25 05:53:28  INFO  Executing: crane copy mosipdev/inji-verify-service:release-0.15.x index.docker.io/praful02/inji-verify-service:0.15.0 
- 03-Nov-25 05:53:28  INFO  Source image digest: sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
- 03-Nov-25 05:53:28  INFO  Using secure connection for HTTPS registry 
- 03-Nov-25 05:53:28  INFO  Executing: crane copy mosipdev/apitest-inji-verify:release-0.15.x index.docker.io/praful02/apitest-inji-verify:0.15.0 
- 03-Nov-25 05:53:31  INFO  Successfully transferred image with crane 
- 03-Nov-25 05:53:31  INFO  Successfully transferred image with crane 
- 03-Nov-25 05:53:31  INFO  Successfully transferred image with crane 
- 03-Nov-25 05:53:31  INFO  Destination image digest: sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
- 03-Nov-25 05:53:31  INFO  ✓ SHA/Digest verification PASSED - Images are identical 
- 03-Nov-25 05:53:31  INFO  Creating latest tag: crane copy mosipdev/inji-verify-service:release-0.15.x index.docker.io/praful02/inji-verify-service:latest 
- 03-Nov-25 05:53:31  INFO  Destination image digest: sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
- 03-Nov-25 05:53:31  INFO  ✓ SHA/Digest verification PASSED - Images are identical 
- 03-Nov-25 05:53:31  INFO  Creating latest tag: crane copy mosipdev/inji-verify-ui:release-0.15.x index.docker.io/praful02/inji-verify-ui:latest 
- 03-Nov-25 05:53:32  INFO  Destination image digest: sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
- 03-Nov-25 05:53:32  INFO  ✓ SHA/Digest verification PASSED - Images are identical 
- 03-Nov-25 05:53:32  INFO  Creating latest tag: crane copy mosipdev/apitest-inji-verify:release-0.15.x index.docker.io/praful02/apitest-inji-verify:latest 
- 03-Nov-25 05:53:34  INFO  Successfully created latest tag 
- 03-Nov-25 05:53:34  INFO  Image available at: index.docker.io/praful02/inji-verify-service:0.15.0 
- 03-Nov-25 05:53:34  INFO  Crane automatically preserves all architectures and manifest structures 
- 03-Nov-25 05:53:34  INFO  Successfully created latest tag 
- 03-Nov-25 05:53:34  INFO  Image available at: index.docker.io/praful02/inji-verify-ui:0.15.0 
- 03-Nov-25 05:53:34  INFO  Crane automatically preserves all architectures and manifest structures 
- 03-Nov-25 05:53:34  INFO  ✓ Multi-arch image confirmed: 2 platform(s) 
- 03-Nov-25 05:53:34  INFO    - Platform: linux/amd64 
- 03-Nov-25 05:53:34  INFO    - Platform: linux/arm64 
- 03-Nov-25 05:53:34  INFO   
- 03-Nov-25 05:53:34  INFO  ********** [ praful02/uitest-verify:0.15.0 ] **************************************************** 
- 03-Nov-25 05:53:34  INFO  Transferring image using crane... 
- 03-Nov-25 05:53:34  INFO  Source uses tag reference: mosipdev/uitest-verify:release-0.15.x 
- 03-Nov-25 05:53:34  INFO  Successfully created latest tag 
- 03-Nov-25 05:53:34  INFO  Image available at: index.docker.io/praful02/apitest-inji-verify:0.15.0 
- 03-Nov-25 05:53:34  INFO  Crane automatically preserves all architectures and manifest structures 
- 03-Nov-25 05:53:34  INFO  ✓ Single-arch image 
- 03-Nov-25 05:53:34  INFO   
- 03-Nov-25 05:53:34  INFO  ********** [ praful02/inji-web:develop ] **************************************************** 
- 03-Nov-25 05:53:34  INFO  Transferring image using crane... 
- 03-Nov-25 05:53:34  INFO  Source uses digest reference: mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
- 03-Nov-25 05:53:34  INFO  Source image digest: sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
- 03-Nov-25 05:53:34  INFO  Using secure connection for HTTPS registry 
- 03-Nov-25 05:53:34  INFO  Executing: crane copy mosipdev/uitest-verify:release-0.15.x index.docker.io/praful02/uitest-verify:0.15.0 
- 03-Nov-25 05:53:34  INFO  ✓ Multi-arch image confirmed: 2 platform(s) 
- 03-Nov-25 05:53:34  INFO    - Platform: linux/amd64 
- 03-Nov-25 05:53:34  INFO    - Platform: linux/arm64 
- 03-Nov-25 05:53:34  INFO   
- 03-Nov-25 05:53:34  INFO  ********** [ praful02/postgres:18 ] **************************************************** 
- 03-Nov-25 05:53:34  INFO  Completed processing mosipdev/apitest-inji-verify:release-0.15.x to praful02/apitest-inji-verify:0.15.0 
- 03-Nov-25 05:53:34  INFO  Transferring image using crane... 
- 03-Nov-25 05:53:34  INFO  Completed processing mosipdev/inji-verify-ui:release-0.15.x to praful02/inji-verify-ui:0.15.0 
- 03-Nov-25 05:53:34  INFO  Completed processing mosipdev/inji-verify-service:release-0.15.x to praful02/inji-verify-service:0.15.0 
- 03-Nov-25 05:53:34  INFO  Source uses tag reference: library/postgres:18 
- 03-Nov-25 05:53:35  INFO  Source image digest: sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
- 03-Nov-25 05:53:35  INFO  Using secure connection for HTTPS registry 
- 03-Nov-25 05:53:35  INFO  Executing: crane copy mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e index.docker.io/praful02/inji-web:develop 
- 03-Nov-25 05:53:35  INFO  Source image digest: sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
- 03-Nov-25 05:53:35  INFO  Using secure connection for HTTPS registry 
- 03-Nov-25 05:53:35  INFO  Executing: crane copy library/postgres:18 index.docker.io/praful02/postgres:18 
- 03-Nov-25 05:53:39  INFO  Successfully transferred image with crane 
- 03-Nov-25 05:53:39  INFO  Destination image digest: sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
- 03-Nov-25 05:53:39  INFO  ✓ SHA/Digest verification PASSED - Images are identical 
- 03-Nov-25 05:53:39  INFO  Creating latest tag: crane copy mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e index.docker.io/praful02/inji-web:latest 
- 03-Nov-25 05:53:39  INFO  Successfully transferred image with crane 
- 03-Nov-25 05:53:40  INFO  Destination image digest: sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
- 03-Nov-25 05:53:40  INFO  ✓ SHA/Digest verification PASSED - Images are identical 
- 03-Nov-25 05:53:40  INFO  Creating latest tag: crane copy mosipdev/uitest-verify:release-0.15.x index.docker.io/praful02/uitest-verify:latest 
- 03-Nov-25 05:53:41  INFO  Successfully created latest tag 
- 03-Nov-25 05:53:41  INFO  Image available at: index.docker.io/praful02/inji-web:develop 
- 03-Nov-25 05:53:41  INFO  Crane automatically preserves all architectures and manifest structures 
- 03-Nov-25 05:53:42  INFO  ✓ Multi-arch image confirmed: 2 platform(s) 
- 03-Nov-25 05:53:42  INFO    - Platform: linux/amd64 
- 03-Nov-25 05:53:42  INFO    - Platform: linux/arm64 
- 03-Nov-25 05:53:42  INFO  Successfully created latest tag 
- 03-Nov-25 05:53:42  INFO  Image available at: index.docker.io/praful02/uitest-verify:0.15.0 
- 03-Nov-25 05:53:42  INFO  Crane automatically preserves all architectures and manifest structures 
- 03-Nov-25 05:53:42  INFO  ✓ Multi-arch image confirmed: 2 platform(s) 
- 03-Nov-25 05:53:42  INFO    - Platform: linux/amd64 
- 03-Nov-25 05:53:42  INFO    - Platform: linux/arm64 
- 03-Nov-25 05:53:43  INFO  Completed processing mosipdev/uitest-verify:release-0.15.x to praful02/uitest-verify:0.15.0 
- 03-Nov-25 05:53:43  INFO  Completed processing mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e to praful02/inji-web:develop 
- 03-Nov-25 05:53:44  INFO  Successfully transferred image with crane 
- 03-Nov-25 05:53:44  INFO  Destination image digest: sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
- 03-Nov-25 05:53:44  INFO  ✓ SHA/Digest verification PASSED - Images are identical 
- 03-Nov-25 05:53:44  INFO  Creating latest tag: crane copy library/postgres:18 index.docker.io/praful02/postgres:latest 
- 03-Nov-25 05:53:49  INFO  Successfully created latest tag 
- 03-Nov-25 05:53:49  INFO  Image available at: index.docker.io/praful02/postgres:18 
- 03-Nov-25 05:53:49  INFO  Crane automatically preserves all architectures and manifest structures 
- 03-Nov-25 05:53:49  INFO  ✓ Multi-arch image confirmed: 16 platform(s) 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/amd64 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/arm 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/arm 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/arm64 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/386 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/ppc64le 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/riscv64 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO    - Platform: linux/s390x 
- 03-Nov-25 05:53:49  INFO    - Platform: unknown/unknown 
- 03-Nov-25 05:53:49  INFO  Completed processing library/postgres:18 to praful02/postgres:18 
+ 03-Nov-25 07:37:49  INFO  LOGFILE CREATED : vidivi.log 
+ 03-Nov-25 07:37:49  INFO   
+ 03-Nov-25 07:37:49  INFO  ******************** Check Images List ************************************************************************************ 
+ 03-Nov-25 07:37:49  INFO   
+ 03-Nov-25 07:37:49  INFO  IMAGES= [['mosipdev/apitest-inji-verify:release-0.15.x', '0.15.0'], ['mosipdev/inji-verify-ui:release-0.15.x', '0.15.0'], ['mosipdev/inji-verify-service:release-0.15.x', '0.15.0'], ['mosipdev/uitest-verify:release-0.15.x', '0.15.0'], ['mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e', 'develop'], ['library/postgres:18', '18']] 
+ 03-Nov-25 07:37:49  INFO   
+ 03-Nov-25 07:37:49  INFO  ******************** Check existence of Source Images ******************************************************************* 
+ 03-Nov-25 07:37:49  INFO   
+ 03-Nov-25 07:37:49  INFO  src = "mosipdev/apitest-inji-verify" tag = "release-0.15.x" 
+ 03-Nov-25 07:37:49  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Nov-25 07:37:49  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/apitest-inji-verify:pull HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:49  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Nov-25 07:37:50  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/apitest-inji-verify/tags/release-0.15.x HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:50  INFO   
+ 03-Nov-25 07:37:50  INFO  src = "mosipdev/inji-verify-ui" tag = "release-0.15.x" 
+ 03-Nov-25 07:37:50  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Nov-25 07:37:50  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/inji-verify-ui:pull HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:50  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Nov-25 07:37:50  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/inji-verify-ui/tags/release-0.15.x HTTP/1.1" 200 826 
+ 03-Nov-25 07:37:50  INFO   
+ 03-Nov-25 07:37:50  INFO  src = "mosipdev/inji-verify-service" tag = "release-0.15.x" 
+ 03-Nov-25 07:37:50  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Nov-25 07:37:50  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/inji-verify-service:pull HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:50  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Nov-25 07:37:50  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/inji-verify-service/tags/release-0.15.x HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:50  INFO   
+ 03-Nov-25 07:37:50  INFO  src = "mosipdev/uitest-verify" tag = "release-0.15.x" 
+ 03-Nov-25 07:37:50  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Nov-25 07:37:51  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/uitest-verify:pull HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:51  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Nov-25 07:37:51  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/mosipdev/uitest-verify/tags/release-0.15.x HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:51  INFO   
+ 03-Nov-25 07:37:51  INFO  src = "mosipdev/inji-web" digest = "sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e" 
+ 03-Nov-25 07:37:51  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Nov-25 07:37:51  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:mosipdev/inji-web:pull HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:51  DEBUG  Starting new HTTPS connection (1): registry-1.docker.io:443 
+ 03-Nov-25 07:37:51  DEBUG  https://registry-1.docker.io:443 "GET /v2/mosipdev/inji-web/manifests/sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e HTTP/1.1" 200 743 
+ 03-Nov-25 07:37:51  INFO   
+ 03-Nov-25 07:37:51  INFO  src = "library/postgres" tag = "18" 
+ 03-Nov-25 07:37:51  DEBUG  Starting new HTTPS connection (1): auth.docker.io:443 
+ 03-Nov-25 07:37:51  DEBUG  https://auth.docker.io:443 "GET /token?service=registry.docker.io&scope=repository:library/postgres:pull HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:51  DEBUG  Starting new HTTPS connection (1): registry.hub.docker.com:443 
+ 03-Nov-25 07:37:52  DEBUG  https://registry.hub.docker.com:443 "GET /v2/repositories/library/postgres/tags/18 HTTP/1.1" 200 None 
+ 03-Nov-25 07:37:52  INFO   
+ 03-Nov-25 07:37:52  INFO  ******************** Check existence of Destination Docker Account *************************************************************** 
+ 03-Nov-25 07:37:52  DEBUG  Starting new HTTPS connection (1): hub.docker.com:443 
+ 03-Nov-25 07:37:52  DEBUG  https://hub.docker.com:443 "GET /v2/users/bn46 HTTP/1.1" 200 274 
+ 03-Nov-25 07:37:52  INFO   
+ 03-Nov-25 07:37:52  INFO  ******************** Check existence of Destination Images *************************************************************** 
+ 03-Nov-25 07:37:52  INFO   
+ 03-Nov-25 07:37:52  INFO  [ bn46/apitest-inji-verify ]  
+ 03-Nov-25 07:37:52  INFO  Destination Image = "bn46/apitest-inji-verify" Destination Image tag = "0.15.0" IMAGE_ID : sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
+ 03-Nov-25 07:37:52  INFO   
+ 03-Nov-25 07:37:52  INFO  [ bn46/inji-verify-ui ]  
+ 03-Nov-25 07:37:53  INFO  Destination Image = "bn46/inji-verify-ui" Destination Image tag = "0.15.0" IMAGE_ID : sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
+ 03-Nov-25 07:37:53  INFO   
+ 03-Nov-25 07:37:53  INFO  [ bn46/inji-verify-service ]  
+ 03-Nov-25 07:37:53  INFO  Destination Image = "bn46/inji-verify-service" Destination Image tag = "0.15.0" IMAGE_ID : sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
+ 03-Nov-25 07:37:53  INFO   
+ 03-Nov-25 07:37:53  INFO  [ bn46/uitest-verify ]  
+ 03-Nov-25 07:37:53  INFO  Destination Image = "bn46/uitest-verify" Destination Image tag = "0.15.0" IMAGE_ID : sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
+ 03-Nov-25 07:37:53  INFO   
+ 03-Nov-25 07:37:53  INFO  [ bn46/inji-web ]  
+ 03-Nov-25 07:37:54  INFO  Destination Image = "bn46/inji-web" Destination Image tag = "develop" IMAGE_ID : sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
+ 03-Nov-25 07:37:54  INFO   
+ 03-Nov-25 07:37:54  INFO  [ bn46/postgres ]  
+ 03-Nov-25 07:37:54  INFO  Destination Image = "bn46/postgres" Destination Image tag = "18" IMAGE_ID : sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
+ 03-Nov-25 07:37:54  INFO   
+ 03-Nov-25 07:37:54  INFO  ******************** HASH Operation Results ********************************************************************** 
+ 03-Nov-25 07:37:54  INFO   
+ 03-Nov-25 07:37:54  INFO  ******************** Start Image Transfer operation *********************************************************************** 
+ 03-Nov-25 07:37:54  DEBUG  Trying paths: ['/home/runner/.docker/config.json', '/home/runner/.dockercfg'] 
+ 03-Nov-25 07:37:54  DEBUG  Found file at path: /home/runner/.docker/config.json 
+ 03-Nov-25 07:37:54  DEBUG  Found 'auths' section 
+ 03-Nov-25 07:37:54  DEBUG  Found entry (registry='https://index.docker.io/v1/', username='bn46') 
+ 03-Nov-25 07:37:54  DEBUG  http://localhost:None "GET /version HTTP/1.1" 200 824 
+ 03-Nov-25 07:37:54  DEBUG  Looking for auth entry for 'docker.io' 
+ 03-Nov-25 07:37:54  DEBUG  Found 'https://index.docker.io/v1/' 
+ 03-Nov-25 07:37:54  INFO  Using 3 parallel workers for image transfers 
+ 03-Nov-25 07:37:54  INFO   
+ 03-Nov-25 07:37:54  INFO  ********** [ bn46/apitest-inji-verify:0.15.0 ] **************************************************** 
+ 03-Nov-25 07:37:54  INFO  Transferring image using crane... 
+ 03-Nov-25 07:37:54  INFO   
+ 03-Nov-25 07:37:54  INFO  ********** [ bn46/inji-verify-ui:0.15.0 ] **************************************************** 
+ 03-Nov-25 07:37:54  INFO  Transferring image using crane... 
+ 03-Nov-25 07:37:54  INFO   
+ 03-Nov-25 07:37:54  INFO  ********** [ bn46/inji-verify-service:0.15.0 ] **************************************************** 
+ 03-Nov-25 07:37:54  INFO  Transferring image using crane... 
+ 03-Nov-25 07:37:54  INFO  Source uses tag reference: mosipdev/inji-verify-service:release-0.15.x 
+ 03-Nov-25 07:37:54  INFO  Analyzing source image manifest... 
+ 03-Nov-25 07:37:54  INFO  Source uses tag reference: mosipdev/inji-verify-ui:release-0.15.x 
+ 03-Nov-25 07:37:54  INFO  Analyzing source image manifest... 
+ 03-Nov-25 07:37:54  INFO  Source uses tag reference: mosipdev/apitest-inji-verify:release-0.15.x 
+ 03-Nov-25 07:37:54  INFO  Analyzing source image manifest... 
+ 03-Nov-25 07:37:55  INFO  Source is MULTI-ARCH image 
+ 03-Nov-25 07:37:55  INFO  Source Index Digest (Manifest List): sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
+ 03-Nov-25 07:37:55  INFO  Source has 2 platform(s): 
+ 03-Nov-25 07:37:55  INFO    - linux/amd64: sha256:327c87242de39ea5cce6e55b3e794d49739271dda817c95f444447e2beb236af 
+ 03-Nov-25 07:37:55  INFO    - linux/arm64: sha256:a0296c3dc71e0b22ef01d1e387562165f5471d9e9fb32328a9e035e93aa07fe4 
+ 03-Nov-25 07:37:55  INFO  Using secure connection for HTTPS registry 
+ 03-Nov-25 07:37:55  INFO  Executing: crane copy mosipdev/inji-verify-service:release-0.15.x index.docker.io/bn46/inji-verify-service:0.15.0 
+ 03-Nov-25 07:37:55  INFO  Source is SINGLE-ARCH image 
+ 03-Nov-25 07:37:55  INFO  Source Platform Digest: sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
+ 03-Nov-25 07:37:55  INFO  Using secure connection for HTTPS registry 
+ 03-Nov-25 07:37:55  INFO  Executing: crane copy mosipdev/inji-verify-ui:release-0.15.x index.docker.io/bn46/inji-verify-ui:0.15.0 
+ 03-Nov-25 07:37:55  INFO  Source is MULTI-ARCH image 
+ 03-Nov-25 07:37:55  INFO  Source Index Digest (Manifest List): sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
+ 03-Nov-25 07:37:55  INFO  Source has 2 platform(s): 
+ 03-Nov-25 07:37:55  INFO    - linux/amd64: sha256:c6da5d434ccf84d773c18abab778bef8bd4993951389232105799b2d83da5ccb 
+ 03-Nov-25 07:37:55  INFO    - linux/arm64: sha256:5000657f2077644e80e97639d70a7012e4a17e94ee501a6ca2b17e155a69dc41 
+ 03-Nov-25 07:37:55  INFO  Using secure connection for HTTPS registry 
+ 03-Nov-25 07:37:55  INFO  Executing: crane copy mosipdev/apitest-inji-verify:release-0.15.x index.docker.io/bn46/apitest-inji-verify:0.15.0 
+ 03-Nov-25 07:37:56  INFO  Successfully transferred image with crane 
+ 03-Nov-25 07:37:56  INFO   
+ 03-Nov-25 07:37:56  INFO  Analyzing destination image manifest... 
+ 03-Nov-25 07:37:56  INFO  Successfully transferred image with crane 
+ 03-Nov-25 07:37:56  INFO   
+ 03-Nov-25 07:37:56  INFO  Analyzing destination image manifest... 
+ 03-Nov-25 07:37:56  INFO  Successfully transferred image with crane 
+ 03-Nov-25 07:37:56  INFO   
+ 03-Nov-25 07:37:56  INFO  Analyzing destination image manifest... 
+ 03-Nov-25 07:37:57  INFO  Destination is MULTI-ARCH image 
+ 03-Nov-25 07:37:57  INFO  Destination Index Digest (Manifest List): sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
+ 03-Nov-25 07:37:57  INFO  Destination has 2 platform(s): 
+ 03-Nov-25 07:37:57  INFO    - linux/amd64: sha256:c6da5d434ccf84d773c18abab778bef8bd4993951389232105799b2d83da5ccb 
+ 03-Nov-25 07:37:57  INFO    - linux/arm64: sha256:5000657f2077644e80e97639d70a7012e4a17e94ee501a6ca2b17e155a69dc41 
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO  === DIGEST VERIFICATION === 
+ 03-Nov-25 07:37:57  INFO  Comparing Index Digests (Manifest Lists): 
+ 03-Nov-25 07:37:57  INFO    Source:      sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
+ 03-Nov-25 07:37:57  INFO    Destination: sha256:e02f3ec60529be84e445cb7929bce3c764ff267c3026c8f7417b40725f6bf48a 
+ 03-Nov-25 07:37:57  INFO  ✓ Index Digest MATCH - Multi-arch structure preserved perfectly! 
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO  Comparing Platform Manifests: 
+ 03-Nov-25 07:37:57  INFO    ✓ linux/amd64: sha256:c6da5d434ccf84d773c18abab778bef8bd4993951389232105799b2d83da5ccb (MATCH) 
+ 03-Nov-25 07:37:57  INFO    ✓ linux/arm64: sha256:5000657f2077644e80e97639d70a7012e4a17e94ee501a6ca2b17e155a69dc41 (MATCH) 
+ 03-Nov-25 07:37:57  INFO  ✓ All 2 platform manifest(s) match perfectly! 
+ 03-Nov-25 07:37:57  INFO  Creating latest tag: crane copy mosipdev/apitest-inji-verify:release-0.15.x index.docker.io/bn46/apitest-inji-verify:latest 
+ 03-Nov-25 07:37:57  INFO  Destination is SINGLE-ARCH image 
+ 03-Nov-25 07:37:57  INFO  Destination Platform Digest: sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO  === DIGEST VERIFICATION === 
+ 03-Nov-25 07:37:57  INFO  Comparing Platform Digests: 
+ 03-Nov-25 07:37:57  INFO    Source:      sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
+ 03-Nov-25 07:37:57  INFO    Destination: sha256:9f78deac6ccdb42b7ec897f4ad599cba16ac44ab94b1b42f6bc2f10103d11736 
+ 03-Nov-25 07:37:57  INFO  ✓ Platform Digest MATCH - Images are identical! 
+ 03-Nov-25 07:37:57  INFO  Creating latest tag: crane copy mosipdev/inji-verify-ui:release-0.15.x index.docker.io/bn46/inji-verify-ui:latest 
+ 03-Nov-25 07:37:57  INFO  Destination is MULTI-ARCH image 
+ 03-Nov-25 07:37:57  INFO  Destination Index Digest (Manifest List): sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
+ 03-Nov-25 07:37:57  INFO  Destination has 2 platform(s): 
+ 03-Nov-25 07:37:57  INFO    - linux/amd64: sha256:327c87242de39ea5cce6e55b3e794d49739271dda817c95f444447e2beb236af 
+ 03-Nov-25 07:37:57  INFO    - linux/arm64: sha256:a0296c3dc71e0b22ef01d1e387562165f5471d9e9fb32328a9e035e93aa07fe4 
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO  === DIGEST VERIFICATION === 
+ 03-Nov-25 07:37:57  INFO  Comparing Index Digests (Manifest Lists): 
+ 03-Nov-25 07:37:57  INFO    Source:      sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
+ 03-Nov-25 07:37:57  INFO    Destination: sha256:3fbde48752936b69dc5d1de8229b176291f0d0140c2590f2d34138e38226cd0f 
+ 03-Nov-25 07:37:57  INFO  ✓ Index Digest MATCH - Multi-arch structure preserved perfectly! 
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO  Comparing Platform Manifests: 
+ 03-Nov-25 07:37:57  INFO    ✓ linux/amd64: sha256:327c87242de39ea5cce6e55b3e794d49739271dda817c95f444447e2beb236af (MATCH) 
+ 03-Nov-25 07:37:57  INFO    ✓ linux/arm64: sha256:a0296c3dc71e0b22ef01d1e387562165f5471d9e9fb32328a9e035e93aa07fe4 (MATCH) 
+ 03-Nov-25 07:37:57  INFO  ✓ All 2 platform manifest(s) match perfectly! 
+ 03-Nov-25 07:37:57  INFO  Creating latest tag: crane copy mosipdev/inji-verify-service:release-0.15.x index.docker.io/bn46/inji-verify-service:latest 
+ 03-Nov-25 07:37:57  INFO  Successfully created latest tag 
+ 03-Nov-25 07:37:57  INFO  Image available at: index.docker.io/bn46/inji-verify-ui:0.15.0 
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO   
+ 03-Nov-25 07:37:57  INFO  ********** [ bn46/uitest-verify:0.15.0 ] **************************************************** 
+ 03-Nov-25 07:37:57  INFO  Transferring image using crane... 
+ 03-Nov-25 07:37:57  INFO  Source uses tag reference: mosipdev/uitest-verify:release-0.15.x 
+ 03-Nov-25 07:37:57  INFO  Analyzing source image manifest... 
+ 03-Nov-25 07:37:58  INFO  Source is MULTI-ARCH image 
+ 03-Nov-25 07:37:58  INFO  Source Index Digest (Manifest List): sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
+ 03-Nov-25 07:37:58  INFO  Source has 2 platform(s): 
+ 03-Nov-25 07:37:58  INFO    - linux/amd64: sha256:e63a3a871934995b805827fd1c06a7f210777510e292aae511add880ca554422 
+ 03-Nov-25 07:37:58  INFO    - linux/arm64: sha256:8ec2e7cc67eb2522b81b9ffb4b0312806ee5b7902723b489b3abbc8872a21cc1 
+ 03-Nov-25 07:37:58  INFO  Using secure connection for HTTPS registry 
+ 03-Nov-25 07:37:58  INFO  Executing: crane copy mosipdev/uitest-verify:release-0.15.x index.docker.io/bn46/uitest-verify:0.15.0 
+ 03-Nov-25 07:37:59  INFO  Successfully transferred image with crane 
+ 03-Nov-25 07:37:59  INFO   
+ 03-Nov-25 07:37:59  INFO  Analyzing destination image manifest... 
+ 03-Nov-25 07:37:59  INFO  Successfully created latest tag 
+ 03-Nov-25 07:37:59  INFO  Image available at: index.docker.io/bn46/apitest-inji-verify:0.15.0 
+ 03-Nov-25 07:37:59  INFO   
+ 03-Nov-25 07:37:59  INFO  NOTE: For multi-arch images, the Index Digest (manifest list) is what matters most. 
+ 03-Nov-25 07:37:59  INFO  Individual platform manifests should also match to ensure identical content. 
+ 03-Nov-25 07:37:59  INFO   
+ 03-Nov-25 07:37:59  INFO  ********** [ bn46/inji-web:develop ] **************************************************** 
+ 03-Nov-25 07:37:59  INFO  Transferring image using crane... 
+ 03-Nov-25 07:37:59  INFO  Completed processing mosipdev/apitest-inji-verify:release-0.15.x to bn46/apitest-inji-verify:0.15.0 
+ 03-Nov-25 07:37:59  INFO  Completed processing mosipdev/inji-verify-ui:release-0.15.x to bn46/inji-verify-ui:0.15.0 
+ 03-Nov-25 07:37:59  INFO  Source uses digest reference: mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
+ 03-Nov-25 07:37:59  INFO  Analyzing source image manifest... 
+ 03-Nov-25 07:37:59  INFO  Successfully created latest tag 
+ 03-Nov-25 07:37:59  INFO  Image available at: index.docker.io/bn46/inji-verify-service:0.15.0 
+ 03-Nov-25 07:37:59  INFO   
+ 03-Nov-25 07:37:59  INFO  NOTE: For multi-arch images, the Index Digest (manifest list) is what matters most. 
+ 03-Nov-25 07:37:59  INFO  Individual platform manifests should also match to ensure identical content. 
+ 03-Nov-25 07:37:59  INFO   
+ 03-Nov-25 07:37:59  INFO  ********** [ bn46/postgres:18 ] **************************************************** 
+ 03-Nov-25 07:37:59  INFO  Transferring image using crane... 
+ 03-Nov-25 07:37:59  INFO  Completed processing mosipdev/inji-verify-service:release-0.15.x to bn46/inji-verify-service:0.15.0 
+ 03-Nov-25 07:37:59  INFO  Source uses tag reference: library/postgres:18 
+ 03-Nov-25 07:37:59  INFO  Analyzing source image manifest... 
+ 03-Nov-25 07:38:00  INFO  Destination is MULTI-ARCH image 
+ 03-Nov-25 07:38:00  INFO  Destination Index Digest (Manifest List): sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
+ 03-Nov-25 07:38:00  INFO  Destination has 2 platform(s): 
+ 03-Nov-25 07:38:00  INFO    - linux/amd64: sha256:e63a3a871934995b805827fd1c06a7f210777510e292aae511add880ca554422 
+ 03-Nov-25 07:38:00  INFO    - linux/arm64: sha256:8ec2e7cc67eb2522b81b9ffb4b0312806ee5b7902723b489b3abbc8872a21cc1 
+ 03-Nov-25 07:38:00  INFO   
+ 03-Nov-25 07:38:00  INFO  === DIGEST VERIFICATION === 
+ 03-Nov-25 07:38:00  INFO  Comparing Index Digests (Manifest Lists): 
+ 03-Nov-25 07:38:00  INFO    Source:      sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
+ 03-Nov-25 07:38:00  INFO    Destination: sha256:efd8b19811154178a0405621adc09d03c3ecf8184def95408f9d9121e9fa2f5e 
+ 03-Nov-25 07:38:00  INFO  ✓ Index Digest MATCH - Multi-arch structure preserved perfectly! 
+ 03-Nov-25 07:38:00  INFO   
+ 03-Nov-25 07:38:00  INFO  Comparing Platform Manifests: 
+ 03-Nov-25 07:38:00  INFO    ✓ linux/amd64: sha256:e63a3a871934995b805827fd1c06a7f210777510e292aae511add880ca554422 (MATCH) 
+ 03-Nov-25 07:38:00  INFO    ✓ linux/arm64: sha256:8ec2e7cc67eb2522b81b9ffb4b0312806ee5b7902723b489b3abbc8872a21cc1 (MATCH) 
+ 03-Nov-25 07:38:00  INFO  ✓ All 2 platform manifest(s) match perfectly! 
+ 03-Nov-25 07:38:00  INFO  Creating latest tag: crane copy mosipdev/uitest-verify:release-0.15.x index.docker.io/bn46/uitest-verify:latest 
+ 03-Nov-25 07:38:00  INFO  Source is MULTI-ARCH image 
+ 03-Nov-25 07:38:00  INFO  Source Index Digest (Manifest List): sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
+ 03-Nov-25 07:38:00  INFO  Source has 2 platform(s): 
+ 03-Nov-25 07:38:00  INFO    - linux/amd64: sha256:a2a00a666b7659a5690dd1b53cf547f765e56357c678fcc88e86be3f7c24c0bd 
+ 03-Nov-25 07:38:00  INFO    - linux/arm64: sha256:0a3134cd5b5c9bbf3cefeaf6ec3a61cfe0953e5e1fa8b7cce24e1eb097b9038e 
+ 03-Nov-25 07:38:00  INFO  Using secure connection for HTTPS registry 
+ 03-Nov-25 07:38:00  INFO  Executing: crane copy mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e index.docker.io/bn46/inji-web:develop 
+ 03-Nov-25 07:38:00  INFO  Source is MULTI-ARCH image 
+ 03-Nov-25 07:38:00  INFO  Source Index Digest (Manifest List): sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
+ 03-Nov-25 07:38:00  INFO  Source has 16 platform(s): 
+ 03-Nov-25 07:38:00  INFO    - linux/amd64: sha256:a6561a48c57f841ff807e429c41f72aefd5766156d9dec66fd7317f4dc4d3b3f 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd 
+ 03-Nov-25 07:38:00  INFO    - linux/arm/v5: sha256:7a7e0ba0a9552333e3a34649d2a2cca8b3e09e38d677cb307d9b5065e1d53c11 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:8d3442434fcbb2c338aec3ea1326e2985c49cb9c798e018a91900b37f7698156 
+ 03-Nov-25 07:38:00  INFO    - linux/arm/v7: sha256:b82e248d497818bda43af6da50ea8a11835be4af68b86dfe56bc81b9a4639a31 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:d39dfe50f1d0f57be5d44ff163cd1962c3c3a16d67b25e180088e07ba7bbdbcc 
+ 03-Nov-25 07:38:00  INFO    - linux/arm64/v8: sha256:34b02b023f0628c63bf13d12756306e2b7fbbdccd58ded7c878a304c40b3fa26 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:14bafc8f5e2611124da8ffd4e1643d7b0726515322a52ffa88917b86490f3642 
+ 03-Nov-25 07:38:00  INFO    - linux/386: sha256:6b8a8a9f35a6b4ac51e67ca9e73b16fb578155572055dcca32d75d1ed49045fa 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:8947a90d1c47f9f889eb22fbc468249f79f8e6159c8cc289ef0b00c4c5fda4d8 
+ 03-Nov-25 07:38:00  INFO    - linux/ppc64le: sha256:f5b4d1b9b94f7865984569f85f61b408244c2b9e8705d0b58389fcc098213046 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:5ed6ad5dccc6bf5f313940cffb9e6d809ed27a3f453cc8856ff4d72467c99df3 
+ 03-Nov-25 07:38:00  INFO    - linux/riscv64: sha256:c021f31f80833dc8883b9bb354be5d9e94e53e26f6ac2def6c3fb3d81a08a4ee 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:7654a3dda177c2c9015cdcef9e2b662a47702c55ac61a3a3d8cc2829f23017b1 
+ 03-Nov-25 07:38:00  INFO    - linux/s390x: sha256:4e495b0634691304670b857b9c628f36ffb4c6039904a337f42d0394cf7da20f 
+ 03-Nov-25 07:38:00  INFO    - unknown/unknown: sha256:0d562c35484a5377a6eeeb945acad5cb6c840a36e084bf1039496e3c9ac23495 
+ 03-Nov-25 07:38:00  INFO  Using secure connection for HTTPS registry 
+ 03-Nov-25 07:38:00  INFO  Executing: crane copy library/postgres:18 index.docker.io/bn46/postgres:18 
+ 03-Nov-25 07:38:00  INFO  Successfully transferred image with crane 
+ 03-Nov-25 07:38:00  INFO   
+ 03-Nov-25 07:38:00  INFO  Analyzing destination image manifest... 
+ 03-Nov-25 07:38:00  INFO  Successfully transferred image with crane 
+ 03-Nov-25 07:38:00  INFO   
+ 03-Nov-25 07:38:00  INFO  Analyzing destination image manifest... 
+ 03-Nov-25 07:38:01  INFO  Destination is MULTI-ARCH image 
+ 03-Nov-25 07:38:01  INFO  Destination Index Digest (Manifest List): sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
+ 03-Nov-25 07:38:01  INFO  Destination has 2 platform(s): 
+ 03-Nov-25 07:38:01  INFO    - linux/amd64: sha256:a2a00a666b7659a5690dd1b53cf547f765e56357c678fcc88e86be3f7c24c0bd 
+ 03-Nov-25 07:38:01  INFO    - linux/arm64: sha256:0a3134cd5b5c9bbf3cefeaf6ec3a61cfe0953e5e1fa8b7cce24e1eb097b9038e 
+ 03-Nov-25 07:38:01  INFO   
+ 03-Nov-25 07:38:01  INFO  === DIGEST VERIFICATION === 
+ 03-Nov-25 07:38:01  INFO  Comparing Index Digests (Manifest Lists): 
+ 03-Nov-25 07:38:01  INFO    Source:      sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
+ 03-Nov-25 07:38:01  INFO    Destination: sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e 
+ 03-Nov-25 07:38:01  INFO  ✓ Index Digest MATCH - Multi-arch structure preserved perfectly! 
+ 03-Nov-25 07:38:01  INFO   
+ 03-Nov-25 07:38:01  INFO  Comparing Platform Manifests: 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/amd64: sha256:a2a00a666b7659a5690dd1b53cf547f765e56357c678fcc88e86be3f7c24c0bd (MATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/arm64: sha256:0a3134cd5b5c9bbf3cefeaf6ec3a61cfe0953e5e1fa8b7cce24e1eb097b9038e (MATCH) 
+ 03-Nov-25 07:38:01  INFO  ✓ All 2 platform manifest(s) match perfectly! 
+ 03-Nov-25 07:38:01  INFO  Creating latest tag: crane copy mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e index.docker.io/bn46/inji-web:latest 
+ 03-Nov-25 07:38:01  INFO  Destination is MULTI-ARCH image 
+ 03-Nov-25 07:38:01  INFO  Destination Index Digest (Manifest List): sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
+ 03-Nov-25 07:38:01  INFO  Destination has 16 platform(s): 
+ 03-Nov-25 07:38:01  INFO    - linux/amd64: sha256:a6561a48c57f841ff807e429c41f72aefd5766156d9dec66fd7317f4dc4d3b3f 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd 
+ 03-Nov-25 07:38:01  INFO    - linux/arm/v5: sha256:7a7e0ba0a9552333e3a34649d2a2cca8b3e09e38d677cb307d9b5065e1d53c11 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:8d3442434fcbb2c338aec3ea1326e2985c49cb9c798e018a91900b37f7698156 
+ 03-Nov-25 07:38:01  INFO    - linux/arm/v7: sha256:b82e248d497818bda43af6da50ea8a11835be4af68b86dfe56bc81b9a4639a31 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:d39dfe50f1d0f57be5d44ff163cd1962c3c3a16d67b25e180088e07ba7bbdbcc 
+ 03-Nov-25 07:38:01  INFO    - linux/arm64/v8: sha256:34b02b023f0628c63bf13d12756306e2b7fbbdccd58ded7c878a304c40b3fa26 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:14bafc8f5e2611124da8ffd4e1643d7b0726515322a52ffa88917b86490f3642 
+ 03-Nov-25 07:38:01  INFO    - linux/386: sha256:6b8a8a9f35a6b4ac51e67ca9e73b16fb578155572055dcca32d75d1ed49045fa 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:8947a90d1c47f9f889eb22fbc468249f79f8e6159c8cc289ef0b00c4c5fda4d8 
+ 03-Nov-25 07:38:01  INFO    - linux/ppc64le: sha256:f5b4d1b9b94f7865984569f85f61b408244c2b9e8705d0b58389fcc098213046 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:5ed6ad5dccc6bf5f313940cffb9e6d809ed27a3f453cc8856ff4d72467c99df3 
+ 03-Nov-25 07:38:01  INFO    - linux/riscv64: sha256:c021f31f80833dc8883b9bb354be5d9e94e53e26f6ac2def6c3fb3d81a08a4ee 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:7654a3dda177c2c9015cdcef9e2b662a47702c55ac61a3a3d8cc2829f23017b1 
+ 03-Nov-25 07:38:01  INFO    - linux/s390x: sha256:4e495b0634691304670b857b9c628f36ffb4c6039904a337f42d0394cf7da20f 
+ 03-Nov-25 07:38:01  INFO    - unknown/unknown: sha256:0d562c35484a5377a6eeeb945acad5cb6c840a36e084bf1039496e3c9ac23495 
+ 03-Nov-25 07:38:01  INFO   
+ 03-Nov-25 07:38:01  INFO  === DIGEST VERIFICATION === 
+ 03-Nov-25 07:38:01  INFO  Comparing Index Digests (Manifest Lists): 
+ 03-Nov-25 07:38:01  INFO    Source:      sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
+ 03-Nov-25 07:38:01  INFO    Destination: sha256:1ffc019dae94eca6b09a49ca67d37398951346de3c3d0cfe23d8d4ca33da83fb 
+ 03-Nov-25 07:38:01  INFO  ✓ Index Digest MATCH - Multi-arch structure preserved perfectly! 
+ 03-Nov-25 07:38:01  INFO   
+ 03-Nov-25 07:38:01  INFO  Comparing Platform Manifests: 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/amd64: sha256:a6561a48c57f841ff807e429c41f72aefd5766156d9dec66fd7317f4dc4d3b3f (MATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ unknown/unknown: sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/arm/v5: sha256:7a7e0ba0a9552333e3a34649d2a2cca8b3e09e38d677cb307d9b5065e1d53c11 (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:8d3442434fcbb2c338aec3ea1326e2985c49cb9c798e018a91900b37f7698156, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/arm/v7: sha256:b82e248d497818bda43af6da50ea8a11835be4af68b86dfe56bc81b9a4639a31 (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:d39dfe50f1d0f57be5d44ff163cd1962c3c3a16d67b25e180088e07ba7bbdbcc, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/arm64/v8: sha256:34b02b023f0628c63bf13d12756306e2b7fbbdccd58ded7c878a304c40b3fa26 (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:14bafc8f5e2611124da8ffd4e1643d7b0726515322a52ffa88917b86490f3642, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/386: sha256:6b8a8a9f35a6b4ac51e67ca9e73b16fb578155572055dcca32d75d1ed49045fa (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:8947a90d1c47f9f889eb22fbc468249f79f8e6159c8cc289ef0b00c4c5fda4d8, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/ppc64le: sha256:f5b4d1b9b94f7865984569f85f61b408244c2b9e8705d0b58389fcc098213046 (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:5ed6ad5dccc6bf5f313940cffb9e6d809ed27a3f453cc8856ff4d72467c99df3, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/riscv64: sha256:c021f31f80833dc8883b9bb354be5d9e94e53e26f6ac2def6c3fb3d81a08a4ee (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:7654a3dda177c2c9015cdcef9e2b662a47702c55ac61a3a3d8cc2829f23017b1, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  INFO    ✓ linux/s390x: sha256:4e495b0634691304670b857b9c628f36ffb4c6039904a337f42d0394cf7da20f (MATCH) 
+ 03-Nov-25 07:38:01  WARNING    ✗ unknown/unknown: Source=sha256:0d562c35484a5377a6eeeb945acad5cb6c840a36e084bf1039496e3c9ac23495, Dest=sha256:03abeb211f9fc280fd7e3285a5062c12f568f0224019b0760e933294ea3d75fd (MISMATCH) 
+ 03-Nov-25 07:38:01  WARNING  ✗ Only 9/16 platform(s) match 
+ 03-Nov-25 07:38:01  INFO  Creating latest tag: crane copy library/postgres:18 index.docker.io/bn46/postgres:latest 
+ 03-Nov-25 07:38:02  INFO  Successfully created latest tag 
+ 03-Nov-25 07:38:02  INFO  Image available at: index.docker.io/bn46/uitest-verify:0.15.0 
+ 03-Nov-25 07:38:02  INFO   
+ 03-Nov-25 07:38:02  INFO  NOTE: For multi-arch images, the Index Digest (manifest list) is what matters most. 
+ 03-Nov-25 07:38:02  INFO  Individual platform manifests should also match to ensure identical content. 
+ 03-Nov-25 07:38:02  INFO  Completed processing mosipdev/uitest-verify:release-0.15.x to bn46/uitest-verify:0.15.0 
+ 03-Nov-25 07:38:03  INFO  Successfully created latest tag 
+ 03-Nov-25 07:38:03  INFO  Image available at: index.docker.io/bn46/inji-web:develop 
+ 03-Nov-25 07:38:03  INFO   
+ 03-Nov-25 07:38:03  INFO  NOTE: For multi-arch images, the Index Digest (manifest list) is what matters most. 
+ 03-Nov-25 07:38:03  INFO  Individual platform manifests should also match to ensure identical content. 
+ 03-Nov-25 07:38:03  INFO  Completed processing mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e to bn46/inji-web:develop 
+ 03-Nov-25 07:38:06  INFO  Successfully created latest tag 
+ 03-Nov-25 07:38:06  INFO  Image available at: index.docker.io/bn46/postgres:18 
+ 03-Nov-25 07:38:06  INFO   
+ 03-Nov-25 07:38:06  INFO  NOTE: For multi-arch images, the Index Digest (manifest list) is what matters most. 
+ 03-Nov-25 07:38:06  INFO  Individual platform manifests should also match to ensure identical content. 
+ 03-Nov-25 07:38:06  INFO  Completed processing library/postgres:18 to bn46/postgres:18 
