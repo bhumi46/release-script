@@ -44,6 +44,43 @@ def print_log(msg, loglevel):
     return
 
 
+def parse_image_reference(image_ref):
+    """
+    Parse image reference to extract repo, tag/digest
+    Handles formats:
+    - repo/name:tag
+    - repo/name@sha256:digest
+    - repo/name:tag@sha256:digest
+    """
+    result = {
+        'full_ref': image_ref,
+        'repo': '',
+        'tag': '',
+        'digest': '',
+        'has_digest': False,
+        'has_tag': False
+    }
+    
+    # Check for digest
+    if '@sha256:' in image_ref:
+        result['has_digest'] = True
+        parts = image_ref.split('@sha256:')
+        result['digest'] = 'sha256:' + parts[1]
+        image_ref = parts[0]  # Continue parsing the part before @
+    
+    # Check for tag
+    if ':' in image_ref:
+        result['has_tag'] = True
+        parts = image_ref.rsplit(':', 1)
+        result['repo'] = parts[0]
+        result['tag'] = parts[1]
+    else:
+        result['repo'] = image_ref
+        result['tag'] = 'latest'
+    
+    return result
+
+
 def chkImagesList(images):
     # set src image and dest image with tag
     filtered_images = [[i for i in image if i != ''] for image in images if image != '']
@@ -61,37 +98,40 @@ def chkImagesList(images):
     print("image_list = ",[i for i in images_list])
     images = []
     tagsNotAvailable = []
+    
     for image in images_list:
-        colon_index = image[0].find(":")
-        if colon_index > -1:
-            if len(image[0]) - 1 == colon_index:
+        # Parse the source image reference
+        src_parsed = parse_image_reference(image[0])
+        
+        # If destination tag is not provided
+        if len(image) == 1:
+            if not src_parsed['has_tag'] and not src_parsed['has_digest']:
                 print_log('Image "' + image[0] + '" with tag doesn\'t exists', 'error')
                 tagsNotAvailable.append(image[0])
                 continue
-            if len(image) == 1:
-                image = [image[0]] + [image[0][colon_index + 1:]]
-            images.append(image)
-        if colon_index == -1:
-            if len(image) == 1:
-                print_log('Image "' + image[0] + '" with tag doesn\'t exists', 'error')
-                tagsNotAvailable.append(image[0])
-                continue
-            if len(image) == 2:
-                image = [image[0] + ':' + image[1]] + [image[1]]
-            images.append(image)
+            # Use source tag as destination tag
+            dest_tag = src_parsed['tag'] if src_parsed['has_tag'] else 'latest'
+            images.append([image[0], dest_tag])
+        else:
+            # Destination tag provided
+            images.append([image[0], image[1]])
 
     return images, tagsNotAvailable
 
 
-def get_auth_token(image_name):
-    """Get Docker Hub authentication token"""
-    url = 'https://auth.docker.io/token?service=registry.docker.io&scope=repository:' + image_name + ':pull'
-    token_req = requests.get(url=url, headers={"Content-Type": "text"})
-    if token_req.status_code == 200:
-        return token_req.json()['token']
+def get_auth_token(image_name, registry="docker.io"):
+    """Get authentication token for registry"""
+    if registry == "docker.io":
+        url = 'https://auth.docker.io/token?service=registry.docker.io&scope=repository:' + image_name + ':pull'
+        token_req = requests.get(url=url, headers={"Content-Type": "text"})
+        if token_req.status_code == 200:
+            return token_req.json()['token']
     else:
-        print_log("Failed to get auth token for " + image_name, 'error')
+        # For private registries, you might need different auth
+        # Return None and rely on docker credentials
         return None
+    print_log("Failed to get auth token for " + image_name, 'error')
+    return None
 
 
 def chkImageExistence(image, tag, imageExitUrl):
@@ -134,20 +174,71 @@ def ignoreComment(csvfile):
         if raw: yield raw
 
 
-def getDockerHash(repo, tag):
-    token = get_auth_token(repo)
-    if not token:
-        return ''
+def getDockerHash(repo, tag, registry="docker.io", accept_header=None):
+    """
+    Get Docker image hash/digest
+    registry: registry URL (e.g., 'docker.io' or 'myregistry.com')
+    accept_header: manifest format to request
+    """
+    # Default to manifest list format to get the top-level digest
+    if accept_header is None:
+        accept_header = "application/vnd.docker.distribution.manifest.list.v2+json,application/vnd.docker.distribution.manifest.v2+json"
     
-    headers = {
-        "Accept": "application/vnd.docker.distribution.manifest.v2+json",
-        "Authorization": "Bearer " + token
-    }
-    registryUrl = 'https://registry-1.docker.io/v2/' + repo + '/manifests/' + tag
-    getImageHash = requests.get(registryUrl, headers=headers)
-    if getImageHash.status_code == 200:
-        return getImageHash.headers['etag']
+    if registry == "docker.io":
+        token = get_auth_token(repo)
+        if not token:
+            return ''
+        
+        headers = {
+            "Accept": accept_header,
+            "Authorization": "Bearer " + token
+        }
+        registryUrl = 'https://registry-1.docker.io/v2/' + repo + '/manifests/' + tag
+    else:
+        # For private registries, construct URL differently
+        headers = {
+            "Accept": accept_header
+        }
+        # Remove protocol from registry if present
+        registry_clean = registry.replace('https://', '').replace('http://', '').split('/')[0]
+        registryUrl = f'https://{registry_clean}/v2/{repo}/manifests/{tag}'
+    
+    try:
+        getImageHash = requests.get(registryUrl, headers=headers)
+        if getImageHash.status_code == 200:
+            # Return the Docker-Content-Digest header which is the canonical digest
+            digest = getImageHash.headers.get('Docker-Content-Digest') or getImageHash.headers.get('etag')
+            return digest.replace('"', '') if digest else ''
+        else:
+            print_log(f"Failed to get hash for {repo}:{tag}, status: {getImageHash.status_code}", 'warning')
+    except Exception as e:
+        print_log(f"Exception getting hash for {repo}:{tag}: {str(e)}", 'warning')
+    
     return ''
+
+
+def getCraneDigest(image_ref, insecure=False):
+    """Get image digest using crane digest command"""
+    try:
+        crane_cmd = ["crane", "digest"]
+        if insecure:
+            crane_cmd.append("--insecure")
+        crane_cmd.append(image_ref)
+        
+        result = subprocess.run(
+            crane_cmd,
+            capture_output=True,
+            text=True,
+            check=False
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+        else:
+            print_log(f"Crane digest failed for {image_ref}: {result.stderr}", 'warning')
+            return ''
+    except Exception as e:
+        print_log(f"Exception running crane digest: {str(e)}", 'warning')
+        return ''
 
 
 def chkDockerAccExistence(acc_name):
@@ -161,10 +252,13 @@ def chkDockerAccExistence(acc_name):
 
 def process_image(image, client, remote_client):
     """Process a single image using crane for all cases (single-arch and multi-arch)"""
-    srcImgRepo = image[0][: image[0].find("/")]
-    srcImgName = image[0][image[0].find("/") + 1:image[0].find(":")]
-    srcImgtag = image[0][image[0].find(":") + 1:]
+    
+    # Parse source image reference
+    src_parsed = parse_image_reference(image[0])
     destImgtag = image[1]  # Use the tag from image.txt
+    
+    # Extract image name (last part of repo path)
+    srcImgName = src_parsed['repo'].split('/')[-1]
     
     print_log("", 'info')
     print_log(10 * "*" + " [ " + config['docker']['destination_organization'] + "/" + srcImgName + ":" + destImgtag + " ] " + "*" * 52, 'info')
@@ -176,7 +270,6 @@ def process_image(image, client, remote_client):
         registry_url = config['docker']['registry_url']
         registry_host = registry_url.replace('https://', '').replace('http://', '').split('/')[0]
         
-        full_src_img_name = image[0][: image[0].find(":")]
         dest_repo = f"{registry_host}/{config['docker']['destination_organization']}/{srcImgName}"
         
         import shutil
@@ -189,7 +282,23 @@ def process_image(image, client, remote_client):
         # Determine if destination registry needs --insecure flag (HTTP)
         use_insecure = registry_url.startswith('http://') or not registry_url.startswith('https://')
         
-        # Build crane command with conditional --insecure flag
+        # Construct source image reference
+        # If source has digest, use it; otherwise use full reference with tag
+        if src_parsed['has_digest']:
+            src_image_ref = f"{src_parsed['repo']}@{src_parsed['digest']}"
+            print_log(f"Source uses digest reference: {src_image_ref}", 'info')
+        else:
+            src_image_ref = f"{src_parsed['repo']}:{src_parsed['tag']}"
+            print_log(f"Source uses tag reference: {src_image_ref}", 'info')
+        
+        # Get source digest BEFORE transfer
+        src_digest = getCraneDigest(src_image_ref, insecure=False)
+        if src_digest:
+            print_log(f"Source image digest: {src_digest}", 'info')
+        else:
+            print_log(f"Warning: Could not retrieve source digest", 'warning')
+        
+        # Build crane copy command
         crane_cmd = ["crane", "copy"]
         if use_insecure:
             crane_cmd.append("--insecure")
@@ -197,8 +306,9 @@ def process_image(image, client, remote_client):
         else:
             print_log("Using secure connection for HTTPS registry", 'info')
         
+        # Add all-tags flag to preserve multi-arch manifests properly
         crane_cmd.extend([
-            f"{full_src_img_name}:{srcImgtag}",
+            src_image_ref,
             f"{dest_repo}:{destImgtag}"
         ])
         
@@ -208,12 +318,34 @@ def process_image(image, client, remote_client):
         if result.returncode == 0:
             print_log(f"Successfully transferred image with crane", 'info')
             
+            # Verify digest after transfer
+            dest_image_ref = f"{dest_repo}:{destImgtag}"
+            dest_digest = getCraneDigest(dest_image_ref, insecure=use_insecure)
+            
+            if dest_digest:
+                print_log(f"Destination image digest: {dest_digest}", 'info')
+            else:
+                print_log(f"Warning: Could not retrieve destination digest", 'warning')
+            
+            # Compare digests
+            if src_digest and dest_digest:
+                if src_digest == dest_digest:
+                    print_log("✓ SHA/Digest verification PASSED - Images are identical", 'info')
+                else:
+                    print_log("✗ SHA/Digest verification FAILED - Images differ!", 'warning')
+                    print_log(f"  Source:      {src_digest}", 'warning')
+                    print_log(f"  Destination: {dest_digest}", 'warning')
+                    # This might happen if multi-arch manifest structure changed
+                    print_log("  Note: For multi-arch images, this might indicate manifest list differences", 'warning')
+            else:
+                print_log("Unable to verify digests (crane digest failed)", 'warning')
+            
             # Also create latest tag with same insecure setting
             latest_cmd = ["crane", "copy"]
             if use_insecure:
                 latest_cmd.append("--insecure")
             latest_cmd.extend([
-                f"{full_src_img_name}:{srcImgtag}",
+                src_image_ref,
                 f"{dest_repo}:latest"
             ])
             
@@ -226,6 +358,30 @@ def process_image(image, client, remote_client):
             
             print_log(f"Image available at: {dest_repo}:{destImgtag}", 'info')
             print_log("Crane automatically preserves all architectures and manifest structures", 'info')
+            
+            # Verify multi-arch support
+            manifest_cmd = ["crane", "manifest"]
+            if use_insecure:
+                manifest_cmd.append("--insecure")
+            manifest_cmd.append(dest_image_ref)
+            
+            manifest_result = subprocess.run(manifest_cmd, capture_output=True, text=True, check=False)
+            if manifest_result.returncode == 0:
+                try:
+                    manifest_json = json.loads(manifest_result.stdout)
+                    if manifest_json.get('mediaType') == 'application/vnd.docker.distribution.manifest.list.v2+json' or \
+                       manifest_json.get('mediaType') == 'application/vnd.oci.image.index.v1+json':
+                        num_manifests = len(manifest_json.get('manifests', []))
+                        print_log(f"✓ Multi-arch image confirmed: {num_manifests} platform(s)", 'info')
+                        for m in manifest_json.get('manifests', []):
+                            platform = m.get('platform', {})
+                            arch = platform.get('architecture', 'unknown')
+                            os_type = platform.get('os', 'unknown')
+                            print_log(f"  - Platform: {os_type}/{arch}", 'info')
+                    else:
+                        print_log("✓ Single-arch image", 'info')
+                except json.JSONDecodeError:
+                    print_log("Could not parse manifest JSON", 'warning')
             
         else:
             print_log(f"Crane transfer failed: {result.stderr}", 'error')
@@ -279,16 +435,30 @@ def main():
     destImgNotExist = []
     srcDestNotSameHash = []
     srcDestSameHash = []
+    
     for image in images:
-        srcImgName = image[0][: image[0].find(":")]
-        srcImgtag = image[0][image[0].find(":") + 1:]
+        src_parsed = parse_image_reference(image[0])
+        
         print_log("", 'info')
-        print_log("src = \"" + srcImgName + "\" tag = \"" + srcImgtag + "\"", 'info')
+        if src_parsed['has_digest']:
+            print_log("src = \"" + src_parsed['repo'] + "\" digest = \"" + src_parsed['digest'] + "\"", 'info')
+        else:
+            print_log("src = \"" + src_parsed['repo'] + "\" tag = \"" + src_parsed['tag'] + "\"", 'info')
+        
         # call function to check existence of source images
-        if not chkImageExistence(srcImgName, srcImgtag, imageExitUrl):
-            srcImgNotExist.append([srcImgName + ":" + srcImgtag])
+        # For digest-based references, check using the repo and digest
+        if src_parsed['has_digest']:
+            # Extract just the digest hash part for API check
+            digest_hash = src_parsed['digest'].replace('sha256:', '')
+            if not chkImageExistence(src_parsed['repo'], digest_hash, imageExitUrl):
+                srcImgNotExist.append([image[0]])
+        else:
+            if not chkImageExistence(src_parsed['repo'], src_parsed['tag'], imageExitUrl):
+                srcImgNotExist.append([image[0]])
+        
         # check if source and destination images are same (same registry, same name, same tag)
-        destImgName = config['docker']['destination_organization'] + "/" + (srcImgName.split('/')[-1])
+        srcImgName = src_parsed['repo'].split('/')[-1]
+        destImgName = config['docker']['destination_organization'] + "/" + srcImgName
         destImgtag = image[1]
         
         # Only consider them the same if they're on the same registry AND have same name/tag
@@ -297,8 +467,9 @@ def main():
         dest_is_dockerhub = 'docker.io' in dest_registry_url or 'hub.docker' in dest_registry_url or 'index.docker.io' in dest_registry_url
         
         # Images are the same only if: same registry + same name + same tag
-        if dest_is_dockerhub and destImgName == srcImgName and destImgtag == srcImgtag:
+        if dest_is_dockerhub and destImgName == src_parsed['repo'] and destImgtag == src_parsed['tag']:
             srcDestSameImg.append([destImgName, destImgtag])
+    
     # print list of source images which does not exist
     if len(srcImgNotExist) > 0:
         print_log("", 'info')
@@ -326,26 +497,47 @@ def main():
             exit(1)
     else:
         print_log("Skipping Docker Hub account check for non-Docker Hub registry", 'info')
+    
     print_log("", 'info')
     print_log('*' * 20 + " Check existence of Destination Images " + '*' * 63, 'info')
+    
+    # Extract registry info for destination
+    dest_registry_url = config['docker']['registry_url'].lower()
+    dest_is_dockerhub = 'docker.io' in dest_registry_url or 'hub.docker' in dest_registry_url or 'index.docker.io' in dest_registry_url
+    dest_registry = "docker.io" if dest_is_dockerhub else config['docker']['registry_url']
+    use_insecure = config['docker']['registry_url'].startswith('http://') or not config['docker']['registry_url'].startswith('https://')
+    
     for image in images:
-        imgName = image[0][: image[0].find(":")]
-        destImgName = config['docker']['destination_organization'] + "/" + (imgName.split('/')[-1])
+        src_parsed = parse_image_reference(image[0])
+        srcImgName = src_parsed['repo'].split('/')[-1]
+        destImgName = config['docker']['destination_organization'] + "/" + srcImgName
         destImgTag = image[1]
-        destImgHash = getDockerHash(destImgName, destImgTag)
+        
         print_log("", 'info')
         print_log("[ " + destImgName + " ] ", 'info')
+        
+        # Use crane to get destination hash
+        registry_host = config['docker']['registry_url'].replace('https://', '').replace('http://', '').split('/')[0]
+        dest_ref = f"{registry_host}/{destImgName}:{destImgTag}"
+        destImgHash = getCraneDigest(dest_ref, insecure=use_insecure)
+        
         print_log("Destination Image = \"" + destImgName + "\" Destination Image tag = \"" + str(destImgTag) + "\" IMAGE_ID : " + destImgHash, 'info')
 
-        # call function to check existence of destination images
-        if not chkImageExistence(destImgName, destImgTag, imageExitUrl):
+        # Check existence
+        if not destImgHash:
             destImgNotExist.append([destImgName + ":" + destImgTag])
+            print_log(f"Destination image {destImgName}:{destImgTag} does not exist", 'info')
             continue
 
         # compare only when performing hash operation
         if sys.argv[1] == "hash":
-            srcImgHash = getDockerHash(imgName, image[0][image[0].find(":") + 1:])
-            destImgHash = getDockerHash(destImgName, destImgTag)
+            # Get source hash using crane
+            if src_parsed['has_digest']:
+                src_ref = f"{src_parsed['repo']}@{src_parsed['digest']}"
+            else:
+                src_ref = f"{src_parsed['repo']}:{src_parsed['tag']}"
+            
+            srcImgHash = getCraneDigest(src_ref, insecure=False)
 
             if srcImgHash != destImgHash:
                 print_log("", 'info')
