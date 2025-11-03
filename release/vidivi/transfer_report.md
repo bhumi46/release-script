@@ -1,9 +1,9 @@
 # Image Transfer Report
 
-**Date**: Mon Nov  3 05:48:19 UTC 2025
+**Date**: Mon Nov  3 05:53:49 UTC 2025
 **Registry Type**: dockerhub
 **Registry URL**: https://index.docker.io/v1/  
-**Organization**: bn1997
+**Organization**: praful02
 **WireGuard VPN**: Disabled
 
 ## Statistics
@@ -17,9 +17,9 @@
 - Registry Support: HTTP/HTTPS auto-detection
 
 ## Transferred Images
-- index.docker.io/bn1997/inji-verify-service:0.15.0 
-- index.docker.io/bn1997/apitest-inji-verify:0.15.0 
-- index.docker.io/bn1997/inji-verify-ui:0.15.0 
-- index.docker.io/bn1997/postgres:18 
-- index.docker.io/bn1997/uitest-verify:0.15.0 
-- index.docker.io/bn1997/inji-web:develop 
+- index.docker.io/praful02/inji-verify-service:0.15.0 
+- index.docker.io/praful02/inji-verify-ui:0.15.0 
+- index.docker.io/praful02/apitest-inji-verify:0.15.0 
+- index.docker.io/praful02/inji-web:develop 
+- index.docker.io/praful02/uitest-verify:0.15.0 
+- index.docker.io/praful02/postgres:18 
