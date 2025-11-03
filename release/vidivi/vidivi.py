@@ -252,6 +252,59 @@ def getCraneDigest(image_ref, insecure=False):
         return ''
 
 
+def getImageManifestInfo(image_ref, insecure=False):
+    """
+    Get detailed manifest information including both index and platform manifests
+    Returns dict with manifest_type, digest, and platform_digests
+    """
+    try:
+        crane_cmd = ["crane", "manifest"]
+        if insecure:
+            crane_cmd.append("--insecure")
+        crane_cmd.append(image_ref)
+        
+        manifest_result = subprocess.run(crane_cmd, capture_output=True, text=True, check=False)
+        if manifest_result.returncode != 0:
+            return None
+        
+        manifest_json = json.loads(manifest_result.stdout)
+        
+        info = {
+            'manifest_type': manifest_json.get('mediaType', 'unknown'),
+            'digest': getCraneDigest(image_ref, insecure),
+            'platforms': []
+        }
+        
+        # Check if it's a manifest list (multi-arch)
+        if manifest_json.get('mediaType') in [
+            'application/vnd.docker.distribution.manifest.list.v2+json',
+            'application/vnd.oci.image.index.v1+json'
+        ]:
+            info['is_multiarch'] = True
+            info['index_digest'] = info['digest']  # This is the index/manifest list digest
+            
+            # Get individual platform manifests
+            for m in manifest_json.get('manifests', []):
+                platform = m.get('platform', {})
+                platform_info = {
+                    'os': platform.get('os', 'unknown'),
+                    'architecture': platform.get('architecture', 'unknown'),
+                    'variant': platform.get('variant', ''),
+                    'digest': m.get('digest', '')
+                }
+                info['platforms'].append(platform_info)
+        else:
+            # Single-arch image
+            info['is_multiarch'] = False
+            info['platform_digest'] = info['digest']
+        
+        return info
+        
+    except Exception as e:
+        print_log(f"Exception getting manifest info: {str(e)}", 'warning')
+        return None
+
+
 def chkDockerAccExistence(acc_name):
     accUrl = 'https://hub.docker.com/v2/users/' + acc_name
     req = requests.get(url=accUrl)
@@ -302,12 +355,23 @@ def process_image(image, client, remote_client):
             src_image_ref = f"{src_parsed['repo']}:{src_parsed['tag']}"
             print_log(f"Source uses tag reference: {src_image_ref}", 'info')
         
-        # Get source digest BEFORE transfer
-        src_digest = getCraneDigest(src_image_ref, insecure=False)
-        if src_digest:
-            print_log(f"Source image digest: {src_digest}", 'info')
+        # Get source manifest info BEFORE transfer
+        print_log("Analyzing source image manifest...", 'info')
+        src_manifest_info = getImageManifestInfo(src_image_ref, insecure=False)
+        
+        if src_manifest_info:
+            if src_manifest_info['is_multiarch']:
+                print_log(f"Source is MULTI-ARCH image", 'info')
+                print_log(f"Source Index Digest (Manifest List): {src_manifest_info['index_digest']}", 'info')
+                print_log(f"Source has {len(src_manifest_info['platforms'])} platform(s):", 'info')
+                for p in src_manifest_info['platforms']:
+                    variant = f"/{p['variant']}" if p['variant'] else ""
+                    print_log(f"  - {p['os']}/{p['architecture']}{variant}: {p['digest']}", 'info')
+            else:
+                print_log(f"Source is SINGLE-ARCH image", 'info')
+                print_log(f"Source Platform Digest: {src_manifest_info['platform_digest']}", 'info')
         else:
-            print_log(f"Warning: Could not retrieve source digest", 'warning')
+            print_log(f"Warning: Could not retrieve source manifest info", 'warning')
         
         # Build crane copy command
         crane_cmd = ["crane", "copy"]
@@ -329,27 +393,85 @@ def process_image(image, client, remote_client):
         if result.returncode == 0:
             print_log(f"Successfully transferred image with crane", 'info')
             
-            # Verify digest after transfer
+            # Analyze destination manifest after transfer
+            print_log("", 'info')
+            print_log("Analyzing destination image manifest...", 'info')
             dest_image_ref = f"{dest_repo}:{destImgtag}"
-            dest_digest = getCraneDigest(dest_image_ref, insecure=use_insecure)
+            dest_manifest_info = getImageManifestInfo(dest_image_ref, insecure=use_insecure)
             
-            if dest_digest:
-                print_log(f"Destination image digest: {dest_digest}", 'info')
+            if dest_manifest_info:
+                if dest_manifest_info['is_multiarch']:
+                    print_log(f"Destination is MULTI-ARCH image", 'info')
+                    print_log(f"Destination Index Digest (Manifest List): {dest_manifest_info['index_digest']}", 'info')
+                    print_log(f"Destination has {len(dest_manifest_info['platforms'])} platform(s):", 'info')
+                    for p in dest_manifest_info['platforms']:
+                        variant = f"/{p['variant']}" if p['variant'] else ""
+                        print_log(f"  - {p['os']}/{p['architecture']}{variant}: {p['digest']}", 'info')
+                else:
+                    print_log(f"Destination is SINGLE-ARCH image", 'info')
+                    print_log(f"Destination Platform Digest: {dest_manifest_info['platform_digest']}", 'info')
             else:
-                print_log(f"Warning: Could not retrieve destination digest", 'warning')
+                print_log(f"Warning: Could not retrieve destination manifest info", 'warning')
             
             # Compare digests
-            if src_digest and dest_digest:
-                if src_digest == dest_digest:
-                    print_log("✓ SHA/Digest verification PASSED - Images are identical", 'info')
+            print_log("", 'info')
+            print_log("=== DIGEST VERIFICATION ===", 'info')
+            
+            if src_manifest_info and dest_manifest_info:
+                # For multi-arch images, compare index digests
+                if src_manifest_info['is_multiarch'] and dest_manifest_info['is_multiarch']:
+                    src_digest = src_manifest_info['index_digest']
+                    dest_digest = dest_manifest_info['index_digest']
+                    
+                    print_log(f"Comparing Index Digests (Manifest Lists):", 'info')
+                    print_log(f"  Source:      {src_digest}", 'info')
+                    print_log(f"  Destination: {dest_digest}", 'info')
+                    
+                    if src_digest == dest_digest:
+                        print_log("✓ Index Digest MATCH - Multi-arch structure preserved perfectly!", 'info')
+                    else:
+                        print_log("✗ Index Digest MISMATCH - This may indicate registry differences", 'warning')
+                    
+                    # Also compare individual platform manifests
+                    print_log("", 'info')
+                    print_log("Comparing Platform Manifests:", 'info')
+                    platform_match_count = 0
+                    for src_p in src_manifest_info['platforms']:
+                        src_plat = f"{src_p['os']}/{src_p['arch']}"
+                        # Find corresponding dest platform
+                        dest_p = next((p for p in dest_manifest_info['platforms'] 
+                                     if p['os'] == src_p['os'] and p['architecture'] == src_p['architecture']), None)
+                        if dest_p:
+                            if src_p['digest'] == dest_p['digest']:
+                                print_log(f"  ✓ {src_plat}: {src_p['digest']} (MATCH)", 'info')
+                                platform_match_count += 1
+                            else:
+                                print_log(f"  ✗ {src_plat}: Source={src_p['digest']}, Dest={dest_p['digest']} (MISMATCH)", 'warning')
+                        else:
+                            print_log(f"  ✗ {src_plat}: Platform not found in destination!", 'error')
+                    
+                    if platform_match_count == len(src_manifest_info['platforms']):
+                        print_log(f"✓ All {platform_match_count} platform manifest(s) match perfectly!", 'info')
+                    else:
+                        print_log(f"✗ Only {platform_match_count}/{len(src_manifest_info['platforms'])} platform(s) match", 'warning')
+                
+                # For single-arch images
+                elif not src_manifest_info['is_multiarch'] and not dest_manifest_info['is_multiarch']:
+                    src_digest = src_manifest_info['platform_digest']
+                    dest_digest = dest_manifest_info['platform_digest']
+                    
+                    print_log(f"Comparing Platform Digests:", 'info')
+                    print_log(f"  Source:      {src_digest}", 'info')
+                    print_log(f"  Destination: {dest_digest}", 'info')
+                    
+                    if src_digest == dest_digest:
+                        print_log("✓ Platform Digest MATCH - Images are identical!", 'info')
+                    else:
+                        print_log("✗ Platform Digest MISMATCH", 'warning')
                 else:
-                    print_log("✗ SHA/Digest verification FAILED - Images differ!", 'warning')
-                    print_log(f"  Source:      {src_digest}", 'warning')
-                    print_log(f"  Destination: {dest_digest}", 'warning')
-                    # This might happen if multi-arch manifest structure changed
-                    print_log("  Note: For multi-arch images, this might indicate manifest list differences", 'warning')
+                    print_log("✗ Architecture type mismatch (single-arch vs multi-arch)", 'error')
             else:
-                print_log("Unable to verify digests (crane digest failed)", 'warning')
+                print_log("Unable to verify digests (manifest info retrieval failed)", 'warning')
             
             # Also create latest tag with same insecure setting
             latest_cmd = ["crane", "copy"]
@@ -368,31 +490,12 @@ def process_image(image, client, remote_client):
                 print_log(f"Latest tag creation failed: {latest_result.stderr}", 'warning')
             
             print_log(f"Image available at: {dest_repo}:{destImgtag}", 'info')
-            print_log("Crane automatically preserves all architectures and manifest structures", 'info')
             
-            # Verify multi-arch support
-            manifest_cmd = ["crane", "manifest"]
-            if use_insecure:
-                manifest_cmd.append("--insecure")
-            manifest_cmd.append(dest_image_ref)
-            
-            manifest_result = subprocess.run(manifest_cmd, capture_output=True, text=True, check=False)
-            if manifest_result.returncode == 0:
-                try:
-                    manifest_json = json.loads(manifest_result.stdout)
-                    if manifest_json.get('mediaType') == 'application/vnd.docker.distribution.manifest.list.v2+json' or \
-                       manifest_json.get('mediaType') == 'application/vnd.oci.image.index.v1+json':
-                        num_manifests = len(manifest_json.get('manifests', []))
-                        print_log(f"✓ Multi-arch image confirmed: {num_manifests} platform(s)", 'info')
-                        for m in manifest_json.get('manifests', []):
-                            platform = m.get('platform', {})
-                            arch = platform.get('architecture', 'unknown')
-                            os_type = platform.get('os', 'unknown')
-                            print_log(f"  - Platform: {os_type}/{arch}", 'info')
-                    else:
-                        print_log("✓ Single-arch image", 'info')
-                except json.JSONDecodeError:
-                    print_log("Could not parse manifest JSON", 'warning')
+            # Summary
+            print_log("", 'info')
+            if src_manifest_info and src_manifest_info['is_multiarch']:
+                print_log("NOTE: For multi-arch images, the Index Digest (manifest list) is what matters most.", 'info')
+                print_log("Individual platform manifests should also match to ensure identical content.", 'info')
             
         else:
             print_log(f"Crane transfer failed: {result.stderr}", 'error')
