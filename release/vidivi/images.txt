@@ -3,4 +3,5 @@ mosipdev/inji-verify-ui:release-0.15.x 0.15.0
 mosipdev/inji-verify-service:release-0.15.x 0.15.0
 mosipdev/uitest-verify:release-0.15.x 0.15.0
 mosipdev/inji-web@sha256:db84a3e563423125c4d92d72ebeb3f1b5d823393b4aea41aa90c5373aa91286e develop
+mosipdev/inji-web@sha256:a2a00a666b7659a5690dd1b53cf547f765e56357c678fcc88e86be3f7c24c0bd amd64test
 library/postgres:18 18
