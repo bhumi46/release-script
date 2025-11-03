@@ -134,37 +134,48 @@ def get_auth_token(image_name, registry="docker.io"):
     return None
 
 
-def chkImageExistence(image, tag, imageExitUrl):
-    # Get the repository name
-    if '@sha256' in image:
-        image_name, image_digest = image.split('@sha256')
-    else:
-        image_name = image
-    
+def chkImageExistence(image, tag_or_digest, imageExitUrl, is_digest=False):
+    """
+    Check if image exists
+    image: repository name (e.g., 'mosipdev/inji-web')
+    tag_or_digest: either a tag name or digest hash
+    is_digest: True if tag_or_digest is a digest, False if it's a tag
+    """
     # Get the auth token
-    token = get_auth_token(image_name)
+    token = get_auth_token(image)
     if not token:
         return False
     
     headers = {
-        "Authorization": "Bearer " + token
+        "Authorization": "Bearer " + token,
+        "Accept": "application/vnd.docker.distribution.manifest.v2+json,application/vnd.docker.distribution.manifest.list.v2+json"
     }
     
-    if '@sha256' in image:
-        image_name, image_digest = image.split('@sha256')
-        url = imageExitUrl + image_name + "/manifests/" + "sha256:" + tag
-    else:
-        url = imageExitUrl + "repositories/" + image + "/tags/" + tag
-    
-    print("url= " + url)
-    if 'sha256:' in url:
+    if is_digest:
+        # For digest-based checks, use registry API directly
+        # tag_or_digest should be the full digest like "sha256:db84a3e..."
+        if not tag_or_digest.startswith('sha256:'):
+            tag_or_digest = 'sha256:' + tag_or_digest
+        url = f"https://registry-1.docker.io/v2/{image}/manifests/{tag_or_digest}"
+        print(f"url= {url}")
         r = requests.get(url=url, headers=headers)
     else:
+        # For tag-based checks, use Docker Hub API
+        url = imageExitUrl + "repositories/" + image + "/tags/" + tag_or_digest
+        print(f"url= {url}")
         r = requests.get(url=url)
-    # If image not found exit the script
+    
+    # If image not found
     if int(r.status_code) == 404:
-        print_log("Image \"" + image + ":" + tag + "\" does not exist", 'error')
+        if is_digest:
+            print_log(f"Image \"{image}@{tag_or_digest}\" does not exist", 'error')
+        else:
+            print_log(f"Image \"{image}:{tag_or_digest}\" does not exist", 'error')
         return False
+    elif int(r.status_code) != 200:
+        print_log(f"Error checking image existence: HTTP {r.status_code}", 'warning')
+        return False
+    
     return True
 
 
@@ -448,12 +459,11 @@ def main():
         # call function to check existence of source images
         # For digest-based references, check using the repo and digest
         if src_parsed['has_digest']:
-            # Extract just the digest hash part for API check
-            digest_hash = src_parsed['digest'].replace('sha256:', '')
-            if not chkImageExistence(src_parsed['repo'], digest_hash, imageExitUrl):
+            # Pass the full digest (sha256:hash) and mark as digest check
+            if not chkImageExistence(src_parsed['repo'], src_parsed['digest'], imageExitUrl, is_digest=True):
                 srcImgNotExist.append([image[0]])
         else:
-            if not chkImageExistence(src_parsed['repo'], src_parsed['tag'], imageExitUrl):
+            if not chkImageExistence(src_parsed['repo'], src_parsed['tag'], imageExitUrl, is_digest=False):
                 srcImgNotExist.append([image[0]])
         
         # check if source and destination images are same (same registry, same name, same tag)
