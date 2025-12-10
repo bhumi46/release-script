@@ -1,1 +1,1 @@
-mosipdev/mosip-file-server:1.3.x 1.3.x
+mosipdev/mosip-file-server:release-1.3.x 1.3.x
